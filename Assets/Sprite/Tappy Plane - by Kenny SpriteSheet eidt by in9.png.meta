@@ -1,0 +1,1245 @@
+fileFormatVersion: 2
+guid: 9e1daa2857734482a8a3c6fdfdccad39
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 4296498805298371677
+    second: Tappy Plane - by Kenny SpriteSheet eidt by in9_0
+  - first:
+      213: -3899807324764438750
+    second: Tappy Plane - by Kenny SpriteSheet eidt by in9_1
+  - first:
+      213: -3581424267333466116
+    second: Tappy Plane - by Kenny SpriteSheet eidt by in9_2
+  - first:
+      213: 6461597793828118420
+    second: Tappy Plane - by Kenny SpriteSheet eidt by in9_3
+  - first:
+      213: 8224382632348089740
+    second: Tappy Plane - by Kenny SpriteSheet eidt by in9_4
+  - first:
+      213: -1520035396280111087
+    second: Tappy Plane - by Kenny SpriteSheet eidt by in9_5
+  - first:
+      213: -2047189970237442273
+    second: Tappy Plane - by Kenny SpriteSheet eidt by in9_6
+  - first:
+      213: 5313161366991087345
+    second: Tappy Plane - by Kenny SpriteSheet eidt by in9_7
+  - first:
+      213: 6815437026343742850
+    second: Tappy Plane - by Kenny SpriteSheet eidt by in9_8
+  - first:
+      213: 8861057426744883879
+    second: Tappy Plane - by Kenny SpriteSheet eidt by in9_9
+  - first:
+      213: -881274470406432815
+    second: Tappy Plane - by Kenny SpriteSheet eidt by in9_10
+  - first:
+      213: -3497519649422665191
+    second: Tappy Plane - by Kenny SpriteSheet eidt by in9_11
+  - first:
+      213: -2222087207976519808
+    second: Tappy Plane - by Kenny SpriteSheet eidt by in9_12
+  - first:
+      213: -5387856177993539301
+    second: Tappy Plane - by Kenny SpriteSheet eidt by in9_13
+  - first:
+      213: 5054753453507252576
+    second: Tappy Plane - by Kenny SpriteSheet eidt by in9_14
+  - first:
+      213: -1583195566152614081
+    second: Tappy Plane - by Kenny SpriteSheet eidt by in9_15
+  - first:
+      213: -1040441395334884422
+    second: Tappy Plane - by Kenny SpriteSheet eidt by in9_16
+  - first:
+      213: -6491068576021286978
+    second: Tappy Plane - by Kenny SpriteSheet eidt by in9_17
+  - first:
+      213: -6767351198943986321
+    second: Tappy Plane - by Kenny SpriteSheet eidt by in9_18
+  - first:
+      213: 180253475279963789
+    second: Tappy Plane - by Kenny SpriteSheet eidt by in9_19
+  - first:
+      213: -2186542939133560824
+    second: Tappy Plane - by Kenny SpriteSheet eidt by in9_20
+  - first:
+      213: 4561755346839571984
+    second: Tappy Plane - by Kenny SpriteSheet eidt by in9_21
+  - first:
+      213: -5069579370073037171
+    second: Tappy Plane - by Kenny SpriteSheet eidt by in9_22
+  - first:
+      213: -8810620853294127579
+    second: Tappy Plane - by Kenny SpriteSheet eidt by in9_23
+  - first:
+      213: -8631362980494653507
+    second: Tappy Plane - by Kenny SpriteSheet eidt by in9_24
+  - first:
+      213: 2971600077793908171
+    second: Tappy Plane - by Kenny SpriteSheet eidt by in9_25
+  - first:
+      213: 5826300928800705912
+    second: Tappy Plane - by Kenny SpriteSheet eidt by in9_26
+  - first:
+      213: -8142883529065721022
+    second: Tappy Plane - by Kenny SpriteSheet eidt by in9_27
+  - first:
+      213: 1571846265574349815
+    second: Tappy Plane - by Kenny SpriteSheet eidt by in9_28
+  - first:
+      213: -2625316707377401565
+    second: Tappy Plane - by Kenny SpriteSheet eidt by in9_29
+  - first:
+      213: -8737955474112045371
+    second: Tappy Plane - by Kenny SpriteSheet eidt by in9_30
+  - first:
+      213: -5042160728168306621
+    second: Tappy Plane - by Kenny SpriteSheet eidt by in9_31
+  - first:
+      213: -6590468360409007791
+    second: Tappy Plane - by Kenny SpriteSheet eidt by in9_32
+  - first:
+      213: 8907850260152917397
+    second: Tappy Plane - by Kenny SpriteSheet eidt by in9_33
+  - first:
+      213: 2503985230701790
+    second: Tappy Plane - by Kenny SpriteSheet eidt by in9_34
+  - first:
+      213: -5266454794293109690
+    second: Tappy Plane - by Kenny SpriteSheet eidt by in9_35
+  - first:
+      213: -5108311236988072239
+    second: Tappy Plane - by Kenny SpriteSheet eidt by in9_36
+  - first:
+      213: -6338800835797346895
+    second: Tappy Plane - by Kenny SpriteSheet eidt by in9_37
+  - first:
+      213: 7630705342104239658
+    second: Tappy Plane - by Kenny SpriteSheet eidt by in9_38
+  - first:
+      213: -711584755452133456
+    second: Tappy Plane - by Kenny SpriteSheet eidt by in9_39
+  - first:
+      213: -3111329670120967177
+    second: Tappy Plane - by Kenny SpriteSheet eidt by in9_40
+  - first:
+      213: 6094107730214584728
+    second: Tappy Plane - by Kenny SpriteSheet eidt by in9_41
+  - first:
+      213: -3669604510022420718
+    second: Tappy Plane - by Kenny SpriteSheet eidt by in9_42
+  - first:
+      213: -2470250728144393278
+    second: Tappy Plane - by Kenny SpriteSheet eidt by in9_43
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Tappy Plane - by Kenny SpriteSheet eidt by in9_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 951
+        width: 89
+        height: 73
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d5c13bb46ea30ab30800000000000000
+      internalID: 4296498805298371677
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tappy Plane - by Kenny SpriteSheet eidt by in9_1
+      rect:
+        serializedVersion: 2
+        x: 1287
+        y: 952
+        width: 809
+        height: 72
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 22ff2f276e911e9c0800000000000000
+      internalID: -3899807324764438750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tappy Plane - by Kenny SpriteSheet eidt by in9_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 818
+        width: 88
+        height: 76
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cf700a3aa993c4ec0800000000000000
+      internalID: -3581424267333466116
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tappy Plane - by Kenny SpriteSheet eidt by in9_3
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 948
+        width: 89
+        height: 76
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 49f929e55f43ca950800000000000000
+      internalID: 6461597793828118420
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tappy Plane - by Kenny SpriteSheet eidt by in9_4
+      rect:
+        serializedVersion: 2
+        x: 263
+        y: 818
+        width: 89
+        height: 76
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c8dfff1fd60e22270800000000000000
+      internalID: 8224382632348089740
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tappy Plane - by Kenny SpriteSheet eidt by in9_5
+      rect:
+        serializedVersion: 2
+        x: 395
+        y: 818
+        width: 89
+        height: 76
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 11034be4cdfb7eae0800000000000000
+      internalID: -1520035396280111087
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tappy Plane - by Kenny SpriteSheet eidt by in9_6
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 818
+        width: 89
+        height: 76
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f17314c819be693e0800000000000000
+      internalID: -2047189970237442273
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tappy Plane - by Kenny SpriteSheet eidt by in9_7
+      rect:
+        serializedVersion: 2
+        x: 659
+        y: 818
+        width: 89
+        height: 76
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1f625d9ec142cb940800000000000000
+      internalID: 5313161366991087345
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tappy Plane - by Kenny SpriteSheet eidt by in9_8
+      rect:
+        serializedVersion: 2
+        x: 1287
+        y: 865
+        width: 809
+        height: 72
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 28d6340addb459e50800000000000000
+      internalID: 6815437026343742850
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tappy Plane - by Kenny SpriteSheet eidt by in9_9
+      rect:
+        serializedVersion: 2
+        x: 1287
+        y: 601
+        width: 809
+        height: 72
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7aa377f18ccc8fa70800000000000000
+      internalID: 8861057426744883879
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tappy Plane - by Kenny SpriteSheet eidt by in9_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 722
+        width: 40
+        height: 39
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1d7ddc1d98515c3f0800000000000000
+      internalID: -881274470406432815
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tappy Plane - by Kenny SpriteSheet eidt by in9_11
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 722
+        width: 41
+        height: 39
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 91a9635d860567fc0800000000000000
+      internalID: -3497519649422665191
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tappy Plane - by Kenny SpriteSheet eidt by in9_12
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 722
+        width: 42
+        height: 39
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 087be9c157f8921e0800000000000000
+      internalID: -2222087207976519808
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tappy Plane - by Kenny SpriteSheet eidt by in9_13
+      rect:
+        serializedVersion: 2
+        x: 282
+        y: 701
+        width: 42
+        height: 41
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b112dc92a5d7a35b0800000000000000
+      internalID: -5387856177993539301
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tappy Plane - by Kenny SpriteSheet eidt by in9_14
+      rect:
+        serializedVersion: 2
+        x: 351
+        y: 701
+        width: 61
+        height: 60
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0619a771c77162640800000000000000
+      internalID: 5054753453507252576
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tappy Plane - by Kenny SpriteSheet eidt by in9_15
+      rect:
+        serializedVersion: 2
+        x: 439
+        y: 738
+        width: 27
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f3fff7d450c570ae0800000000000000
+      internalID: -1583195566152614081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tappy Plane - by Kenny SpriteSheet eidt by in9_16
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 723
+        width: 44
+        height: 38
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab3d37d301c9f81f0800000000000000
+      internalID: -1040441395334884422
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tappy Plane - by Kenny SpriteSheet eidt by in9_18
+      rect:
+        serializedVersion: 2
+        x: 791
+        y: 717
+        width: 88
+        height: 44
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f6d31a480f98512a0800000000000000
+      internalID: -6767351198943986321
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tappy Plane - by Kenny SpriteSheet eidt by in9_19
+      rect:
+        serializedVersion: 2
+        x: 1287
+        y: 689
+        width: 809
+        height: 72
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d86879ba493608200800000000000000
+      internalID: 180253475279963789
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tappy Plane - by Kenny SpriteSheet eidt by in9_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 594
+        width: 208
+        height: 79
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8083eca18c6d7a1e0800000000000000
+      internalID: -2186542939133560824
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tappy Plane - by Kenny SpriteSheet eidt by in9_21
+      rect:
+        serializedVersion: 2
+        x: 213
+        y: 593
+        width: 200
+        height: 79
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 01e8c98915c9e4f30800000000000000
+      internalID: 4561755346839571984
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tappy Plane - by Kenny SpriteSheet eidt by in9_23
+      rect:
+        serializedVersion: 2
+        x: 1287
+        y: 777
+        width: 809
+        height: 72
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 52621ccb3036ab580800000000000000
+      internalID: -8810620853294127579
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tappy Plane - by Kenny SpriteSheet eidt by in9_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 511
+        width: 142
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db7c824a91d373880800000000000000
+      internalID: -8631362980494653507
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tappy Plane - by Kenny SpriteSheet eidt by in9_25
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 511
+        width: 243
+        height: 73
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bc5dd6bc68e3d3920800000000000000
+      internalID: 2971600077793908171
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tappy Plane - by Kenny SpriteSheet eidt by in9_26
+      rect:
+        serializedVersion: 2
+        x: 439
+        y: 508
+        width: 116
+        height: 121
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 87dc1bf53dd2bd050800000000000000
+      internalID: 5826300928800705912
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tappy Plane - by Kenny SpriteSheet eidt by in9_27
+      rect:
+        serializedVersion: 2
+        x: 615
+        y: 508
+        width: 116
+        height: 121
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 24398aab29aaefe80800000000000000
+      internalID: -8142883529065721022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tappy Plane - by Kenny SpriteSheet eidt by in9_28
+      rect:
+        serializedVersion: 2
+        x: 791
+        y: 508
+        width: 117
+        height: 121
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7fb551db9d150d510800000000000000
+      internalID: 1571846265574349815
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tappy Plane - by Kenny SpriteSheet eidt by in9_29
+      rect:
+        serializedVersion: 2
+        x: 1287
+        y: 334
+        width: 110
+        height: 241
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3213fd93d50019bd0800000000000000
+      internalID: -2625316707377401565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tappy Plane - by Kenny SpriteSheet eidt by in9_30
+      rect:
+        serializedVersion: 2
+        x: 1437
+        y: 334
+        width: 111
+        height: 241
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5ce1f5ebacb8cb680800000000000000
+      internalID: -8737955474112045371
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tappy Plane - by Kenny SpriteSheet eidt by in9_31
+      rect:
+        serializedVersion: 2
+        x: 1637
+        y: 334
+        width: 110
+        height: 241
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3486a114885a60ab0800000000000000
+      internalID: -5042160728168306621
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tappy Plane - by Kenny SpriteSheet eidt by in9_32
+      rect:
+        serializedVersion: 2
+        x: 1787
+        y: 334
+        width: 110
+        height: 241
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 159be5aa1f3f984a0800000000000000
+      internalID: -6590468360409007791
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tappy Plane - by Kenny SpriteSheet eidt by in9_33
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 802
+        height: 481
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 59d19c4ad9a0f9b70800000000000000
+      internalID: 8907850260152917397
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tappy Plane - by Kenny SpriteSheet eidt by in9_34
+      rect:
+        serializedVersion: 2
+        x: 1287
+        y: 34
+        width: 110
+        height: 241
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ed4e23e7c55e80000800000000000000
+      internalID: 2503985230701790
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tappy Plane - by Kenny SpriteSheet eidt by in9_35
+      rect:
+        serializedVersion: 2
+        x: 1437
+        y: 34
+        width: 111
+        height: 241
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 64c9188744bc9e6b0800000000000000
+      internalID: -5266454794293109690
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tappy Plane - by Kenny SpriteSheet eidt by in9_36
+      rect:
+        serializedVersion: 2
+        x: 1587
+        y: 34
+        width: 110
+        height: 241
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1de8035bef1ab19b0800000000000000
+      internalID: -5108311236988072239
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tappy Plane - by Kenny SpriteSheet eidt by in9_37
+      rect:
+        serializedVersion: 2
+        x: 1737
+        y: 34
+        width: 110
+        height: 241
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1b59958693e0808a0800000000000000
+      internalID: -6338800835797346895
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tappy Plane - by Kenny SpriteSheet eidt by in9_17
+      rect:
+        serializedVersion: 2
+        x: 615
+        y: 717
+        width: 87
+        height: 44
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 77b799b15e6c646ad88f7470614c76ea
+      internalID: -6491068576021286978
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tappy Plane - by Kenny SpriteSheet eidt by in9_38
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 948
+        width: 89
+        height: 76
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd44386e3a697494ca0b13d6feff26f3
+      internalID: 7630705342104239658
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tappy Plane - by Kenny SpriteSheet eidt by in9_39
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 818
+        width: 88
+        height: 76
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9d6f921b5ae24eee9b2dcbdaa719d5e
+      internalID: -711584755452133456
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tappy Plane - by Kenny SpriteSheet eidt by in9_40
+      rect:
+        serializedVersion: 2
+        x: 263
+        y: 948
+        width: 89
+        height: 76
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8eeb0f23daf0d4c2997ab32dc929547f
+      internalID: -3111329670120967177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tappy Plane - by Kenny SpriteSheet eidt by in9_41
+      rect:
+        serializedVersion: 2
+        x: 659
+        y: 948
+        width: 89
+        height: 76
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58e8a825f8cc84874964f76e6d16b30c
+      internalID: 6094107730214584728
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tappy Plane - by Kenny SpriteSheet eidt by in9_22
+      rect:
+        serializedVersion: 2
+        x: 395
+        y: 948
+        width: 89
+        height: 76
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b1484371fd2846058c33a622bd91dfe
+      internalID: -5069579370073037171
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 8c3b8b5035bae4f98b80fc855b4feae4
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      Tappy Plane - by Kenny SpriteSheet eidt by in9_0: 4296498805298371677
+      Tappy Plane - by Kenny SpriteSheet eidt by in9_1: -3899807324764438750
+      Tappy Plane - by Kenny SpriteSheet eidt by in9_10: -881274470406432815
+      Tappy Plane - by Kenny SpriteSheet eidt by in9_11: -3497519649422665191
+      Tappy Plane - by Kenny SpriteSheet eidt by in9_12: -2222087207976519808
+      Tappy Plane - by Kenny SpriteSheet eidt by in9_13: -5387856177993539301
+      Tappy Plane - by Kenny SpriteSheet eidt by in9_14: 5054753453507252576
+      Tappy Plane - by Kenny SpriteSheet eidt by in9_15: -1583195566152614081
+      Tappy Plane - by Kenny SpriteSheet eidt by in9_16: -1040441395334884422
+      Tappy Plane - by Kenny SpriteSheet eidt by in9_17: -6491068576021286978
+      Tappy Plane - by Kenny SpriteSheet eidt by in9_18: -6767351198943986321
+      Tappy Plane - by Kenny SpriteSheet eidt by in9_19: 180253475279963789
+      Tappy Plane - by Kenny SpriteSheet eidt by in9_2: -3581424267333466116
+      Tappy Plane - by Kenny SpriteSheet eidt by in9_20: -2186542939133560824
+      Tappy Plane - by Kenny SpriteSheet eidt by in9_21: 4561755346839571984
+      Tappy Plane - by Kenny SpriteSheet eidt by in9_22: -5069579370073037171
+      Tappy Plane - by Kenny SpriteSheet eidt by in9_23: -8810620853294127579
+      Tappy Plane - by Kenny SpriteSheet eidt by in9_24: -8631362980494653507
+      Tappy Plane - by Kenny SpriteSheet eidt by in9_25: 2971600077793908171
+      Tappy Plane - by Kenny SpriteSheet eidt by in9_26: 5826300928800705912
+      Tappy Plane - by Kenny SpriteSheet eidt by in9_27: -8142883529065721022
+      Tappy Plane - by Kenny SpriteSheet eidt by in9_28: 1571846265574349815
+      Tappy Plane - by Kenny SpriteSheet eidt by in9_29: -2625316707377401565
+      Tappy Plane - by Kenny SpriteSheet eidt by in9_3: 6461597793828118420
+      Tappy Plane - by Kenny SpriteSheet eidt by in9_30: -8737955474112045371
+      Tappy Plane - by Kenny SpriteSheet eidt by in9_31: -5042160728168306621
+      Tappy Plane - by Kenny SpriteSheet eidt by in9_32: -6590468360409007791
+      Tappy Plane - by Kenny SpriteSheet eidt by in9_33: 8907850260152917397
+      Tappy Plane - by Kenny SpriteSheet eidt by in9_34: 2503985230701790
+      Tappy Plane - by Kenny SpriteSheet eidt by in9_35: -5266454794293109690
+      Tappy Plane - by Kenny SpriteSheet eidt by in9_36: -5108311236988072239
+      Tappy Plane - by Kenny SpriteSheet eidt by in9_37: -6338800835797346895
+      Tappy Plane - by Kenny SpriteSheet eidt by in9_38: 7630705342104239658
+      Tappy Plane - by Kenny SpriteSheet eidt by in9_39: -711584755452133456
+      Tappy Plane - by Kenny SpriteSheet eidt by in9_4: 8224382632348089740
+      Tappy Plane - by Kenny SpriteSheet eidt by in9_40: -3111329670120967177
+      Tappy Plane - by Kenny SpriteSheet eidt by in9_41: 6094107730214584728
+      Tappy Plane - by Kenny SpriteSheet eidt by in9_42: -3669604510022420718
+      Tappy Plane - by Kenny SpriteSheet eidt by in9_43: -2470250728144393278
+      Tappy Plane - by Kenny SpriteSheet eidt by in9_5: -1520035396280111087
+      Tappy Plane - by Kenny SpriteSheet eidt by in9_6: -2047189970237442273
+      Tappy Plane - by Kenny SpriteSheet eidt by in9_7: 5313161366991087345
+      Tappy Plane - by Kenny SpriteSheet eidt by in9_8: 6815437026343742850
+      Tappy Plane - by Kenny SpriteSheet eidt by in9_9: 8861057426744883879
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
