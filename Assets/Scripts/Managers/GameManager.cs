@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
 
-        player = FindAnyObjectByType<Player>();
+        // player = FindAnyObjectByType<Player>();
 
         
 

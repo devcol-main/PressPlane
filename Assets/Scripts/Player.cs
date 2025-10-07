@@ -17,6 +17,10 @@ public class Player : MonoBehaviour
     public bool IsInvulnerable { get { return isInvulnerable; } set { isInvulnerable = value; } }
 
     // Serialized Fields
+    [Header("References")]
+    [SerializeField] private ParticleSystem dustPS;
+
+    [Header("Settings")]
     [SerializeField] private float invulnerableDuration = 2.0f;
 
     // Properties
@@ -46,17 +50,25 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetButtonDown("Fire1") && isAlive)
+        if(Input.GetButton("Fire1") && isAlive)
         {
             ApplyUpwardForce();
-
         }
+
+        // if (Input.GetButtonDown("Fire1") && isAlive)
+        // {
+        //     ApplyUpwardForce();
+
+        //     SpawnPlayerDustPS();
+        // }
 
     }
 
     private void FixedUpdate()
     {
+
         ApplyAngle();
+
     }
 
 
@@ -134,6 +146,18 @@ public class Player : MonoBehaviour
     private void ApplyUpwardForce()
     {
         movement.ApplyUpwardForce();
+    }
+
+    private void SpawnPlayerDustPS()
+    {
+
+        Vector2 trans = new Vector2((transform.position.x - 0.6f), (transform.position.y - 0.2f));
+
+        ParticleSystem ps = Instantiate(dustPS, trans, Quaternion.identity);
+        ps.transform.SetParent(this.transform);
+        ps.Play();
+
+        // Destroy by Particle System: Stop Action -> Destroy
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
