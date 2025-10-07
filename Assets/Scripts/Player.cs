@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     private Animator animator;
 
     private PolygonCollider2D polygonCollider2D;
+    private Rigidbody2D rb2d;
 
     // Public Properties
     public int HP { get { return hp; } set { hp = value; } }
@@ -23,13 +24,10 @@ public class Player : MonoBehaviour
     [SerializeField] private int hp;
 
 
-    private bool isAlive = true;
-    private bool isInvulnerable = false;
+    private bool isAlive;
+    private bool isInvulnerable;
+    private float angle;
 
-
-    
-    // test
-    float angle;
 
 
     private void Awake()
@@ -37,8 +35,11 @@ public class Player : MonoBehaviour
         movement = GetComponent<Movement>();
         animator = GetComponent<Animator>();
         polygonCollider2D = GetComponent<PolygonCollider2D>();
+        rb2d = GetComponent<Rigidbody2D>();
+
 
         isAlive = true;
+        isInvulnerable = false;
 
     }
 
@@ -53,21 +54,15 @@ public class Player : MonoBehaviour
 
     }
 
-
-    public void ApplyUpwardForce()
+    private void FixedUpdate()
     {
-        movement.ApplyUpwardForce();
+        ApplyAngle();
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag.Equals(TagName.Ground) || collision.gameObject.tag.Equals(TagName.Obstacle))
-        {
-            Debug.Log("Player Collided with " + collision.gameObject.tag);
-            Damage();
-        }
 
-    }
+
+
+
 
     public void Damage(int damageAmount = 1)
     {
@@ -106,15 +101,50 @@ public class Player : MonoBehaviour
 
         animator.SetTrigger("Die");
 
-        Invoke("DisablePlayer", 2.0f);        
+        Invoke("DisablePlayer", 2.0f);
 
     }
-    
+
     private void DisablePlayer()
     {
         this.gameObject.SetActive(false);
     }
 
+    private void ApplyAngle()
+    {
+        float targetAngle;
+
+        if (isAlive)
+        {
+            //targetAngle = Mathf.Clamp(movement.Rigidbody2D.velocity.y * 5, -90, 45);
+            targetAngle = Mathf.Atan2(rb2d.linearVelocityY, 10f) * Mathf.Rad2Deg;
+
+        }
+        else
+        {
+            targetAngle = -90;
+        }
+
+        angle = Mathf.Lerp(angle, targetAngle, Time.fixedDeltaTime * 10f);
+
+        transform.rotation = Quaternion.Euler(0, 0, angle);
+
+    }
+
+    private void ApplyUpwardForce()
+    {
+        movement.ApplyUpwardForce();
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag.Equals(TagName.Ground) || collision.gameObject.tag.Equals(TagName.Obstacle))
+        {
+            Debug.Log("Player Collided with " + collision.gameObject.tag);
+            Damage();
+        }
+
+    }
 
 
 
