@@ -4,7 +4,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
 
-    private Player player;
+    // private Player player;
+    UIController uiController;
 
     private void Awake()
     {
@@ -20,8 +21,15 @@ public class GameManager : MonoBehaviour
 
         // player = FindAnyObjectByType<Player>();
 
-        
+        uiController = FindAnyObjectByType<UIController>();
 
+
+    }
+    
+    public void IncreaseScore()
+    {
+        uiController.IncreaseScore();
+        
     }
 
 

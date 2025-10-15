@@ -72,17 +72,13 @@ public class Player : MonoBehaviour
     }
 
 
-
-
-
-
     public void Damage(int damageAmount = 1)
     {
         if (!isAlive) return;
 
         hp -= damageAmount;
 
-        CameraManager.Instance.ShakeCamera();
+        EffectManager.Instance.PlayerDamagedEffect();
 
         if (hp <= 0)
         {

@@ -1,9 +1,7 @@
 using UnityEngine;
 using Unity.Cinemachine;
-public class CameraManager : MonoBehaviour
+public class CameraController : MonoBehaviour
 {
-    //Singleton instance
-    public static CameraManager Instance { get; private set; }
 
     [SerializeField] private Camera mainCamera;
     [SerializeField] private CinemachineCamera cinemachineCamera;
@@ -12,18 +10,20 @@ public class CameraManager : MonoBehaviour
 
     void Awake()
     {
-        if (Instance != null && Instance != this)
-        {
-            Destroy(gameObject);
-        }
-        else
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-
+        cinemachineCamera = FindAnyObjectByType<CinemachineCamera>();
         impulseSource = cinemachineCamera.GetComponent<CinemachineImpulseSource>();
+
     }
+
+    void OnEnable()
+    {
+        cinemachineCamera = FindAnyObjectByType<CinemachineCamera>();
+        impulseSource = cinemachineCamera.GetComponent<CinemachineImpulseSource>();
+
+        
+    }
+
+
 
     public void ShakeCamera(float intensity = 1.0f)
     {
@@ -33,18 +33,24 @@ public class CameraManager : MonoBehaviour
         }
         else
         {
+            //cinemachineCamera = FindAnyObjectByType<CinemachineCamera>();
+
+
             Debug.LogWarning("Cinemachine Impulse Source is null");
             impulseSource = cinemachineCamera.GetComponent<CinemachineImpulseSource>();
+            impulseSource.GenerateImpulse(intensity);
+
         }
 
-  
+
     }
+    /*
     private void OnApplicationQuit()
     {   
         // prevent cinemachine error on exit     
         mainCamera.GetComponent<CinemachineBrain>().enabled = false;
     }
-
+*/
 
 
     //for testing

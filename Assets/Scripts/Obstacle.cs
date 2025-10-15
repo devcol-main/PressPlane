@@ -36,7 +36,8 @@ public class Obstacle : MonoBehaviour
         {
             Debug.Log("Player Passed Obstacle");
 
-            UIManager.Instance.IncreaseScore();
+            GameManager.Instance.IncreaseScore();
+
         }
     }
 

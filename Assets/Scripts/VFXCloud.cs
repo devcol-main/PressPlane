@@ -8,7 +8,7 @@ public class VFXCloud : MonoBehaviour
     public bool IsScrollOn { get; set; }
 
     // Serialized Fields    
-    [SerializeField] private float scrollSpeed;
+    private float scrollSpeed;
 
     // Properties
     private float minScrollSpeed = 1f;
