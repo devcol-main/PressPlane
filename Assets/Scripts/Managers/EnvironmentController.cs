@@ -1,10 +1,9 @@
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class EnvironmentManager : MonoBehaviour
+public class EnvironmentController : MonoBehaviour
 {
-    public static EnvironmentManager Instance { get; private set; }
-
+    
     [SerializeField] private GameObject environmentParent;
 
     [SerializeField] private float initialScrollSpeed = 3f;
@@ -13,24 +12,12 @@ public class EnvironmentManager : MonoBehaviour
     [SerializeField] private float globalScrollSpeed;    
 
 
-    private void Awake()
-    {
-        if (Instance != null && Instance != this)
-        {
-            Destroy(gameObject); 
-        }
-        else
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject); 
-        }
-    }
-
     private void Start()
     {
+        
         globalScrollSpeed = initialScrollSpeed;
 
-        SetScrollSpeed(initialScrollSpeed);
+        //SetScrollSpeed(initialScrollSpeed);
     }
 
 

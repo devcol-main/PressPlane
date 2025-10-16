@@ -27,6 +27,7 @@ public class SceneLoader : MonoBehaviour
         // !!!!!!
         //Time.timeScale = 1f;
 
+        //SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
     }

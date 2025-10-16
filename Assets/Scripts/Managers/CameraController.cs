@@ -10,19 +10,14 @@ public class CameraController : MonoBehaviour
 
     void Awake()
     {
-        cinemachineCamera = FindAnyObjectByType<CinemachineCamera>();
-        impulseSource = cinemachineCamera.GetComponent<CinemachineImpulseSource>();
-
+        Initiate();
     }
-
-    void OnEnable()
+    private void Initiate()
     {
         cinemachineCamera = FindAnyObjectByType<CinemachineCamera>();
         impulseSource = cinemachineCamera.GetComponent<CinemachineImpulseSource>();
 
-        
     }
-
 
 
     public void ShakeCamera(float intensity = 1.0f)
@@ -33,24 +28,23 @@ public class CameraController : MonoBehaviour
         }
         else
         {
-            //cinemachineCamera = FindAnyObjectByType<CinemachineCamera>();
-
-
             Debug.LogWarning("Cinemachine Impulse Source is null");
-            impulseSource = cinemachineCamera.GetComponent<CinemachineImpulseSource>();
+
+            Initiate();
+            
             impulseSource.GenerateImpulse(intensity);
 
         }
 
 
     }
-    /*
+    
     private void OnApplicationQuit()
     {   
         // prevent cinemachine error on exit     
         mainCamera.GetComponent<CinemachineBrain>().enabled = false;
     }
-*/
+
 
 
     //for testing
