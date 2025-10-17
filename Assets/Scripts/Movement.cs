@@ -10,8 +10,8 @@ public class Movement : MonoBehaviour
     [Header("Settings")]
     //[Tooltip("How strong is the upward force when player taps / Range 50~500")]
     //[Range(50, 500)]
-    //[SerializeField] 
-    private float upwardForce = 8; // if b2d.linearVelocity = Vector2.zero
+    [SerializeField] 
+    private float upwardForce; // if rb2d.linearVelocity = Vector2.zero
 
     // Properties
     public float UpwardForce { get { return upwardForce; } set { upwardForce = value; } }

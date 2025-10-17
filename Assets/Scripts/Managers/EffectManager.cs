@@ -18,17 +18,42 @@ public class EffectManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
 
-
         }
 
-        cameraController = FindAnyObjectByType<CameraController>();
-        
+        //cameraController = FindAnyObjectByType<CameraController>();
+
+    }    
+
+    private void Start()
+    {
+        Referencing();
     }
-    
+
+
+    public void Referencing()
+    {
+
+        if(null == cameraController)
+        {
+            Debug.Log("EffectManager Referencing");
+
+            cameraController = FindAnyObjectByType<CameraController>();
+        }
+
+        
+
+    }
 
 
     public void PlayerDamagedEffect()
     {
+        Debug.Log("from effectManager PlayerDamagedEffect()");
+        if(null == cameraController)
+        {
+            Debug.Log("cameraController null");
+
+        }
+
         cameraController.ShakeCamera();
     }
 }

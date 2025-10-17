@@ -50,10 +50,7 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetButton("Fire1") && isAlive)
-        {
-            ApplyUpwardForce();
-        }
+
 
         // if (Input.GetButtonDown("Fire1") && isAlive)
         // {
@@ -66,11 +63,29 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if(Input.GetButton("Fire1") && isAlive)
+        {
+            ApplyUpwardForce();
+        }
 
         ApplyAngle();
 
     }
 
+    public void Initiate()
+    {
+        rb2d.constraints = RigidbodyConstraints2D.FreezeAll;
+
+    }
+    public void GameStart()
+    {
+        rb2d.constraints = RigidbodyConstraints2D.None | RigidbodyConstraints2D.FreezePositionX;
+
+
+        rb2d.linearVelocity = Vector2.zero;
+        ApplyUpwardForce();
+        
+    }
 
     public void Damage(int damageAmount = 1)
     {
@@ -108,6 +123,8 @@ public class Player : MonoBehaviour
         polygonCollider2D.enabled = false;
 
         animator.SetTrigger("Die");
+
+        GameManager.Instance.GameOver();
 
         Invoke("DisablePlayer", 2.0f);
 

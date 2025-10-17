@@ -14,15 +14,22 @@ public class SceneLoader : MonoBehaviour
 
     void Awake()
     {
-        //SceneManager.LoadScene
+
     }
 
-    public void GetCurrentScene()
+    void Start()
+    {
+        // Re-Reference DDOLs
+        GameManager.Instance.Referencing();
+        EffectManager.Instance.Referencing();
+    }
+
+    public void GetCurrentSceneName()
     {
         CurrentSceneName = SceneManager.GetActiveScene().name;
     }
 
-    public void RestartScene()
+    public void OnRestartScene()
     {
         // !!!!!!
         //Time.timeScale = 1f;
@@ -31,6 +38,16 @@ public class SceneLoader : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
     }
+
+    public void OnLoadMainMenuScene()
+    {
+        SceneManager.LoadScene(SceneName.MainMenu);
+    }
+
+     public void OnLoadNormalScene()
+    {
+        SceneManager.LoadScene(SceneName.Normal);
+    }
     
     public void LoadSelectedScene(SceneName sceneName)
     {
@@ -38,13 +55,14 @@ public class SceneLoader : MonoBehaviour
         {
             case SceneName.MainMenu:
                 {
+                    OnLoadMainMenuScene();
 
                 }
                 break;
 
             case SceneName.Normal:
                 {
-
+                    OnLoadNormalScene();
                 }
                 break;
 
@@ -58,6 +76,8 @@ public class SceneLoader : MonoBehaviour
         StartCoroutine(PreLoadAsyncScene(sceneToLoad));
 
     }
+
+
 
     
     IEnumerator PreLoadAsyncScene(string sceneToLoad)
