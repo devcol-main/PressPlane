@@ -56,7 +56,7 @@ public class GameManager : MonoBehaviour
         IsPaused = true;
     }
 
-    public void StartGame()
+    public void ResumeGame()
     {
         Time.timeScale = 1f;
         IsPaused = false;

@@ -126,6 +126,8 @@ public class Player : MonoBehaviour
 
         GameManager.Instance.GameOver();
 
+        
+
         Invoke("DisablePlayer", 2.0f);
 
     }

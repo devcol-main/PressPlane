@@ -1,8 +1,9 @@
 
 using UnityEngine;
-
+using UnityEngine.UI;
 using TMPro;
 using DG.Tweening;
+using NUnit.Framework;
 
 
 
@@ -14,6 +15,10 @@ public class UIController : MonoBehaviour
     [SerializeField] private GameObject initiatePanel;
     [SerializeField] private GameObject inGamePanel;
     [SerializeField] private GameObject endGamePanel;
+
+    [Header("Setting UIs")]
+    [SerializeField] private Button settingButton;
+    private bool isSettingButtonOn = false;
 
     [Header("InGame UIs")]
     [SerializeField] private GameObject currentScore;
@@ -29,8 +34,12 @@ public class UIController : MonoBehaviour
     private void Awake()
     {
         DOTween.Init();
-  
+
+        settingButton.onClick.AddListener(ToggleSettingButton);
+
     }
+    
+
 
     private void Start()
     {
@@ -41,6 +50,10 @@ public class UIController : MonoBehaviour
 
         SwitchAllPanel(true);
         //startButton.SetActive(true);
+
+
+        settingButton.enabled = true;
+        settingPanel.SetActive(false);
 
     }
 
@@ -63,9 +76,59 @@ public class UIController : MonoBehaviour
     public void GameOver()
     {
         SwitchAllPanel(false);
-        
+
         endGamePanel.SetActive(true);
     }
+
+    // =====
+    private void ToggleSettingButton()
+    {
+        //settingButton.interactable = !settingButton.interactable;
+        //Debug.Log("ToggleSettingButton: " + settingButton.interactable);
+
+        if (!isSettingButtonOn)
+        {
+            isSettingButtonOn = true;
+            settingPanel.SetActive(true);
+
+            GameManager.Instance.PauseGame();
+            //settingButton.spriteState.pressedSprite = ;
+
+
+
+        }
+        else
+        {
+            isSettingButtonOn = false;
+            settingPanel.SetActive(false);
+
+            GameManager.Instance.ResumeGame();
+
+
+        }
+    }
+
+    public void OnInGameSettingPanel()
+    {
+
+    }
+
+    public void OffInGameSettingPanel()
+    {
+
+    }
+
+    //
+    public void OnMenuSceneSettingPanel()
+    {
+
+    }
+    
+     public void OffMenuSceneSettingPanel()
+    {
+        
+    }
+
 
     // =====
 
@@ -85,20 +148,24 @@ public class UIController : MonoBehaviour
         currentScoreText.rectTransform.DOScale(endValue: 1.5f, duration: 0.25f).SetEase(Ease.InOutSine).SetLoops(loops: 2, LoopType.Yoyo);
 
     }
-    
+
     // except Setting Panel
     private void SwitchAllPanel(bool isOn)
-    { 
+    {
         //settingPanel.SetActive(isOn);
         inGamePanel.SetActive(isOn);
         endGamePanel.SetActive(isOn);
         initiatePanel.SetActive(isOn);
-        
+
     }
+    
+    // for ui Time.unscaledDeltaTime
     
     #if UNITY_EDITOR
     void Update()
     {
+        
+
         if (Input.GetKeyDown(KeyCode.C))
         {
             IncreaseScore();
