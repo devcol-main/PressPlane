@@ -12,8 +12,8 @@ namespace Ricimi
     // automatically blocking the input on elements behind it and adding a background texture.
     public class Popup : MonoBehaviour
     {
-        public Color backgroundColor = new Color(10.0f / 255.0f, 10.0f / 255.0f, 10.0f / 255.0f, 0.6f);
-
+        //public Color backgroundColor = new Color(10.0f / 255.0f, 10.0f / 255.0f, 10.0f / 255.0f, 0.6f);
+        private Color backgroundColor = new Color(42f / 255f,47f / 255f, 79f / 255f, 0.9f);
         private GameObject m_background;
 
         public void Open()
@@ -44,6 +44,8 @@ namespace Ricimi
 
         private void AddBackground()
         {
+            //Debug.Log("AddBackground");
+
             var bgTex = new Texture2D(1, 1);
             bgTex.SetPixel(0, 0, backgroundColor);
             bgTex.Apply();
@@ -53,17 +55,32 @@ namespace Ricimi
             var rect = new Rect(0, 0, bgTex.width, bgTex.height);
             var sprite = Sprite.Create(bgTex, rect, new Vector2(0.5f, 0.5f), 1);
             image.material.mainTexture = bgTex;
-            image.sprite = sprite;
-            var newColor = image.color;
-            image.color = newColor;
-            image.canvasRenderer.SetAlpha(0.0f);
+
+            //image.sprite = sprite;
+
+            //var newColor = image.color;
+            //image.color = newColor;
+            //Debug.Log("b image.color: " + image.color);
+
+
+            image.color = backgroundColor;
+            //image.canvasRenderer.SetAlpha(0.0f);
             image.CrossFadeAlpha(1.0f, 0.4f, false);
 
-            var canvas = GameObject.Find("Canvas");
+            //Debug.Log("image.color: " + image.color);
+
+            //var canvas = GameObject.FindAnyObjectByType<Canvas>();
+
+            // var canvas = GameObject.Find("Canvas"); // original sript
+
+            var canvas= GetComponentInParent<Canvas>(); // added 
             m_background.transform.localScale = new Vector3(1, 1, 1);
             m_background.GetComponent<RectTransform>().sizeDelta = canvas.GetComponent<RectTransform>().sizeDelta;
             m_background.transform.SetParent(canvas.transform, false);
             m_background.transform.SetSiblingIndex(transform.GetSiblingIndex());
+
+            
+
         }
 
         private void RemoveBackground()
