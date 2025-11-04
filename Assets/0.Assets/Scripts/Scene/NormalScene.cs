@@ -1,6 +1,7 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class NormalScene : MonoBehaviour
+public class NormalScene : SceneBase, IGameScene
 {
     [Header("Controllers")]
     [SerializeField] private EnvironmentController environmentController;
@@ -24,20 +25,41 @@ public class NormalScene : MonoBehaviour
 
     void Start()
     {
-        //
+        base.Start();
+
+        InitiateScene();
+    }
+
+    protected override void InitiateScene()
+    {
+        base.InitiateScene();
+
         Initiate();
 
     }
 
+    public void SetScrollSpeed()
+    {
+        throw new System.NotImplementedException();
+    }
 
+    public override void SetBGM()
+    {
+        SoundManager.Instance.PlayBGM(SoundAsset.BGM.NORMAL);
+    }
 
     private void Initiate()
     {
+
         environmentController.SetScrollSpeed(0);
 
         uiController.GameSceneInitiate();
 
         player.Initiate();
+
+        
+
+
 
     }
     
@@ -52,5 +74,6 @@ public class NormalScene : MonoBehaviour
         player.GameStart();
 
     }
-    
+
+ 
 }

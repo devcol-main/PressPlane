@@ -15,16 +15,17 @@ public class GameManager : MonoBehaviour
     {
         if (Instance != null && Instance != this)
         {
-            //Destroy(gameObject);
-            Destroy(transform.root.gameObject);
+            Destroy(gameObject);
+            //Destroy(transform.root.gameObject);
+            //Destroy(this.gameObject);
 
         }
         else
         {
 
             Instance = this;
-            //DontDestroyOnLoad(gameObject);
-            DontDestroyOnLoad(transform.root.gameObject);
+            DontDestroyOnLoad(gameObject);
+            //DontDestroyOnLoad(transform.root.gameObject);
 
 
         }

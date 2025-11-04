@@ -8,7 +8,7 @@ using UnityEngine.UI;
 namespace Ricimi
 {
     // This class handles updating the sound UI widgets depending on the player's selection.
-    public class SoundManager : MonoBehaviour
+    public class SoundManagerRicimi : MonoBehaviour
     {
         private Slider m_soundSlider;
         private GameObject m_soundButton;

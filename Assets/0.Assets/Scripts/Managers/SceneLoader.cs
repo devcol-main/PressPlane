@@ -12,6 +12,8 @@ public class SceneLoader : MonoBehaviour
     // Private References
     private string sceneToLoad;
 
+    private bool isLoadSceneReady = false;
+    //private 
 
     void Awake()
     {
@@ -49,6 +51,13 @@ public class SceneLoader : MonoBehaviour
 
         //SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+    }
+
+    public void OnRestartScene(float delayTime)
+    {
+        Time.timeScale = 1f;
+        PreLoadSelectedScene(SceneManager.GetActiveScene().name);
 
     }
 
@@ -90,11 +99,7 @@ public class SceneLoader : MonoBehaviour
         sceneToLoad = selectedScene;
 
         StartCoroutine(PreLoadAsyncScene(sceneToLoad));
-
     }
-
-
-
     
     IEnumerator PreLoadAsyncScene(string sceneToLoad)
     {
@@ -112,8 +117,12 @@ public class SceneLoader : MonoBehaviour
             if(asyncOperation.progress >= 0.9f)
             {
                 Debug.Log("Scene " + sceneToLoad + " is Ready");
+                isLoadSceneReady = true;
 
                 //asyncOperation.allowSceneActivation = true;
+
+
+
             }
 
             yield return null;
