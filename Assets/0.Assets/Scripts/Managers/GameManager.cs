@@ -38,6 +38,8 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         Referencing();
+
+        Application.targetFrameRate = 30;
     }
 
 

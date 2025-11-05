@@ -1,0 +1,69 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1075379484086105054
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6725508593942533711}
+  - component: {fileID: 4166380290610224939}
+  m_Layer: 0
+  m_Name: Sound Asset
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6725508593942533711
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1075379484086105054}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4166380290610224939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1075379484086105054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92dc68b231e6d4bafbf1dc83f6007c62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SoundAsset
+  bgmSoundAudioClipArray:
+  - soundName: 0
+    audioClip: {fileID: 8300000, guid: fa4ba08f652e84068a9dfb17bcbaf5ed, type: 3}
+  - soundName: 1
+    audioClip: {fileID: 8300000, guid: 440bac876b3b54f55ad9c2c2260e053a, type: 3}
+  - soundName: 2
+    audioClip: {fileID: 8300000, guid: da25cf43f352148f0a167222724ee49f, type: 3}
+  sfxUIAudioClipArray:
+  - soundName: 0
+    audioClip: {fileID: 8300000, guid: 6cef6d335373e4efc9c45b0fac69ff9e, type: 3}
+  - soundName: 1
+    audioClip: {fileID: 8300000, guid: 22896902652794193a8651b79e865cfd, type: 3}
+  - soundName: 2
+    audioClip: {fileID: 0}
+  - soundName: 3
+    audioClip: {fileID: 0}
+  sfxPlayerAudioClipArray:
+  - soundName: 0
+    audioClip: {fileID: 8300000, guid: f9effe25f8b8d4db382bbd1463ddc6c3, type: 3}
+  - soundName: 1
+    audioClip: {fileID: 0}
+  - soundName: 2
+    audioClip: {fileID: 0}

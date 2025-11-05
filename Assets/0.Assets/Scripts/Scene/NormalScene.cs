@@ -23,7 +23,7 @@ public class NormalScene : SceneBase, IGameScene
         
     }
 
-    void Start()
+    protected override void Start()
     {
         base.Start();
 
@@ -44,8 +44,9 @@ public class NormalScene : SceneBase, IGameScene
     }
 
     public override void SetBGM()
-    {
-        SoundManager.Instance.PlayBGM(SoundAsset.BGM.NORMAL);
+    {       
+        //SoundManager.Instance.PlayBGM(SoundAsset.BGM.NORMAL);
+        SoundManager.Instance.PlayBGM(bgm);
     }
 
     private void Initiate()
@@ -55,11 +56,9 @@ public class NormalScene : SceneBase, IGameScene
 
         uiController.GameSceneInitiate();
 
-        player.Initiate();
+        player.Initiate();        
 
-        
-
-
+        //SetBGM();
 
     }
     

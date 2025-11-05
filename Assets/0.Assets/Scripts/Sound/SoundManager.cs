@@ -78,10 +78,8 @@ public class SoundManager : MonoBehaviour
 
         foreach (var bgmSound in soundAsset.bgmSoundAudioClipArray)
         {
-            if (bgmSound.bgmName == bgmName)
-            {            
-                
-
+            if (bgmSound.soundName == bgmName)
+            {                        
                 //if (audioSource.isPlaying && (bgmSound.audioClip == audioSource.clip))
                 if (audioSource.isPlaying)
                 {
@@ -165,7 +163,7 @@ public class SoundManager : MonoBehaviour
         Fade(true);
     }
 
-    
+
 
 
     // =======

@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using UnityEngine;
 
 public class SoundAsset : MonoBehaviour
@@ -5,13 +6,15 @@ public class SoundAsset : MonoBehaviour
     // AMBIENT, MUSIC
     public enum BGM
     {
-        NONE = 0,
-        MENU = 1,
-        NORMAL = 2,
+        
+        MENU = 0,
+        NORMAL = 1,
+        ITEM = 2,
+
 
     }
 
-    public enum SFX
+    public enum SFXGroup
     {
         UI = 0,
         PLAYER = 1,
@@ -20,16 +23,25 @@ public class SoundAsset : MonoBehaviour
         
     }
 
-    public enum SFXName
+    public enum SFXUIName
     {
-        UI_ON,
+        On, Off,
+        Restart, MainMenu,
     }
+
+    public enum SFXPlayerName
+    {
+        Fly,
+        Damaged, Death,
+    }
+
+
     // =====
 
     [System.Serializable]
     public class BgmSoundAudioClip
     {
-        public BGM bgmName;
+        public BGM soundName;
         public AudioClip audioClip;
 
         /*
@@ -46,8 +58,8 @@ public class SoundAsset : MonoBehaviour
     [System.Serializable]
     public class SFXUIAudioClip
     {        
-        private SFX sfxGroup = SFX.UI;
-        public SFXName sfxName;
+        private SFXGroup sfxGroup = SFXGroup.UI;
+        public SFXUIName soundName;
         public AudioClip audioClip;
 
     }
@@ -55,8 +67,9 @@ public class SoundAsset : MonoBehaviour
     [System.Serializable]
     public class SFXPlayerAudioClip
     {        
-        private SFX sfxGroup = SFX.PLAYER;
-        public SFXName sfxName;
+        
+        private SFXGroup sfxGroup = SFXGroup.PLAYER;
+        public SFXPlayerName soundName;
         public AudioClip audioClip;
 
     }
@@ -65,7 +78,6 @@ public class SoundAsset : MonoBehaviour
 
     public BgmSoundAudioClip[] bgmSoundAudioClipArray;
     public SFXUIAudioClip[] sfxUIAudioClipArray;
-
     public SFXPlayerAudioClip[] sfxPlayerAudioClipArray;
 
     

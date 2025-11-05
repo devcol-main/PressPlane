@@ -1,5 +1,7 @@
-using System;
+
+using System.Collections;
 using UnityEngine;
+
 
 [RequireComponent(typeof(Movement))]
 public class Player : MonoBehaviour
@@ -10,6 +12,8 @@ public class Player : MonoBehaviour
 
     private PolygonCollider2D polygonCollider2D;
     private Rigidbody2D rb2d;
+
+    private SFX sfx;
 
     // Public Properties
     public int HP { get { return hp; } set { hp = value; } }
@@ -33,6 +37,12 @@ public class Player : MonoBehaviour
     private float angle;
 
 
+    [SerializeField]
+    private float soundPower = 0.01f;
+    [SerializeField]
+    private float dustPSDelayTime = 0.1f;
+    [SerializeField]
+    private bool isDustPSDelayDone = true;
 
     private void Awake()
     {
@@ -40,6 +50,7 @@ public class Player : MonoBehaviour
         animator = GetComponent<Animator>();
         polygonCollider2D = GetComponent<PolygonCollider2D>();
         rb2d = GetComponent<Rigidbody2D>();
+        sfx = GetComponent<SFX>();
 
 
         isAlive = true;
@@ -47,29 +58,34 @@ public class Player : MonoBehaviour
 
     }
 
-
-    private void Update()
+    void Start()
     {
-
-
-        // if (Input.GetButtonDown("Fire1") && isAlive)
-        // {
-        //     ApplyUpwardForce();
-
-        //     SpawnPlayerDustPS();
-        // }
+        sfx.SetupContinuousAudioSource(SoundAsset.SFXGroup.PLAYER);
+        sfx.SetupContinuousSFXFly();
 
     }
 
+
     private void FixedUpdate()
     {
-        if(Input.GetButton("Fire1") && isAlive)
+        if (Input.GetButton("Fire1") && isAlive)
         {
             ApplyUpwardForce();
+            //
+            SpawnPlayerDustPS();
+
+            // sound fly increase
+            sfx.ContinuousSFXFly(soundPower);
+        }
+        else if (isAlive)
+        {
+            sfx.ContinuousSFXFly(-1 * soundPower);
         }
 
         ApplyAngle();
 
+        // sound fly decrease
+        //sfx.ContinuousSFXFly(-1 * soundPower);
     }
 
     public void Initiate()
@@ -84,7 +100,7 @@ public class Player : MonoBehaviour
 
         rb2d.linearVelocity = Vector2.zero;
         ApplyUpwardForce();
-        
+
     }
 
     public void Damage(int damageAmount = 1)
@@ -126,7 +142,7 @@ public class Player : MonoBehaviour
 
         GameManager.Instance.GameOver();
 
-        
+
 
         Invoke("DisablePlayer", 2.0f);
 
@@ -165,15 +181,35 @@ public class Player : MonoBehaviour
 
     private void SpawnPlayerDustPS()
     {
-
-        Vector2 trans = new Vector2((transform.position.x - 0.6f), (transform.position.y - 0.2f));
-
-        ParticleSystem ps = Instantiate(dustPS, trans, Quaternion.identity);
-        ps.transform.SetParent(this.transform);
-        ps.Play();
-
-        // Destroy by Particle System: Stop Action -> Destroy
+        StartCoroutine(DelaySpawnPlayerDestPS());
     }
+    IEnumerator DelaySpawnPlayerDestPS()
+    {
+        if (isDustPSDelayDone)
+        {
+            //dustPSDelayTime
+            isDustPSDelayDone = false;
+
+            Debug.Log("SpawnPlayerDustPS");
+
+            float randY = UnityEngine.Random.Range(0.2f, 0.4f);
+            float randx = UnityEngine.Random.Range(0.2f, 0.6f);
+            //Vector2 trans = new Vector2((transform.position.x - 0.6f), (transform.position.y - 0.2f));
+            Vector2 trans = new Vector2((transform.position.x - randx), (transform.position.y - randY));
+
+            ParticleSystem ps = Instantiate(dustPS, trans, Quaternion.identity);
+            ps.transform.SetParent(this.transform);
+            ps.Play();
+
+            // Destroy by Particle System: Stop Action -> Destroy
+
+            yield return new WaitForSeconds(dustPSDelayTime);
+
+            isDustPSDelayDone = true;
+        }
+    }
+
+    //
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
