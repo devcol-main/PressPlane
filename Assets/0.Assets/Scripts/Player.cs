@@ -13,8 +13,6 @@ public class Player : MonoBehaviour
     private PolygonCollider2D polygonCollider2D;
     private Rigidbody2D rb2d;
 
-    private SFX sfx;
-
     // Public Properties
     public int HP { get { return hp; } set { hp = value; } }
     public bool IsAlive { get { return isAlive; } set { isAlive = value; } }
@@ -36,22 +34,13 @@ public class Player : MonoBehaviour
     private bool isInvulnerable;
     private float angle;
 
-
-    [SerializeField]
-    private float soundPower = 0.01f;
-    [SerializeField]
-    private float dustPSDelayTime = 0.1f;
-    [SerializeField]
-    private bool isDustPSDelayDone = true;
-
     private void Awake()
     {
         movement = GetComponent<Movement>();
         animator = GetComponent<Animator>();
         polygonCollider2D = GetComponent<PolygonCollider2D>();
         rb2d = GetComponent<Rigidbody2D>();
-        sfx = GetComponent<SFX>();
-
+        
 
         isAlive = true;
         isInvulnerable = false;
@@ -60,9 +49,8 @@ public class Player : MonoBehaviour
 
     void Start()
     {
-        sfx.SetupContinuousAudioSource(SoundAsset.SFXGroup.PLAYER);
-        sfx.SetupContinuousSFXFly();
-
+        SoundManager.Instance.SetupContinuousAudioSource(this.gameObject, SoundAsset.SFXGroup.PLAYER);
+        SoundManager.Instance.SetupContinuousSFXFly();
     }
 
 
@@ -71,21 +59,22 @@ public class Player : MonoBehaviour
         if (Input.GetButton("Fire1") && isAlive)
         {
             ApplyUpwardForce();
-            //
-            SpawnPlayerDustPS();
+
+            EffectManager.Instance.SpawnDustPS(this.gameObject, dustPS);
 
             // sound fly increase
-            sfx.ContinuousSFXFly(soundPower);
+            //sfx.ContinuousSFXFly(soundPower);
+            SoundManager.Instance.ContinuousSFXFly(true, GlobalData.Player.SoundPower);
         }
         else if (isAlive)
         {
-            sfx.ContinuousSFXFly(-1 * soundPower);
+            // sound fly Decrease            
+            //sfx.ContinuousSFXFly(-1 * soundPower);
+            SoundManager.Instance.ContinuousSFXFly(false, GlobalData.Player.SoundPower);
         }
 
         ApplyAngle();
 
-        // sound fly decrease
-        //sfx.ContinuousSFXFly(-1 * soundPower);
     }
 
     public void Initiate()
@@ -96,7 +85,6 @@ public class Player : MonoBehaviour
     public void GameStart()
     {
         rb2d.constraints = RigidbodyConstraints2D.None | RigidbodyConstraints2D.FreezePositionX;
-
 
         rb2d.linearVelocity = Vector2.zero;
         ApplyUpwardForce();
@@ -109,7 +97,9 @@ public class Player : MonoBehaviour
 
         hp -= damageAmount;
 
+        // Cam Shake
         EffectManager.Instance.PlayerDamagedEffect();
+
 
         if (hp <= 0)
         {
@@ -141,8 +131,6 @@ public class Player : MonoBehaviour
         animator.SetTrigger("Die");
 
         GameManager.Instance.GameOver();
-
-
 
         Invoke("DisablePlayer", 2.0f);
 
@@ -179,37 +167,6 @@ public class Player : MonoBehaviour
         movement.ApplyUpwardForce();
     }
 
-    private void SpawnPlayerDustPS()
-    {
-        StartCoroutine(DelaySpawnPlayerDestPS());
-    }
-    IEnumerator DelaySpawnPlayerDestPS()
-    {
-        if (isDustPSDelayDone)
-        {
-            //dustPSDelayTime
-            isDustPSDelayDone = false;
-
-            Debug.Log("SpawnPlayerDustPS");
-
-            float randY = UnityEngine.Random.Range(0.2f, 0.4f);
-            float randx = UnityEngine.Random.Range(0.2f, 0.6f);
-            //Vector2 trans = new Vector2((transform.position.x - 0.6f), (transform.position.y - 0.2f));
-            Vector2 trans = new Vector2((transform.position.x - randx), (transform.position.y - randY));
-
-            ParticleSystem ps = Instantiate(dustPS, trans, Quaternion.identity);
-            ps.transform.SetParent(this.transform);
-            ps.Play();
-
-            // Destroy by Particle System: Stop Action -> Destroy
-
-            yield return new WaitForSeconds(dustPSDelayTime);
-
-            isDustPSDelayDone = true;
-        }
-    }
-
-    //
 
     private void OnCollisionEnter2D(Collision2D collision)
     {

@@ -46,10 +46,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SoundAsset
   bgmSoundAudioClipArray:
   - soundName: 0
-    audioClip: {fileID: 8300000, guid: fa4ba08f652e84068a9dfb17bcbaf5ed, type: 3}
+    audioClip: {fileID: 0}
   - soundName: 1
-    audioClip: {fileID: 8300000, guid: 440bac876b3b54f55ad9c2c2260e053a, type: 3}
+    audioClip: {fileID: 8300000, guid: fa4ba08f652e84068a9dfb17bcbaf5ed, type: 3}
   - soundName: 2
+    audioClip: {fileID: 8300000, guid: 440bac876b3b54f55ad9c2c2260e053a, type: 3}
+  - soundName: 3
     audioClip: {fileID: 8300000, guid: da25cf43f352148f0a167222724ee49f, type: 3}
   sfxUIAudioClipArray:
   - soundName: 0

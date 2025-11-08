@@ -6,18 +6,23 @@ using DG.Tweening;
 public class IngameSceneUI : MonoBehaviour
 {
    [Header("Panels")]
-   //[SerializeField] private GameObject settingPanel;
+   
     [SerializeField] private GameObject initiatePanel;
     [SerializeField] private GameObject duringPlayingGamePanel;
     [SerializeField] private GameObject endGamePanel;
+    [SerializeField] private GameObject ingameSettingPanel;
 
-    [Header("Setting UIs")]
-    [SerializeField] private Button settingButton;
-    private bool isSettingButtonOn = false;  
+    //[Header("Setting UIs")]    
+
 
     [Header("InGame UIs")]
     [SerializeField] private GameObject currentScore;
     [SerializeField] private GameObject startButton;
+
+    [Header("buttons")]
+    [SerializeField] private Button ingameSettingButton;
+    
+
 
     private Score score;
     private TextMeshProUGUI currentScoreText;
@@ -34,7 +39,11 @@ public class IngameSceneUI : MonoBehaviour
         score = GetComponent<Score>();
         currentScoreText = score.CurrentScoreText;
 
+        ingameSettingButton.onClick.AddListener(OnInGameSettingPanel);
+
     }
+
+    //
 
     public void GameSceneInitiate()
     {
@@ -56,18 +65,30 @@ public class IngameSceneUI : MonoBehaviour
 
     public void OnInGameSettingPanel()
     {
+        ingameSettingPanel.SetActive(true);
+
+        //SoundManager.Instance.PauseAudio(true);
+        //SoundManager.Instance.PauseAudio(false,SoundAsset.BGMGroup.NONE, SoundAsset.SFXGroup.PLAYER & SoundAsset.SFXGroup.ENEMY & SoundAsset.SFXGroup.OBSTACLE);
+        //SoundManager.Instance.PauseAudio(false,SoundAsset.BGMGroup.NONE, SoundAsset.SFXGroup.PLAYER | SoundAsset.SFXGroup.ENEMY | SoundAsset.SFXGroup.OBSTACLE); = 7
+
+        SoundManager.Instance.PauseAudio(false,SoundAsset.BGMGroup.NONE, SoundAsset.SFXGroup.ALL);
+
+        //
+        SoundManager.Instance.ResumeAudio(false,SoundAsset.BGMGroup.NONE, SoundAsset.SFXGroup.SFX);
+        SoundManager.Instance.ResumeAudio(false,SoundAsset.BGMGroup.NONE, SoundAsset.SFXGroup.UI);
+
         GameManager.Instance.PauseGame();
-        //settingPanel.SetActive(true);
     }
 
 
     public void OffInGameSettingPanel()
-    {
+    {   
+        ingameSettingPanel.SetActive(false);
+
+
+        SoundManager.Instance.ResumeAudio(true);
         
         GameManager.Instance.ResumeGame();
-        //settingPanel.SetActive(false);
-
-
     }
 
 
@@ -91,10 +112,11 @@ public class IngameSceneUI : MonoBehaviour
 
     private void SwitchAllPanel(bool isOn)
     {
-        //settingPanel.SetActive(isOn);
+        
         initiatePanel.SetActive(isOn);
         duringPlayingGamePanel.SetActive(isOn);
         endGamePanel.SetActive(isOn);
+        ingameSettingPanel.SetActive(isOn);
 
     }
 }

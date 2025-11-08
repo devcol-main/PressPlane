@@ -4,28 +4,46 @@ using UnityEngine;
 public class SoundAsset : MonoBehaviour
 {
     // AMBIENT, MUSIC
+    
     public enum BGM
-    {
-        
-        MENU = 0,
-        NORMAL = 1,
-        ITEM = 2,
-
-
+    {        
+        NONE = 0,
+        MENU,
+        NORMAL,
+        ITEM,
     }
+
+
+    public enum BGM_AMBIENT
+    {        
+        NONE = 0,
+        
+    }
+
+    public enum BGMGroup
+    {
+        NONE, ALL, MUSIC, AMBIENT
+    }
+
+    //
 
     public enum SFXGroup
     {
-        UI = 0,
-        PLAYER = 1,
-        ENEMY = 2,
-        OBSTACLE = 3,
+        NONE,
+        ALL,
+        SFX,
+        UI,
+        PLAYER,
+        ENEMY,
+        OBSTACLE,
         
     }
 
     public enum SFXUIName
     {
         On, Off,
+        SelectHighPitch, SelectLowPitch,
+        Deselect,
         Restart, MainMenu,
     }
 
@@ -67,7 +85,6 @@ public class SoundAsset : MonoBehaviour
     [System.Serializable]
     public class SFXPlayerAudioClip
     {        
-        
         private SFXGroup sfxGroup = SFXGroup.PLAYER;
         public SFXPlayerName soundName;
         public AudioClip audioClip;
