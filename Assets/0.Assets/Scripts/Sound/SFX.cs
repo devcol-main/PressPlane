@@ -182,8 +182,7 @@ public class SFX : MonoBehaviour
     //
     
     private void SFXOneShot(out GameObject soundGameObject, out AudioSource audioSource)
-    {        
-        Debug.Log("at SFXOneShot");
+    {       
 
         soundGameObject = new GameObject();
         soundGameObject.transform.SetParent(this.transform);
@@ -197,89 +196,63 @@ public class SFX : MonoBehaviour
         audioSource.panStereo = 0;
         audioSource.spatialBlend = 0f;
 
-        Debug.Log("at SFXOneShot: " + soundGameObject);
-
-        audioSource.outputAudioMixerGroup = audioMixer.FindMatchingGroups(GlobalString.AudioMixer.UI)[0];
-    }
-    
-/*
-    private void SFXOneShot(ref GameObject soundGameObject, ref AudioSource audioSource)
-    {
+        //audioSource.outputAudioMixerGroup = audioMixer.FindMatchingGroups(GlobalString.AudioMixer.UI)[0];
         
     }
-*/
 
 // testing
-public void PlaySFXOneShot()
-    {        
-        GameObject soundGameObject;   
-        AudioSource audioSource;
 
-        SFXOneShot(out soundGameObject, out audioSource);
+// public void PlaySFXOneShot()
+//     {        
+//         GameObject soundGameObject;   
+//         AudioSource audioSource;
 
-        //SFXOneShot(ref soundGameObject, ref audioSource);
+//         SFXOneShot(out soundGameObject, out audioSource);
 
-        Debug.Log("after SFXOneShot: " + soundGameObject);
+//         //SFXOneShot(ref soundGameObject, ref audioSource);
 
-        //Debug.Log("PlaySFXOneShot: "+ sfxUIName);
+//         Debug.Log("after SFXOneShot: " + soundGameObject);
 
-        string objectName = "PlaySFXOneShot";   
+//         //Debug.Log("PlaySFXOneShot: "+ sfxUIName);
 
-        foreach (var sfx in soundAsset.sfxUIAudioClipArray)
-        {
-            if(SoundAsset.SFXUIName.Off == sfx.soundName)
-            {
-                //audioSource.clip = sfx.audioClip;
-                Debug.Log("PlaySFXOneShot Played: " + sfx.audioClip);
-                soundGameObject.name = objectName + "_" + sfx.soundName.ToString();
+//         string objectName = "PlaySFXOneShot";   
 
-                audioSource.PlayOneShot(sfx.audioClip);
-                //Destroy(soundGameObject, sfx.audioClip.length);
+//         foreach (var sfx in soundAsset.sfxUIAudioClipArray)
+//         {
+//             if(SoundAsset.SFXUIName.Off == sfx.soundName)
+//             {
+//                 //audioSource.clip = sfx.audioClip;
+//                 Debug.Log("PlaySFXOneShot Played: " + sfx.audioClip);
+//                 soundGameObject.name = objectName + "_" + sfx.soundName.ToString();
+
+//                 audioSource.PlayOneShot(sfx.audioClip);
+//                 //Destroy(soundGameObject, sfx.audioClip.length);
 
                 
-            }
-        }
+//             }
+//         }
 
-    }
+//     }
 
 //
 
-    public void PlaySFXOneShot(SoundAsset.SFXUIName sfxUIName)
-    {        
-
-        // GameObject soundGameObject = new GameObject();
-        // soundGameObject.transform.SetParent(this.transform);
-
-        // AudioSource audioSource = soundGameObject.AddComponent<AudioSource>();
-
-        //SFXOneShot(out soundGameObject, out audioSource);
-
+    public void PlaySFXOneShot(SoundAsset.SFXGroup sfxGroup, SoundAsset.SFXUIName sfxName)
+    {     
+        //Debug.Log("sfxGroup.ToString: " +sfxGroup.ToString());
 
         GameObject soundGameObject;   
         AudioSource audioSource;
 
         SFXOneShot(out soundGameObject, out audioSource);
 
-        //SFXOneShot(ref soundGameObject, ref audioSource);
-
-        Debug.Log("after SFXOneShot: " + soundGameObject);
-
-        Debug.Log("PlaySFXOneShot: "+ sfxUIName);
-
         string objectName = "PlaySFXOneShot";
+
+        audioSource.outputAudioMixerGroup = audioMixer.FindMatchingGroups(sfxGroup.ToString())[0];        
+
         
-        audioSource.playOnAwake = false;
-        audioSource.loop = false;
-        audioSource.volume = 0.8f;
-        audioSource.pitch = 1f;
-        audioSource.panStereo = 0;
-        audioSource.spatialBlend = 0f;
-
-        audioSource.outputAudioMixerGroup = audioMixer.FindMatchingGroups(GlobalString.AudioMixer.UI)[0];
-
         foreach (var sfx in soundAsset.sfxUIAudioClipArray)
         {
-            if(sfxUIName == sfx.soundName)
+            if(sfxName == sfx.soundName)
             {
                 //audioSource.clip = sfx.audioClip;
                 Debug.Log("PlaySFXOneShot Played: " + sfx.audioClip);
@@ -287,7 +260,36 @@ public void PlaySFXOneShot()
 
                 audioSource.PlayOneShot(sfx.audioClip);
                 Destroy(soundGameObject, sfx.audioClip.length);
+                
+            }
+        }
 
+    }
+
+
+    public void PlaySFXOneShot(SoundAsset.SFXGroup sfxGroup, SoundAsset.SFXPlayerName sfxName)
+    {     
+
+        GameObject soundGameObject;   
+        AudioSource audioSource;
+
+        SFXOneShot(out soundGameObject, out audioSource);
+
+        string objectName = "PlaySFXOneShot";
+
+        audioSource.outputAudioMixerGroup = audioMixer.FindMatchingGroups(sfxGroup.ToString())[0];        
+
+        
+        foreach (var sfx in soundAsset.sfxPlayerAudioClipArray)
+        {
+            if(sfxName == sfx.soundName)
+            {
+                //audioSource.clip = sfx.audioClip;
+                Debug.Log("PlaySFXOneShot Played: " + sfx.audioClip);
+                soundGameObject.name = objectName + "_" + sfx.soundName.ToString();
+
+                audioSource.PlayOneShot(sfx.audioClip);
+                Destroy(soundGameObject, sfx.audioClip.length);
                 
             }
         }

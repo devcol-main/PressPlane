@@ -75,7 +75,17 @@ public class SoundManager : MonoBehaviour
     {
         sfx.ContinuousSFXFly(isOn, power);
     }
+    //
 
+    public void PlaySFXOneShot(SoundAsset.SFXGroup sfxGroup, SoundAsset.SFXUIName sfxName)
+    {
+        sfx.PlaySFXOneShot(sfxGroup,sfxName);
+    }
+    public void PlaySFXOneShot(SoundAsset.SFXGroup sfxGroup, SoundAsset.SFXPlayerName sfxName)
+    {
+        sfx.PlaySFXOneShot(sfxGroup,sfxName);
+    }
+    //=====
 
     // ALL / BGM (ALL or Music or Ambient) / SFX (ALL of except UI or except specific one)
     // BGM Control audiosource pitch -> to pause -> bc few audiosource
@@ -156,7 +166,7 @@ public class SoundManager : MonoBehaviour
 
     }
     //
-    
+
 
 
 

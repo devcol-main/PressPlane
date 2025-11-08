@@ -40,7 +40,6 @@ public class IngameSceneUI : MonoBehaviour
         currentScoreText = score.CurrentScoreText;
 
         ingameSettingButton.onClick.AddListener(OnInGameSettingPanel);
-
     }
 
     //
@@ -87,11 +86,20 @@ public class IngameSceneUI : MonoBehaviour
 
 
         SoundManager.Instance.ResumeAudio(true);
+        SoundManager.Instance.PlaySFXOneShot(SoundAsset.SFXGroup.UI, SoundAsset.SFXUIName.Off);
         
         GameManager.Instance.ResumeGame();
     }
 
+    public void OnRestartButton()
+    {
+        SoundManager.Instance.PlaySFXOneShot(SoundAsset.SFXGroup.UI, SoundAsset.SFXUIName.Off);
 
+
+        GameManager.Instance.RestartScene();
+
+    }
+    //
 
     public void IncreaseScore()
     {

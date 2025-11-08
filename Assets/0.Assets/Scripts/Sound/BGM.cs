@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.InputSystem.Processors;
 
 //using UnityEngine.Audio;
 
@@ -77,14 +78,16 @@ public class BGM : MonoBehaviour
             {
                 if (audioSource.isPlaying)
                 {
-                    if (bgmSound.audioClip == audioSource.clip)
-                    {
-                        return;
-                    }
-                    else
-                    {
-                        SwapBGMWithFade(bgmSound.audioClip, audioSource);
-                    }
+                    SwapBGMWithFadeOutIn(audioSource, bgmSound.audioClip);
+                    // if (bgmSound.audioClip == audioSource.clip)
+                    // {
+                    //     return;                     
+
+                    // }
+                    // else
+                    // {
+                    //     SwapBGMWithFade(bgmSound.audioClip, audioSource);
+                    // }
 
                 }
                 else
@@ -100,19 +103,90 @@ public class BGM : MonoBehaviour
     }
 
 
-    private void SwapBGMWithFade(AudioClip audioClip, AudioSource audioSource)
+    private void SwapBGMWithFadeOutIn(AudioSource audioSource, AudioClip audioClip)
     {
-        print("SwapBGMWithFade: " + audioClip.ToString());
+        float fadeDuration = 0.5f;
 
-        Fade(audioSource, false, fadeDuration: 2f);
-        audioSource.clip = audioClip;
-        audioSource.Play();
-        Fade(audioSource, true, fadeDuration: 2f);
+        Debug.Log("SwapBGMWithFade: " + audioClip.ToString());
+        Debug.Log("Fade out");
+
+        StartCoroutine(FadeOutIn(audioSource, audioClip, fadeDuration));
+
+        // StartCoroutine(Fade(audioSource, false, fadeDuration));
+        // StartCoroutine(Fade(audioSource, false, fadeDuration: 2f));
+        // audioSource.clip = audioClip;
+        // audioSource.Play();
+        // StartCoroutine(Fade(audioSource, true, fadeDuration: 2f));
     }
 
+    private IEnumerator FadeOutIn(AudioSource audioSource,AudioClip audioClip, float fadeDuration = 2f) //, float duration, float tartgetVolume)
+    {
+        Debug.Log("Fade");
+
+        float time = 0f;
+        float startVolume = audioSource.volume;
+        float endVolume = 0f;
+
+        // // fade out
+        // if (!isFadeIn)
+        // {
+        //     startVolume = audioSource.volume;
+        //     endVolume = 0f;
+        // }
+        // // fade in
+        // else
+        // {
+        //     startVolume = 0f;
+        //     endVolume = GlobalData.Audio.BgmMaxVolume;
+        // }
+
+        while (time < fadeDuration)
+        {
+            time += Time.deltaTime;
+
+            // smoothly interpolates the volume
+            //audioSource.volume = Mathf.Lerp(startVolume, tartgetVolume, t:(time / audioSource.clip.length));
+            Debug.Log("at Fade: " + (time / fadeDuration));
+            audioSource.volume = Mathf.Lerp(startVolume, endVolume, (time / fadeDuration));
+
+            yield return null;
+        }
+
+        Debug.Log("Fade Out Complete");
+
+        audioSource.clip = audioClip;
+        audioSource.Play();
+
+        time = 0f;
+        startVolume = 0f;
+        //startVolume = audioSource.volume;
+        endVolume = GlobalData.Audio.BgmMaxVolume;
+
+        while (time < fadeDuration)
+        {
+            time += Time.deltaTime;
+
+            // smoothly interpolates the volume
+            //audioSource.volume = Mathf.Lerp(startVolume, tartgetVolume, t:(time / audioSource.clip.length));
+            Debug.Log("at Fade: " + (time / fadeDuration));
+            audioSource.volume = Mathf.Lerp(startVolume, endVolume, (time / fadeDuration));
+
+            yield return null;
+        }
+
+
+        Debug.Log("Fade In Complete");
+
+
+        Debug.Log(" ALL Fade Out In Complete");
+
+        yield return null;
+    }
+    
 
     private IEnumerator Fade(AudioSource audioSource, bool isFadeIn = true, float fadeDuration = 2f) //, float duration, float tartgetVolume)
     {
+        Debug.Log("Fade");
 
         float time = 0f;
         float startVolume;
@@ -138,13 +212,15 @@ public class BGM : MonoBehaviour
 
             // smoothly interpolates the volume
             //audioSource.volume = Mathf.Lerp(startVolume, tartgetVolume, t:(time / audioSource.clip.length));
-
+            Debug.Log("at Fade: " + (time / fadeDuration));
             audioSource.volume = Mathf.Lerp(startVolume, endVolume, (time / fadeDuration));
-
 
             yield return null;
         }
 
+        Debug.Log("Fade Complete");
+
+        yield return null;
     }
 
 

@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     // Reference
     // private Player player;
     private UIController uiController;
+    private SceneLoader sceneLoader;
 
     private void Awake()
     {
@@ -45,12 +46,17 @@ public class GameManager : MonoBehaviour
 
     public void Referencing()
     {
-
         if(null == uiController)
         {
-            Debug.Log("GM Referencing");
-
+            Debug.Log("GM Referencing uiController");
             uiController = FindAnyObjectByType<UIController>();
+        }
+
+        if(null == sceneLoader)
+        {
+            Debug.Log("GM Referencing sceneLoader");
+            sceneLoader = FindAnyObjectByType<SceneLoader>();
+
         }
 
 
@@ -68,9 +74,15 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1f;
         IsPaused = false;
     }
+
+    public void RestartScene()
+    {
+        sceneLoader.OnRestartScene();
+    }
     
     public void GameOver()
     {
+        
         uiController.GameOver();
     }
 
