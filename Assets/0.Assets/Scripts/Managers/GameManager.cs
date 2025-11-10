@@ -79,6 +79,11 @@ public class GameManager : MonoBehaviour
     {
         sceneLoader.OnRestartScene();
     }
+
+    public void MainMenuScene()
+    {
+        sceneLoader.OnLoadMainMenuScene();
+    }
     
     public void GameOver()
     {
@@ -89,6 +94,7 @@ public class GameManager : MonoBehaviour
     public void IncreaseScore()
     {
         uiController.IncreaseScore();
+
 
     }
     

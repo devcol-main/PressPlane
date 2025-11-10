@@ -93,12 +93,22 @@ public class IngameSceneUI : MonoBehaviour
 
     public void OnRestartButton()
     {
-        SoundManager.Instance.PlaySFXOneShot(SoundAsset.SFXGroup.UI, SoundAsset.SFXUIName.Off);
+        SoundManager.Instance.PlaySFXOneShot(SoundAsset.SFXGroup.UI, SoundAsset.SFXUIName.Restart);
 
 
         GameManager.Instance.RestartScene();
 
     }
+
+    public void OnMainMenuSceneButton()
+    {
+        SoundManager.Instance.PlaySFXOneShot(SoundAsset.SFXGroup.UI,SoundAsset.SFXUIName.MainMenu);
+
+        GameManager.Instance.MainMenuScene();
+        
+    }
+
+
     //
 
     public void IncreaseScore()

@@ -10,6 +10,8 @@ public class UISoundController : MonoBehaviour
     [Header("Master Volume")]
     [SerializeField] private Toggle masterVolumeToggle;
     [SerializeField] private Slider masterVolumeSlider;
+
+    //[SerializeField] private 
     [SerializeField] private GameObject masterVolumeSliderHandleImage;
     [SerializeField] private GameObject masterVolumeSliderFill;
 

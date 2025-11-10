@@ -5328,8 +5328,8 @@ TextureImporter:
       name: Icons no Outline_201
       rect:
         serializedVersion: 2
-        x: 221
-        y: 463
+        x: 160
+        y: 455
         width: 26
         height: 39
       alignment: 0
@@ -5350,10 +5350,10 @@ TextureImporter:
       name: Icons no Outline_202
       rect:
         serializedVersion: 2
-        x: 227
-        y: 467
-        width: 56
-        height: 56
+        x: 220
+        y: 461
+        width: 62
+        height: 67
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -5372,8 +5372,8 @@ TextureImporter:
       name: Icons no Outline_203
       rect:
         serializedVersion: 2
-        x: 237
-        y: 485
+        x: 148
+        y: 506
         width: 41
         height: 42
       alignment: 0
