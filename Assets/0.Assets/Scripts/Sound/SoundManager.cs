@@ -1,4 +1,4 @@
-using System.Collections;
+
 using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.Audio;
@@ -44,9 +44,36 @@ public class SoundManager : MonoBehaviour
 
     void OnEnable()
     {
-        soundAsset = FindAnyObjectByType<SoundAsset>();
-        bgm = FindAnyObjectByType<BGM>();
-        sfx = FindAnyObjectByType<SFX>();
+        UnityEngine.Debug.Log("SM OnEnable");
+        Referencing();
+
+        // soundAsset = FindAnyObjectByType<SoundAsset>();
+        // bgm = FindAnyObjectByType<BGM>();
+        // sfx = FindAnyObjectByType<SFX>();
+    }
+
+    public void Referencing()
+    {
+        if(null == soundAsset)
+        {
+            UnityEngine.Debug.Log("SM Referencing soundAsset");
+            soundAsset = FindAnyObjectByType<SoundAsset>();
+        }
+
+        if(null == bgm)
+        {
+            UnityEngine.Debug.Log("SM Referencing bgm");
+            bgm = FindAnyObjectByType<BGM>();
+
+        }
+
+        if(null == sfx)
+        {
+            UnityEngine.Debug.Log("SM Referencing sfx");
+
+            sfx = FindAnyObjectByType<SFX>();
+        }
+
     }
 
     void Start()
@@ -77,13 +104,13 @@ public class SoundManager : MonoBehaviour
     }
     //
 
-    public void PlaySFXOneShot(SoundAsset.SFXGroup sfxGroup, SoundAsset.SFXUIName sfxName)
+    public float PlaySFXOneShot(SoundAsset.SFXGroup sfxGroup, SoundAsset.SFXUIName sfxName)
     {
-        sfx.PlaySFXOneShot(sfxGroup,sfxName);
+        return sfx.PlaySFXOneShot(sfxGroup,sfxName);
     }
-    public void PlaySFXOneShot(SoundAsset.SFXGroup sfxGroup, SoundAsset.SFXPlayerName sfxName)
+    public float PlaySFXOneShot(SoundAsset.SFXGroup sfxGroup, SoundAsset.SFXPlayerName sfxName)
     {
-        sfx.PlaySFXOneShot(sfxGroup,sfxName);
+       return sfx.PlaySFXOneShot(sfxGroup,sfxName);
     }
     //=====
 
@@ -159,6 +186,15 @@ public class SoundManager : MonoBehaviour
             case SoundAsset.SFXGroup.OBSTACLE:
                 {
                     audioMixer.SetFloat(GlobalString.AudioMixer.OBSTACLE, Mathf.Log10(volume) * 20f);
+
+                }
+                break;
+
+            case SoundAsset.SFXGroup.PLAYER | SoundAsset.SFXGroup.OBSTACLE | SoundAsset.SFXGroup.ENEMY:
+                {
+                    audioMixer.SetFloat(GlobalString.AudioMixer.OBSTACLE, Mathf.Log10(volume) * 20f);
+                    audioMixer.SetFloat(GlobalString.AudioMixer.ENEMY, Mathf.Log10(volume) * 20f);
+                    audioMixer.SetFloat(GlobalString.AudioMixer.PLAYER, Mathf.Log10(volume) * 20f);
 
                 }
                 break;

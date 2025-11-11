@@ -19,7 +19,7 @@ public class IngameSceneUI : MonoBehaviour
     [SerializeField] private GameObject currentScore;
     [SerializeField] private GameObject startButton;
 
-    [Header("buttons")]
+    [Header("Buttons")]
     [SerializeField] private Button ingameSettingButton;
     
 
@@ -66,15 +66,18 @@ public class IngameSceneUI : MonoBehaviour
     {
         ingameSettingPanel.SetActive(true);
 
+        Debug.Log("OnInGameSettingPanel");
+
+        SoundManager.Instance.PlaySFXOneShot(SoundAsset.SFXGroup.UI, SoundAsset.SFXUIName.On);
+
         //SoundManager.Instance.PauseAudio(true);
         //SoundManager.Instance.PauseAudio(false,SoundAsset.BGMGroup.NONE, SoundAsset.SFXGroup.PLAYER & SoundAsset.SFXGroup.ENEMY & SoundAsset.SFXGroup.OBSTACLE);
-        //SoundManager.Instance.PauseAudio(false,SoundAsset.BGMGroup.NONE, SoundAsset.SFXGroup.PLAYER | SoundAsset.SFXGroup.ENEMY | SoundAsset.SFXGroup.OBSTACLE); = 7
+        SoundManager.Instance.PauseAudio(false,SoundAsset.BGMGroup.NONE, SoundAsset.SFXGroup.PLAYER | SoundAsset.SFXGroup.ENEMY | SoundAsset.SFXGroup.OBSTACLE);// = 7
 
-        SoundManager.Instance.PauseAudio(false,SoundAsset.BGMGroup.NONE, SoundAsset.SFXGroup.ALL);
-
+        //SoundManager.Instance.PauseAudio(false,SoundAsset.BGMGroup.NONE, SoundAsset.SFXGroup.ALL);
         //
-        SoundManager.Instance.ResumeAudio(false,SoundAsset.BGMGroup.NONE, SoundAsset.SFXGroup.SFX);
-        SoundManager.Instance.ResumeAudio(false,SoundAsset.BGMGroup.NONE, SoundAsset.SFXGroup.UI);
+        //SoundManager.Instance.ResumeAudio(false,SoundAsset.BGMGroup.NONE, SoundAsset.SFXGroup.SFX);
+        //SoundManager.Instance.ResumeAudio(false,SoundAsset.BGMGroup.NONE, SoundAsset.SFXGroup.UI);
 
         GameManager.Instance.PauseGame();
     }
@@ -85,7 +88,9 @@ public class IngameSceneUI : MonoBehaviour
         ingameSettingPanel.SetActive(false);
 
 
-        SoundManager.Instance.ResumeAudio(true);
+        //SoundManager.Instance.ResumeAudio(true);
+        SoundManager.Instance.ResumeAudio(false,SoundAsset.BGMGroup.ALL, SoundAsset.SFXGroup.PLAYER | SoundAsset.SFXGroup.ENEMY | SoundAsset.SFXGroup.OBSTACLE);// = 7
+
         SoundManager.Instance.PlaySFXOneShot(SoundAsset.SFXGroup.UI, SoundAsset.SFXUIName.Off);
         
         GameManager.Instance.ResumeGame();

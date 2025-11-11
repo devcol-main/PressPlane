@@ -17,11 +17,17 @@ public class LocalSaveLoad : MonoBehaviour
 
     private SaveLoadManager saveLoadManager;
 
-    private void Awake()
+    void Awake()
+    {
+        saveFolderPath = Application.persistentDataPath + saveFolderName;
+    }
+
+
+    void Start()
     {
         saveLoadManager = FindAnyObjectByType<SaveLoadManager>();
 
-        saveFolderPath = Application.persistentDataPath + saveFolderName;
+        
     }
 
 
@@ -35,12 +41,14 @@ public class LocalSaveLoad : MonoBehaviour
 
         savePath = Path.Combine(saveFolderPath, fileName);
 
-        print("!!!Save path: " + savePath);
+        Debug.Log("!!!Save path: " + savePath);
 
         try
         {
             File.WriteAllText(savePath, saveDataCollection.ToJson());
-            print("Save Done");
+            Debug.Log($"Save Data {fileName} to {savePath} complete");
+
+            //Debug.Log("Save Done");
 
         }
         catch(Exception e)
@@ -57,26 +65,6 @@ public class LocalSaveLoad : MonoBehaviour
 
         string json;
 
-        /*
-
-        if (File.Exists(savePath))
-        {
-            json = File.ReadAllText(savePath);
-
-        }
-        else
-        {
-
-            print("from load Else");
-
-            // original            
-            File.WriteAllText(savePath, saveDataCollection.ToJson());
-            json = "";
-        }
-        saveDataCollection.LoadFromJson(json);
-        saveSystem.LoadFromSaveData(saveDataCollection);
-        */
-
         try
         {
             json = File.ReadAllText(savePath);
@@ -84,6 +72,7 @@ public class LocalSaveLoad : MonoBehaviour
             saveDataCollection.LoadFromJson(json);
             saveLoadManager.LoadFromSaveData(saveDataCollection);
 
+            Debug.Log($"Load Data {fileName} from {savePath} successfully");
 
         }
         catch (Exception e)
@@ -94,7 +83,6 @@ public class LocalSaveLoad : MonoBehaviour
             json = "";
 
             saveDataCollection.LoadFromJson(json);
-
             saveLoadManager.InitialLoad(saveDataCollection);
 
         }
@@ -107,6 +95,16 @@ public class LocalSaveLoad : MonoBehaviour
         
         savePath = Path.Combine(saveFolderPath, fileName);
 
+        try
+        {
+            File.Delete(savePath);
+            Debug.Log($"Data {fileName} from {savePath} deleted successfully");
+        }
+        catch (Exception e)
+        {
+            Debug.LogError($"Failed to delete {fileName} from {savePath} with exception {e}");
+        }
+        /*
         if(File.Exists(savePath))
         {
             File.Delete(savePath);
@@ -115,7 +113,7 @@ public class LocalSaveLoad : MonoBehaviour
         {
             Debug.Log("Failed Deleting, file not exist");
         }
-
+        */
 
     }
 

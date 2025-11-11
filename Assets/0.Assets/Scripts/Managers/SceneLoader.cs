@@ -23,8 +23,8 @@ public class SceneLoader : MonoBehaviour
     void Start()
     {
         // Re-Reference DDOLs
-        GameManager.Instance.Referencing();
-        EffectManager.Instance.Referencing();
+        //GameManager.Instance.Referencing();
+        //EffectManager.Instance.Referencing();
     }
 
     public void GetCurrentSceneName()

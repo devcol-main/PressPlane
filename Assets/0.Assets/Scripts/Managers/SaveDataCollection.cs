@@ -1,7 +1,7 @@
 
 using System.Collections.Generic;
 using UnityEngine;
-//using System;
+
 
 [System.Serializable]
 public class SaveDataCollection 
@@ -15,62 +15,36 @@ public class SaveDataCollection
 
         //public int userLastInDateTime;
     }
+
+    [System.Serializable]
+    public struct SettingSoundData
+    {
+        public bool isMasterVolumeOn;
+        public bool isBGMVolumeOn;
+        public bool isSFXVolumeOn;
+
+        public float masterVolume;
+        public float bgmVolume;
+        public float sfxVolume;
+
+    }
+
     public GameSystemTimeData gameSystemTimeData = new GameSystemTimeData();
-
+    public SettingSoundData settingSoundData = new SettingSoundData();
     //
 
-    
-    /*
-    [System.Serializable]
-    public struct EnergyRefillTimedata
-    {
-        public int timeFullFillRequireTotal;
-        
-        
-        public int timeTotal;
-        public int timePoint;
-        public int timePassed;
+    //=======================================================
 
-        public bool isEnergyRefillRunning;
-        
+    [System.Serializable]
+    public struct NormalSceneData
+    {
+        public int HighScore;
     }
 
-    public EnergyRefillTimedata energyRefillTimedata = new EnergyRefillTimedata();
+    public NormalSceneData normalSceneData = new NormalSceneData();
 
 
-    //
-    [System.Serializable]
-    public struct InventoryData
-    {
-        public int blockCollected;
-        public int diamondCollected;
 
-        public int energyCollected;
-        public bool maxEnergyStatus;
-    }
-
-    public InventoryData inventoryData = new InventoryData();
-
-    //
-    [System.Serializable]
-    public struct StageData
-    {
-        //
-        public MainStageIndex mainStageIndex;
-        public int subStageNum;
-
-        public bool isStageOpen;
-
-        public int stageStar;
-        public int bestStarRecord;
-
-    }
-
-    public List<StageData> mainStageDatasList = new List<StageData>();
-
-    public List<StageData> subStageDatasList = new List<StageData>();
-
-    */
     //=======================================================
     public string ToJson()
     {

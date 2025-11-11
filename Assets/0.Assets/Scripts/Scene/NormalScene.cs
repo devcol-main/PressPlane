@@ -38,6 +38,16 @@ public class NormalScene : SceneBase, IGameScene
 
     }
 
+    private void Initiate()
+    {
+        environmentController.SetScrollSpeed(0);
+
+        uiController.GameSceneInitiate();
+
+        player.Initiate();        
+        
+    }
+
     public void SetScrollSpeed()
     {
         throw new System.NotImplementedException();
@@ -49,15 +59,6 @@ public class NormalScene : SceneBase, IGameScene
         
     }
 
-    private void Initiate()
-    {
-        environmentController.SetScrollSpeed(0);
-
-        uiController.GameSceneInitiate();
-
-        player.Initiate();        
-        
-    }
     
     
     // from start button

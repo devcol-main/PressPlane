@@ -15,6 +15,14 @@ public abstract class SceneBase : MonoBehaviour
     protected virtual void InitiateScene()
     {
         Time.timeScale = 1f;
+
+        // Referencing Managers
+        GameManager.Instance.Referencing();
+        SoundManager.Instance.Referencing();
+        // GraphicManager.Instance.Referencing();
+        EffectManager.Instance.Referencing();
+        // SaveLoadManager.Instance.Referencing();
+
         SetBGM();
     }
 
@@ -24,12 +32,11 @@ public abstract class SceneBase : MonoBehaviour
 }
 
  public interface IGameScene
-    {        
-        void SetScrollSpeed();
-
-    }
-
-    public interface IMenuScene
-    {
+ {
+    void SetScrollSpeed();
+    
+ }
+public interface IMenuScene
+{
         
-    }
+}

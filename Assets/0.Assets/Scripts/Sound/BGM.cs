@@ -146,13 +146,14 @@ public class BGM : MonoBehaviour
 
             // smoothly interpolates the volume
             //audioSource.volume = Mathf.Lerp(startVolume, tartgetVolume, t:(time / audioSource.clip.length));
-            Debug.Log("at Fade: " + (time / fadeDuration));
+
+            // Debug.Log("at Fade: " + (time / fadeDuration));
             audioSource.volume = Mathf.Lerp(startVolume, endVolume, (time / fadeDuration));
 
             yield return null;
         }
 
-        Debug.Log("Fade Out Complete");
+        // Debug.Log("Fade Out Complete");
 
         audioSource.clip = audioClip;
         audioSource.Play();
@@ -168,17 +169,17 @@ public class BGM : MonoBehaviour
 
             // smoothly interpolates the volume
             //audioSource.volume = Mathf.Lerp(startVolume, tartgetVolume, t:(time / audioSource.clip.length));
-            Debug.Log("at Fade: " + (time / fadeDuration));
+            //Debug.Log("at Fade: " + (time / fadeDuration));
             audioSource.volume = Mathf.Lerp(startVolume, endVolume, (time / fadeDuration));
 
             yield return null;
         }
 
 
-        Debug.Log("Fade In Complete");
+        //Debug.Log("Fade In Complete");
 
 
-        Debug.Log(" ALL Fade Out In Complete");
+        //Debug.Log(" ALL Fade Out In Complete");
 
         yield return null;
     }

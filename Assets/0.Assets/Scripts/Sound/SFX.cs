@@ -236,7 +236,7 @@ public class SFX : MonoBehaviour
 
 //
 
-    public void PlaySFXOneShot(SoundAsset.SFXGroup sfxGroup, SoundAsset.SFXUIName sfxName)
+    public float PlaySFXOneShot(SoundAsset.SFXGroup sfxGroup, SoundAsset.SFXUIName sfxName)
     {     
         //Debug.Log("sfxGroup.ToString: " +sfxGroup.ToString());
 
@@ -246,6 +246,8 @@ public class SFX : MonoBehaviour
         SFXOneShot(out soundGameObject, out audioSource);
 
         string objectName = "PlaySFXOneShot";
+
+        float length = 0f;
 
         audioSource.outputAudioMixerGroup = audioMixer.FindMatchingGroups(sfxGroup.ToString())[0];        
 
@@ -259,15 +261,20 @@ public class SFX : MonoBehaviour
                 soundGameObject.name = objectName + "_" + sfx.soundName.ToString();
 
                 audioSource.PlayOneShot(sfx.audioClip);
+
+                length = sfx.audioClip.length;
+
                 Destroy(soundGameObject, sfx.audioClip.length);
                 
             }
         }
 
+        return length;
+
     }
 
 
-    public void PlaySFXOneShot(SoundAsset.SFXGroup sfxGroup, SoundAsset.SFXPlayerName sfxName)
+    public float PlaySFXOneShot(SoundAsset.SFXGroup sfxGroup, SoundAsset.SFXPlayerName sfxName)
     {     
 
         GameObject soundGameObject;   
@@ -276,6 +283,8 @@ public class SFX : MonoBehaviour
         SFXOneShot(out soundGameObject, out audioSource);
 
         string objectName = "PlaySFXOneShot";
+
+        float length = 0f;
 
         audioSource.outputAudioMixerGroup = audioMixer.FindMatchingGroups(sfxGroup.ToString())[0];        
 
@@ -289,10 +298,13 @@ public class SFX : MonoBehaviour
                 soundGameObject.name = objectName + "_" + sfx.soundName.ToString();
 
                 audioSource.PlayOneShot(sfx.audioClip);
+                length = sfx.audioClip.length;
                 Destroy(soundGameObject, sfx.audioClip.length);
                 
             }
         }
+
+        return length;
 
     }
 }

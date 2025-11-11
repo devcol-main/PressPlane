@@ -14,6 +14,10 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        // to Graphic Manager
+        // for mobile to 30
+        Application.targetFrameRate = 30;
+
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
@@ -36,11 +40,15 @@ public class GameManager : MonoBehaviour
         IsPaused = false;
     }
 
-    private void Start()
+    void OnEnable()
     {
         Referencing();
+    }
 
-        Application.targetFrameRate = 30;
+     void Start()
+    {
+        
+
     }
 
 

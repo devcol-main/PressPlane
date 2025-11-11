@@ -64,6 +64,10 @@ MonoBehaviour:
     audioClip: {fileID: 0}
   - soundName: 4
     audioClip: {fileID: 8300000, guid: 22896902652794193a8651b79e865cfd, type: 3}
+  - soundName: 5
+    audioClip: {fileID: 8300000, guid: 857416a73248f47e29eaad204c004df6, type: 3}
+  - soundName: 6
+    audioClip: {fileID: 8300000, guid: 3712c424561034ad0b6ae49b0fe80636, type: 3}
   sfxPlayerAudioClipArray:
   - soundName: 0
     audioClip: {fileID: 8300000, guid: f9effe25f8b8d4db382bbd1463ddc6c3, type: 3}
