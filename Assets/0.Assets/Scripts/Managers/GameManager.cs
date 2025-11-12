@@ -10,9 +10,14 @@ public class GameManager : MonoBehaviour
     // Reference
     // private Player player;
     private UIController uiController;
+    private SceneLoader sceneLoader;
 
     private void Awake()
     {
+        // to Graphic Manager
+        // for mobile to 30
+        Application.targetFrameRate = 30;
+
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
@@ -35,22 +40,31 @@ public class GameManager : MonoBehaviour
         IsPaused = false;
     }
 
-    private void Start()
+    void OnEnable()
     {
         Referencing();
+    }
 
-        Application.targetFrameRate = 30;
+     void Start()
+    {
+        
+
     }
 
 
     public void Referencing()
     {
-
         if(null == uiController)
         {
-            Debug.Log("GM Referencing");
-
+            Debug.Log("GM Referencing uiController");
             uiController = FindAnyObjectByType<UIController>();
+        }
+
+        if(null == sceneLoader)
+        {
+            Debug.Log("GM Referencing sceneLoader");
+            sceneLoader = FindAnyObjectByType<SceneLoader>();
+
         }
 
 
@@ -68,15 +82,27 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1f;
         IsPaused = false;
     }
+
+    public void RestartScene()
+    {
+        sceneLoader.OnRestartScene();
+    }
+
+    public void MainMenuScene()
+    {
+        sceneLoader.OnLoadMainMenuScene();
+    }
     
     public void GameOver()
     {
+        
         uiController.GameOver();
     }
 
     public void IncreaseScore()
     {
         uiController.IncreaseScore();
+
 
     }
     

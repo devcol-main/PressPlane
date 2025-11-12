@@ -15,8 +15,7 @@ public class NormalScene : SceneBase, IGameScene
 
     [Tooltip("Scroll Speed: 3f")]
     [SerializeField]
-    private float scrollSpeed = 3f;
-    
+    private float scrollSpeed = 3f;    
 
     void Awake()
     {
@@ -32,10 +31,21 @@ public class NormalScene : SceneBase, IGameScene
 
     protected override void InitiateScene()
     {
+        // SetBGM & Time.timeScale = 1f;
         base.InitiateScene();
 
         Initiate();
 
+    }
+
+    private void Initiate()
+    {
+        environmentController.SetScrollSpeed(0);
+
+        uiController.GameSceneInitiate();
+
+        player.Initiate();        
+        
     }
 
     public void SetScrollSpeed()
@@ -45,22 +55,10 @@ public class NormalScene : SceneBase, IGameScene
 
     public override void SetBGM()
     {       
-        //SoundManager.Instance.PlayBGM(SoundAsset.BGM.NORMAL);
-        SoundManager.Instance.PlayBGM(bgm);
+        SoundManager.Instance.PlayBGM(SoundAsset.BGM.NORMAL);
+        
     }
 
-    private void Initiate()
-    {
-
-        environmentController.SetScrollSpeed(0);
-
-        uiController.GameSceneInitiate();
-
-        player.Initiate();        
-
-        //SetBGM();
-
-    }
     
     
     // from start button

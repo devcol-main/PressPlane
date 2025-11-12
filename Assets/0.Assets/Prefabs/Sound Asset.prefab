@@ -46,20 +46,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SoundAsset
   bgmSoundAudioClipArray:
   - soundName: 0
-    audioClip: {fileID: 8300000, guid: fa4ba08f652e84068a9dfb17bcbaf5ed, type: 3}
+    audioClip: {fileID: 0}
   - soundName: 1
-    audioClip: {fileID: 8300000, guid: 440bac876b3b54f55ad9c2c2260e053a, type: 3}
+    audioClip: {fileID: 8300000, guid: fa4ba08f652e84068a9dfb17bcbaf5ed, type: 3}
   - soundName: 2
+    audioClip: {fileID: 8300000, guid: 440bac876b3b54f55ad9c2c2260e053a, type: 3}
+  - soundName: 3
     audioClip: {fileID: 8300000, guid: da25cf43f352148f0a167222724ee49f, type: 3}
   sfxUIAudioClipArray:
   - soundName: 0
     audioClip: {fileID: 8300000, guid: 6cef6d335373e4efc9c45b0fac69ff9e, type: 3}
   - soundName: 1
-    audioClip: {fileID: 8300000, guid: 22896902652794193a8651b79e865cfd, type: 3}
+    audioClip: {fileID: 8300000, guid: 025470db9e990486b8c9eaf2f511fba8, type: 3}
   - soundName: 2
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: 1f2fece12d4094c4dbb7efb246d8158b, type: 3}
   - soundName: 3
     audioClip: {fileID: 0}
+  - soundName: 4
+    audioClip: {fileID: 8300000, guid: 22896902652794193a8651b79e865cfd, type: 3}
+  - soundName: 5
+    audioClip: {fileID: 8300000, guid: 857416a73248f47e29eaad204c004df6, type: 3}
+  - soundName: 6
+    audioClip: {fileID: 8300000, guid: 3712c424561034ad0b6ae49b0fe80636, type: 3}
   sfxPlayerAudioClipArray:
   - soundName: 0
     audioClip: {fileID: 8300000, guid: f9effe25f8b8d4db382bbd1463ddc6c3, type: 3}

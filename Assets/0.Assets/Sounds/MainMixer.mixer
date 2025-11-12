@@ -39,7 +39,7 @@ AudioMixerGroupController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Ambient
+  m_Name: AMBIENT
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: 20986e4799c1d4598b803cf375f72c8e
   m_Children: []
@@ -100,7 +100,7 @@ AudioMixerGroupController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Music
+  m_Name: MUSIC
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: ac183e637e5d3481fb5b24c7fecaede9
   m_Children: []
@@ -148,12 +148,24 @@ AudioMixerController:
   m_EnableSuspend: 1
   m_UpdateMode: 0
   m_ExposedParameters:
+  - guid: 195f899b0d1f944bca63545663cd06a5
+    name: AMBIENT
   - guid: 72f641046a7134435875d1cdc2485665
-    name: MyExposedParam 1
+    name: BGM
+  - guid: e7dbe6288c8a64607bd77d01e3bce563
+    name: ENEMY
   - guid: fe2e4f5915d664cabba550f4ed3e4424
-    name: MyExposedParam
+    name: Master
+  - guid: c2c84e6082d714023af94fca331253fa
+    name: MUSIC
+  - guid: f1a76349dc28c48beaff4253810ae593
+    name: OBSTACLE
+  - guid: 29fae20313a7d4573a44f4a3f6b73c49
+    name: PLAYER
   - guid: 8b4f39d153f8e4c9bb80e9b78d932fd1
-    name: MyExposedParam 2
+    name: SFX
+  - guid: 64698ca7087b0426992d022cdfb5acf5
+    name: UI
   m_AudioMixerGroupViews:
   - guids:
     - d02921e97269f4937ae5660f1489e8fd

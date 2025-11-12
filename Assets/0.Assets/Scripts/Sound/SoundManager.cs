@@ -1,4 +1,4 @@
-using System.Collections;
+
 using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.Audio;
@@ -13,19 +13,17 @@ public class SoundManager : MonoBehaviour
 
     // It brings erros on unity edior
     //[SerializeField] private AudioMixer audioMixer;
-    public AudioMixer audioMixer;        
-
+    public AudioMixer audioMixer;
     //
+
     private SoundAsset soundAsset;
-    
-    //
-    private AudioSource audioSource;
+    private BGM bgm;
+    private SFX sfx;
 
-    //
-    private const float bgmMaxVolume = 0.8f;
+
 
     private void Awake()
-    {    
+    {
         //
         if (Instance != null && Instance != this)
         {
@@ -40,158 +38,180 @@ public class SoundManager : MonoBehaviour
             //DontDestroyOnLoad(transform.root.gameObject);
         }
 
-        audioSource = GetComponent<AudioSource>();
-        
-    }
 
-    private void Start()
-    {       
-        //
-        soundAsset = FindAnyObjectByType<SoundAsset>();    
-        //
-        SetupBGMAudioSource();
-
-        //PlayBGM(SoundAsset.BGM.NORMAL);
-        //StartCoroutine(Fade(true));
 
     }
 
-    private void SetupBGMAudioSource()
+    void OnEnable()
     {
-        //audioSource.outputAudioMixerGroup = audioMixer.FindMatchingGroups("BGM")[0];
-        audioSource.outputAudioMixerGroup = audioMixer.FindMatchingGroups("Master/BGM/Music")[0];
-        audioSource.playOnAwake = false;
-        audioSource.loop = true;
-        audioSource.volume = bgmMaxVolume;
-        audioSource.pitch = 1f;
-        audioSource.panStereo = 0;
+        UnityEngine.Debug.Log("SM OnEnable");
+        Referencing();
 
-        //controls the blend between a fully 2D sound and a fully 3D sound.
-        // fully 2d -> 0 / fully 3d -> 1
-        audioSource.spatialBlend = 0f;       
-
+        // soundAsset = FindAnyObjectByType<SoundAsset>();
+        // bgm = FindAnyObjectByType<BGM>();
+        // sfx = FindAnyObjectByType<SFX>();
     }
 
-    public void PlayBGM(SoundAsset.BGM bgmName)
+    public void Referencing()
     {
-        print("PlayBGM: " + bgmName.ToString());
-
-        foreach (var bgmSound in soundAsset.bgmSoundAudioClipArray)
+        if(null == soundAsset)
         {
-            if (bgmSound.soundName == bgmName)
-            {                        
-                //if (audioSource.isPlaying && (bgmSound.audioClip == audioSource.clip))
-                if (audioSource.isPlaying)
-                {
-                    if(bgmSound.audioClip == audioSource.clip)
-                    {
-                        //Debug.Log("from BGM: " + bgmSound.audioClip + " is on play returned");
+            UnityEngine.Debug.Log("SM Referencing soundAsset");
+            soundAsset = FindAnyObjectByType<SoundAsset>();
+        }
 
-                        return;
-                    }
-                    else
-                    {                       
+        if(null == bgm)
+        {
+            UnityEngine.Debug.Log("SM Referencing bgm");
+            bgm = FindAnyObjectByType<BGM>();
 
-                        SwapBGMWithFade(bgmSound.audioClip);
+        }
 
-                        // fade out current bgm
-                        
-                        // fade in selected bgm
+        if(null == sfx)
+        {
+            UnityEngine.Debug.Log("SM Referencing sfx");
 
-                    }                    
-
-                }
-                else
-                {
-                    print("play");
-
-                    audioSource.clip = bgmSound.audioClip;
-                    audioSource.Play();
-
-                    print("audioSource.clip.name: " + audioSource.clip.name);
-                }
-
-                return;
-            }
+            sfx = FindAnyObjectByType<SFX>();
         }
 
     }
 
-    private IEnumerator Fade(bool isFadeIn) //, float duration, float tartgetVolume)
+    void Start()
     {
-        float fadeDuration = 2f;
-        float time = 0f;
-        float startVolume;
-        float endVolume;
 
-        // fade out
-        if(!isFadeIn)
+    }
+
+    public void PlayBGM(SoundAsset.BGM bgmName,
+    SoundAsset.BGM_AMBIENT bgmAmbientName = SoundAsset.BGM_AMBIENT.NONE)
+    {
+        bgm.PlayBGM(bgmName, bgmAmbientName);
+
+    }
+
+    //
+    public void SetupContinuousAudioSource(GameObject gameObject, SoundAsset.SFXGroup sfxGroup)
+    {
+        sfx.SetupContinuousAudioSource(gameObject, sfxGroup);
+    }
+    public void SetupContinuousSFXFly()
+    {
+        sfx.SetupContinuousSFXFly();
+    }
+
+    public void ContinuousSFXFly(bool isOn, float power = GlobalData.Player.SoundPower)
+    {
+        sfx.ContinuousSFXFly(isOn, power);
+    }
+    //
+
+    public float PlaySFXOneShot(SoundAsset.SFXGroup sfxGroup, SoundAsset.SFXUIName sfxName)
+    {
+        return sfx.PlaySFXOneShot(sfxGroup,sfxName);
+    }
+    public float PlaySFXOneShot(SoundAsset.SFXGroup sfxGroup, SoundAsset.SFXPlayerName sfxName)
+    {
+       return sfx.PlaySFXOneShot(sfxGroup,sfxName);
+    }
+    //=====
+
+    // ALL / BGM (ALL or Music or Ambient) / SFX (ALL of except UI or except specific one)
+    // BGM Control audiosource pitch -> to pause -> bc few audiosource
+    // SFX control audio mixer group vol (can't mute audiomixer by script)
+    // converts a linear volume value (from a slider, typically 0.0001 to 1) into a logarithmic scale in decibels (dB) 
+    public void PauseAudio(bool isAll, SoundAsset.BGMGroup bgmGroup = SoundAsset.BGMGroup.ALL, SoundAsset.SFXGroup sfxGroup = SoundAsset.SFXGroup.ALL)
+    {
+        print("PauseAudio " + "bgmGroup: "+ bgmGroup +  "sfxGroup: " + sfxGroup);
+
+        bgm.PauseAudio(isAll, bgmGroup);
+
+        SetAudioMixerVolume(sfxGroup, GlobalData.Audio.AudioMixerMinVolume);
+    }
+
+    public void ResumeAudio(bool isAll, SoundAsset.BGMGroup bgmGroup = SoundAsset.BGMGroup.ALL, SoundAsset.SFXGroup sfxGroup = SoundAsset.SFXGroup.ALL)
+    {
+        print("ResumeAudio: ");
+
+        bgm.ResumeAudio(isAll, bgmGroup);
+        SetAudioMixerVolume(sfxGroup, GlobalData.Audio.AudioMixerMaxVolume);
+
+    }
+
+    /// <summary>
+    /// SetAudioMixerVolume -> converts a linear volume value (from a slider, typically 0.0001 to 1) into a logarithmic scale in decibels (dB) 
+    /// </summary>
+    /// <param name= "audioMixerName">audioMixerName (GlobalString.AudioMixer). </param>
+    /// <param name= "volume">volume 0.0f ~ 1f. </param>
+    /// <returns> SetAudioMixerVolume
+    public void SetAudioMixerVolume(SoundAsset.SFXGroup sfxGroup, float volume)
+    {
+        switch (sfxGroup)
         {
-            startVolume = audioSource.volume;
-            endVolume = 0f;
+            case SoundAsset.SFXGroup.ALL:
+                {
+                    audioMixer.SetFloat(GlobalString.AudioMixer.SFX, Mathf.Log10(volume) * 20f);
+                    audioMixer.SetFloat(GlobalString.AudioMixer.UI, Mathf.Log10(volume) * 20f);
+                    audioMixer.SetFloat(GlobalString.AudioMixer.PLAYER, Mathf.Log10(volume) * 20f);
+                    audioMixer.SetFloat(GlobalString.AudioMixer.ENEMY, Mathf.Log10(volume) * 20f);
+                    audioMixer.SetFloat(GlobalString.AudioMixer.OBSTACLE, Mathf.Log10(volume) * 20f);
+                    
+                }
+                break;
+            case SoundAsset.SFXGroup.SFX:
+                {
+                    audioMixer.SetFloat(GlobalString.AudioMixer.SFX, Mathf.Log10(volume) * 20f);
+
+                }
+                break;    
+
+            case SoundAsset.SFXGroup.UI:
+                {
+                    audioMixer.SetFloat(GlobalString.AudioMixer.UI, Mathf.Log10(volume) * 20f);
+
+                }
+                break;
+
+            case SoundAsset.SFXGroup.PLAYER:
+                {
+                    audioMixer.SetFloat(GlobalString.AudioMixer.PLAYER, Mathf.Log10(volume) * 20f);
+
+                }
+                break;
+
+            case SoundAsset.SFXGroup.ENEMY:
+                {
+                    audioMixer.SetFloat(GlobalString.AudioMixer.ENEMY, Mathf.Log10(volume) * 20f);
+
+                }
+                break;
+            case SoundAsset.SFXGroup.OBSTACLE:
+                {
+                    audioMixer.SetFloat(GlobalString.AudioMixer.OBSTACLE, Mathf.Log10(volume) * 20f);
+
+                }
+                break;
+
+            case SoundAsset.SFXGroup.PLAYER | SoundAsset.SFXGroup.OBSTACLE | SoundAsset.SFXGroup.ENEMY:
+                {
+                    audioMixer.SetFloat(GlobalString.AudioMixer.OBSTACLE, Mathf.Log10(volume) * 20f);
+                    audioMixer.SetFloat(GlobalString.AudioMixer.ENEMY, Mathf.Log10(volume) * 20f);
+                    audioMixer.SetFloat(GlobalString.AudioMixer.PLAYER, Mathf.Log10(volume) * 20f);
+
+                }
+                break;
         }
-        // fade in
-        else
-        {
-            startVolume = 0f;
-            endVolume = bgmMaxVolume;
-        }     
-        
-
-        while(time < fadeDuration)
-        {
-            time += Time.deltaTime;
-
-            // smoothly interpolates the volume
-            //audioSource.volume = Mathf.Lerp(startVolume, tartgetVolume, t:(time / audioSource.clip.length));
-
-            audioSource.volume = Mathf.Lerp(startVolume, endVolume, (time/fadeDuration));
-
-
-            yield return null;
-        }        
 
     }
-
-    private void SwapBGMWithFade(AudioClip audioClip)
-    {
-        print("SwapBGMWithFade: " + audioClip.ToString());
-
-
-        Fade(false);
-        audioSource.clip = audioClip;
-        Fade(true);
-    }
+    //
 
 
 
 
-    // =======
-    // creating gameobject for bgm under soundmanager
-    /*
-    private void CreateBgmAudioSource()
-    {
-        // creating BGM audiosource child under this gameobject(sound manager)
-        GameObject soundGameObject = new GameObject("Created BGM");
-        soundGameObject.transform.SetParent(this.gameObject.transform);
-        AudioSource audioSource = soundGameObject.AddComponent<AudioSource>();
 
-        audioSource.clip = soundAsset.bgmSoundAudioClipArray[0].audioClip;
-        audioSource.playOnAwake = true;
-        audioSource.loop = true;
-        audioSource.spatialBlend = 0f;
-        audioSource.volume = 0.8f;
 
-        audioSource.outputAudioMixerGroup = audioMixer.FindMatchingGroups("BGM")[0];
-
-        audioSource.Play();
-        //Destroy(soundGameObject, logoBgmAudioClip.length);  
-    }
-    */
 
 }
 
-    
+
 
 
 

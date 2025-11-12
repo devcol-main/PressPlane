@@ -1,17 +1,15 @@
-
 using UnityEngine;
-
 
 
 public class UIController : MonoBehaviour
 {
-    private IngameSceneUI ingameSceneUI;
+    [SerializeField] private IngameSceneUI ingameSceneUI;
 
     #region Ingame
 
     public void GameSceneInitiate()
     {
-        ingameSceneUI = GetComponent<IngameSceneUI>();
+        //ingameSceneUI = GetComponent<IngameSceneUI>();
 
         ingameSceneUI.GameSceneInitiate();
 
