@@ -15,19 +15,9 @@ public class LocalSaveLoad : MonoBehaviour
     private string saveFolderPath;
     private string savePath;
 
-    private SaveLoadManager saveLoadManager;
-
     void Awake()
     {
         saveFolderPath = Application.persistentDataPath + saveFolderName;
-    }
-
-
-    void Start()
-    {
-        saveLoadManager = FindAnyObjectByType<SaveLoadManager>();
-
-        
     }
 
 
@@ -53,7 +43,7 @@ public class LocalSaveLoad : MonoBehaviour
         }
         catch(Exception e)
         {
-            Debug.LogError($"Failed to write to {savePath} with exception {e}");
+            Debug.LogWarning($"Failed to write to {savePath} with exception {e}");
 
         }
 
@@ -70,7 +60,7 @@ public class LocalSaveLoad : MonoBehaviour
             json = File.ReadAllText(savePath);
 
             saveDataCollection.LoadFromJson(json);
-            saveLoadManager.LoadFromSaveData(saveDataCollection);
+            SaveLoadManager.Instance.LoadFromSaveData(saveDataCollection);
 
             Debug.Log($"Load Data {fileName} from {savePath} successfully");
 
@@ -83,8 +73,8 @@ public class LocalSaveLoad : MonoBehaviour
             json = "";
 
             saveDataCollection.LoadFromJson(json);
-            saveLoadManager.InitialLoad(saveDataCollection);
-
+            
+            SaveLoadManager.Instance.InitialLoad(saveDataCollection);
         }
 
 
@@ -102,7 +92,7 @@ public class LocalSaveLoad : MonoBehaviour
         }
         catch (Exception e)
         {
-            Debug.LogError($"Failed to delete {fileName} from {savePath} with exception {e}");
+            Debug.LogWarning($"Failed to delete {fileName} from {savePath} with exception {e}");
         }
         /*
         if(File.Exists(savePath))
