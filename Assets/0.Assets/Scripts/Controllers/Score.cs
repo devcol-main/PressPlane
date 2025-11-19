@@ -1,23 +1,21 @@
 using UnityEngine;
 using TMPro;
-using Unity.VisualScripting;
+
 
 public class Score : MonoBehaviour
 {
     //
     public TextMeshProUGUI CurrentScoreText { get { return currentScoreText; } }
-    public int HighScore {get;set;}
+    public int HighScore {get {return highScore;} set {highScore = value;} }
     public int CurrentScore { get {return currentScore;} set {currentScore = value;}}
     //
     [SerializeField] private TextMeshProUGUI currentScoreText;
 
     //
 
-    [Header("Only For DEBUG")]
-
+    [Header("Displaying Only For DEBUG")]
     [SerializeField] private int currentScore;
-    [SerializeField] private int testCur;
-    [SerializeField] private int testHigh;
+    [SerializeField] private int highScore;
     
 
     void Awake()
@@ -31,7 +29,7 @@ public class Score : MonoBehaviour
 
         Debug.Log("High Score: " + HighScore);
 
-        testHigh = HighScore;
+        highScore = HighScore;
         
     }
 
@@ -42,12 +40,14 @@ public class Score : MonoBehaviour
         currentScore += 1;
         currentScoreText.text = currentScore.ToString();
 
-        CheckHighScore();
+        if(CheckHighScore())
+        {
+            SaveLoadManager.Instance.Save();
+            // save
+            // highscore effect
+        }
 
-        testCur = currentScore;
-        testHigh = HighScore;
-
-        Debug.Log("currentScoreText: " + currentScore + " | testcur: " + testCur + " | testhigh: " + testHigh  );
+        Debug.Log("currentScoreText: " + currentScore + " | "  +  " highScore: " + highScore);
 
     }
 
@@ -63,9 +63,9 @@ public class Score : MonoBehaviour
         else
         {
             result = true;
-            HighScore = currentScore;
+            highScore = currentScore;
             
-            //GameData.Instance.ingameData.HighScore = 
+            GameData.Instance.ingameData.HighScore = highScore;
             Debug.Log("At High Score");
         }
 

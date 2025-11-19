@@ -33,7 +33,7 @@ public class UIController : MonoBehaviour
 
     public void GameOver()
     {
-        ingameSceneUI.GameStart();
+        ingameSceneUI.GameOver();
     }
 
 

@@ -21,8 +21,9 @@ public abstract class SceneBase : MonoBehaviour
         SoundManager.Instance.Referencing();
         // GraphicManager.Instance.Referencing();
         EffectManager.Instance.Referencing();
-        // SaveLoadManager.Instance.Referencing();
+        SaveLoadManager.Instance.Referencing();
 
+        SaveLoadManager.Instance.Load();
         SetBGM();
     }
 
@@ -35,8 +36,10 @@ public abstract class SceneBase : MonoBehaviour
  {
     void SetScrollSpeed();
     
+    
  }
 public interface IMenuScene
 {
-        
+
+
 }

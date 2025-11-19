@@ -77,7 +77,7 @@ public class LocalSaveLoad : MonoBehaviour
         }
         catch (Exception e)
         {
-            Debug.LogError($"Failed to read from {savePath} with exception {e}");
+            Debug.LogWarning($"Failed to read from {savePath} with exception {e}");
             File.WriteAllText(savePath, saveDataCollection.ToJson());
 
             json = "";

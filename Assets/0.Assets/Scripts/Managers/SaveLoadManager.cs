@@ -107,14 +107,22 @@ public class SaveLoadManager : MonoBehaviour
 
     }
 
+    public void Delete()
+    {
+        Debug.Log("Delete from " + this.gameObject.name);
+
+        localSaveLoad.DeleteSavedData(fileName);
+    }
+
     // firstime & after reset
     public void InitialLoad(SaveDataCollection saveDataCollection)
     {
         Debug.Log("InitialLoad");
-
+        
     }
 
     // =========
+
 
     public void PopulateSaveData(SaveDataCollection saveDataCollection)
     {

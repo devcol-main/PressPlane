@@ -44,7 +44,9 @@ public class NormalScene : SceneBase, IGameScene
 
         uiController.GameSceneInitiate();
 
-        player.Initiate();        
+        player.Initiate();
+        //
+                
         
     }
 
@@ -58,8 +60,6 @@ public class NormalScene : SceneBase, IGameScene
         SoundManager.Instance.PlayBGM(SoundAsset.BGM.NORMAL);
         
     }
-
-    
     
     // from start button
     public void OnStartGame()
