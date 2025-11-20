@@ -4,8 +4,19 @@ using UnityEngine;
 public class UIController : MonoBehaviour
 {
     [SerializeField] private IngameSceneUI ingameSceneUI;
+    
 
-    #region Ingame
+    #region  Menu Scene
+    public void MenuSceneInitiate()
+    {
+        
+    }
+
+
+    #endregion
+
+
+    #region Ingame Scene
 
     public void GameSceneInitiate()
     {

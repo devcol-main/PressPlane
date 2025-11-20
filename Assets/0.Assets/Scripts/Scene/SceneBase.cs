@@ -23,7 +23,9 @@ public abstract class SceneBase : MonoBehaviour
         EffectManager.Instance.Referencing();
         SaveLoadManager.Instance.Referencing();
 
+    
         SaveLoadManager.Instance.Load();
+
         SetBGM();
     }
 
