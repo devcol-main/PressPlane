@@ -45,9 +45,17 @@ public class NormalScene : SceneBase, IGameScene
         uiController.GameSceneInitiate();
 
         player.Initiate();
-        //
+        // Scene Transition
+        // if last scene was not this scene to inititae transition
+
+              
+        if(sceneLoader.ComparePreviousCurrentScene())
+        {
+            Debug.Log("Firstime Scene, perfome Scene transition");
                 
-        
+        }
+
+
     }
 
     public void SetScrollSpeed()

@@ -12,8 +12,8 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: DefaultCompany
-  productName: FlappyPlane
+  companyName: DevCol
+  productName: PressPlane
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -70,6 +70,7 @@ PlayerSettings:
   androidStartInFullscreen: 1
   androidRenderOutsideSafeArea: 1
   androidUseSwappy: 1
+  androidDisplayOptions: 1
   androidBlitType: 0
   androidResizeableActivity: 1
   androidDefaultWindowWidth: 1920
@@ -165,6 +166,7 @@ PlayerSettings:
   androidMaxAspectRatio: 2.4
   androidMinAspectRatio: 1
   applicationIdentifier:
+    Android: com.DevCol.PressPlane
     Standalone: com.DefaultCompany.2D-URP
   buildNumber:
     Standalone: 0
@@ -792,10 +794,10 @@ PlayerSettings:
   captureStartupLogs: {}
   activeInputHandler: 2
   windowsGamepadBackendHint: 0
-  cloudProjectId: e29dd4eb-e6f9-4f7c-895c-cddfc18b2254
+  cloudProjectId: 957b2832-0793-4fc2-9265-e12f95fc6313
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: FlappyPlane
+  projectName: PressPlane 2025-11-21_15-05-53
   organizationId: developmentcollaboration
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
@@ -806,3 +808,4 @@ PlayerSettings:
   androidVulkanDenyFilterList: []
   androidVulkanAllowFilterList: []
   androidVulkanDeviceFilterListAsset: {fileID: 0}
+  d3d12DeviceFilterListAsset: {fileID: 0}

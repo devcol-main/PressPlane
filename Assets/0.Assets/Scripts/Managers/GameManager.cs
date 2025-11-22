@@ -92,6 +92,11 @@ public class GameManager : MonoBehaviour
     {
         sceneLoader.OnLoadMainMenuScene();
     }
+
+    public void NormalScene()
+    {
+        sceneLoader.OnLoadNormalScene();
+    }
     
     public void GameOver()
     {

@@ -41,6 +41,7 @@ public class MainMenuScene : SceneBase, IMenuScene
     public void OnLoadNormalScene()
     {
         SoundManager.Instance.PlaySFXOneShot(SoundAsset.SFXGroup.UI, SoundAsset.SFXUIName.SelectHighPitch);
+        GameManager.Instance.NormalScene();
         
     }
     
