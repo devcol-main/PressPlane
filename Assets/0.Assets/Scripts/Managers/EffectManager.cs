@@ -41,7 +41,7 @@ public class EffectManager : MonoBehaviour
     {
         if(null == cameraController)
         {
-            Debug.Log("EffectManager Referencing");
+            //Debug.Log("EffectManager Referencing");
 
             cameraController = FindAnyObjectByType<CameraController>();
         }
@@ -54,7 +54,7 @@ public class EffectManager : MonoBehaviour
         //Debug.Log("from effectManager PlayerDamagedEffect()");
         if(null == cameraController)
         {
-            Debug.Log("cameraController null");
+            //Debug.Log("cameraController null");
 
         }
 
