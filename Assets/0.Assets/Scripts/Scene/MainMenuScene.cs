@@ -14,6 +14,9 @@ public class MainMenuScene : SceneBase, IMenuScene
         base.Start();
 
         InitiateScene();
+
+        //
+        
     }
 
     protected override void InitiateScene()
@@ -41,6 +44,7 @@ public class MainMenuScene : SceneBase, IMenuScene
     public void OnLoadNormalScene()
     {
         SoundManager.Instance.PlaySFXOneShot(SoundAsset.SFXGroup.UI, SoundAsset.SFXUIName.SelectHighPitch);
+        GameManager.Instance.NormalScene();
         
     }
     

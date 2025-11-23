@@ -56,20 +56,20 @@ public class SoundManager : MonoBehaviour
     {
         if(null == soundAsset)
         {
-            UnityEngine.Debug.Log("SM Referencing soundAsset");
+            //UnityEngine.Debug.Log("SM Referencing soundAsset");
             soundAsset = FindAnyObjectByType<SoundAsset>();
         }
 
         if(null == bgm)
         {
-            UnityEngine.Debug.Log("SM Referencing bgm");
+            //UnityEngine.Debug.Log("SM Referencing bgm");
             bgm = FindAnyObjectByType<BGM>();
 
         }
 
         if(null == sfx)
         {
-            UnityEngine.Debug.Log("SM Referencing sfx");
+            //UnityEngine.Debug.Log("SM Referencing sfx");
 
             sfx = FindAnyObjectByType<SFX>();
         }

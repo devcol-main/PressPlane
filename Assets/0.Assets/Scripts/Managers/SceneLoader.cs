@@ -1,6 +1,18 @@
 using System.Collections;
+using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+
+public static class SceneHistory
+{
+    public static string PreviousSceneName { get; private set; }
+    
+    public static void SetPreviousScene(string sceneName)
+    {
+        PreviousSceneName = sceneName;
+    }
+
+}
 
 public class SceneLoader : MonoBehaviour
 {
@@ -27,6 +39,25 @@ public class SceneLoader : MonoBehaviour
         //EffectManager.Instance.Referencing();
     }
 
+    public bool ComparePreviousCurrentScene()
+    {
+        //bool isPreviousCurrentSceneSame;
+
+        GetCurrentSceneName();
+        /*
+        if(CurrentSceneName == SceneHistory.PreviousSceneName)
+            isPreviousCurrentSceneSame = true;
+        else
+            isPreviousCurrentSceneSame = false;
+        */
+        //isPreviousCurrentSceneSame = (CurrentSceneName == SceneHistory.PreviousSceneName) ? true : false;
+
+        Debug.Log("CurrentSceneName: " + CurrentSceneName);
+        Debug.Log("PreviousSceneName: " + SceneHistory.PreviousSceneName);
+        
+        return (CurrentSceneName == SceneHistory.PreviousSceneName) ? true : false;
+    }
+
     public void GetCurrentSceneName()
     {
         CurrentSceneName = SceneManager.GetActiveScene().name;
@@ -49,6 +80,8 @@ public class SceneLoader : MonoBehaviour
         // !!!!!!
         Time.timeScale = 1f;
 
+        SceneHistory.SetPreviousScene(SceneManager.GetActiveScene().name);
+
         //SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
@@ -57,6 +90,8 @@ public class SceneLoader : MonoBehaviour
     public void OnRestartScene(float delayTime)
     {
         Time.timeScale = 1f;
+
+        SceneHistory.SetPreviousScene(SceneManager.GetActiveScene().name);
         PreLoadSelectedScene(SceneManager.GetActiveScene().name);
 
     }
@@ -64,18 +99,23 @@ public class SceneLoader : MonoBehaviour
     public void OnLoadMainMenuScene()
     {
         Time.timeScale = 1f;
+        SceneHistory.SetPreviousScene(SceneManager.GetActiveScene().name);
         SceneManager.LoadScene(SceneName.MainMenu);
     }
 
      public void OnLoadNormalScene()
     {
         Time.timeScale = 1f;
+        SceneHistory.SetPreviousScene(SceneManager.GetActiveScene().name);
         SceneManager.LoadScene(SceneName.Normal);
     }
     
     public void LoadSelectedScene(SceneName sceneName)
     {
         Time.timeScale = 1f;
+
+        SceneHistory.SetPreviousScene(SceneManager.GetActiveScene().name);
+
         switch(sceneName.ToString())
         {
             case SceneName.MainMenu:
@@ -97,6 +137,8 @@ public class SceneLoader : MonoBehaviour
     public void PreLoadSelectedScene(string selectedScene)
     {
         sceneToLoad = selectedScene;
+
+        SceneHistory.SetPreviousScene(SceneManager.GetActiveScene().name);
 
         StartCoroutine(PreLoadAsyncScene(sceneToLoad));
     }

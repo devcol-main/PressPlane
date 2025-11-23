@@ -3,7 +3,7 @@ using UnityEngine;
 public abstract class SceneBase : MonoBehaviour
 {
 
-    private SceneLoader sceneLoader;
+    protected SceneLoader sceneLoader;
 
     protected virtual void Start()
     {

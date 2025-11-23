@@ -56,13 +56,13 @@ public class GameManager : MonoBehaviour
     {
         if(null == uiController)
         {
-            Debug.Log("GM Referencing uiController");
+            //Debug.Log("GM Referencing uiController");
             uiController = FindAnyObjectByType<UIController>();
         }
 
         if(null == sceneLoader)
         {
-            Debug.Log("GM Referencing sceneLoader");
+            //Debug.Log("GM Referencing sceneLoader");
             sceneLoader = FindAnyObjectByType<SceneLoader>();
 
         }
@@ -91,6 +91,11 @@ public class GameManager : MonoBehaviour
     public void MainMenuScene()
     {
         sceneLoader.OnLoadMainMenuScene();
+    }
+
+    public void NormalScene()
+    {
+        sceneLoader.OnLoadNormalScene();
     }
     
     public void GameOver()

@@ -7,7 +7,7 @@ public struct SceneName
 
     //
     public const string MainMenu = "MainMenu";
-    public const string Normal = "Nomal";
+    public const string Normal = "Normal";
     //public const string GameOver = "GameOver";
 
 }
