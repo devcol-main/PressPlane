@@ -5491,6 +5491,8 @@ MonoBehaviour:
   environmentController: {fileID: 1864642675}
   uiController: {fileID: 1367815665}
   player: {fileID: 1336386053}
+  titleImage: {fileID: 1565396761}
+  startButton: {fileID: 8868330269399550885}
   scrollSpeed: 3
 --- !u!1 &1142366390
 GameObject:

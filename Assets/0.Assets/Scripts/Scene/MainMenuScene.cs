@@ -14,6 +14,9 @@ public class MainMenuScene : SceneBase, IMenuScene
         base.Start();
 
         InitiateScene();
+
+        //
+        
     }
 
     protected override void InitiateScene()

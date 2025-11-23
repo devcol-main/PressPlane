@@ -29,6 +29,8 @@ public class IngameSceneUI : MonoBehaviour
 
     private void Awake()
     {
+        // called once in application, 
+        // ideally at a point where it will execute before any tweens are created.    
         DOTween.Init();
 
         SwitchAllPanel(false);

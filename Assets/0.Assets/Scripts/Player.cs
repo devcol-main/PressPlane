@@ -1,6 +1,7 @@
 
 using System.Collections;
 using UnityEngine;
+using DG.Tweening;
 
 
 [RequireComponent(typeof(Movement))]
@@ -30,6 +31,12 @@ public class Player : MonoBehaviour
     [SerializeField] private int hp;
 
 
+    //    
+    private readonly Vector3 startingTransform = new Vector3(-1.5f, 1.5f, 0f);
+    private readonly Vector3 firstTimeTransform = new Vector3 (-4f,-3f,0);
+    
+
+    //
     private bool isAlive;
     private bool isInvulnerable;
     private float angle;
@@ -44,6 +51,7 @@ public class Player : MonoBehaviour
 
         isAlive = true;
         isInvulnerable = false;
+
 
     }
 
@@ -80,8 +88,27 @@ public class Player : MonoBehaviour
     public void Initiate()
     {
         rb2d.constraints = RigidbodyConstraints2D.FreezeAll;
+        this.transform.position = startingTransform;
+
 
     }
+
+    public void PerformFirstimeSceneTransition()
+    {
+        SetupFirstTimeSceneTransition();
+
+        float duration = 2f;
+        this.transform.DOMove(startingTransform, duration)
+                 .SetEase(Ease.InOutSine);
+                 
+    }
+
+    private void SetupFirstTimeSceneTransition()
+    {
+        this.transform.position = firstTimeTransform;
+    }
+
+
     public void GameStart()
     {
         rb2d.constraints = RigidbodyConstraints2D.None | RigidbodyConstraints2D.FreezePositionX;

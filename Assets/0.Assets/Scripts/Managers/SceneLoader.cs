@@ -52,6 +52,9 @@ public class SceneLoader : MonoBehaviour
         */
         //isPreviousCurrentSceneSame = (CurrentSceneName == SceneHistory.PreviousSceneName) ? true : false;
 
+        Debug.Log("CurrentSceneName: " + CurrentSceneName);
+        Debug.Log("PreviousSceneName: " + SceneHistory.PreviousSceneName);
+        
         return (CurrentSceneName == SceneHistory.PreviousSceneName) ? true : false;
     }
 
