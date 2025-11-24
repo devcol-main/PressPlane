@@ -1,4 +1,5 @@
 using System.Collections;
+using JetBrains.Annotations;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -17,14 +18,16 @@ public static class SceneHistory
 public class SceneLoader : MonoBehaviour
 {
 
+    // Public References
     public bool CueLoadScene { get; set; }
     public static string CurrentSceneName { get; private set; }
     public static SceneType CurrentSceneType { get; private set; }
 
-    // Private References
-    private string sceneToLoad;
+    // 
+    private LoadingScreen loadingScreen;
 
-    private bool isLoadSceneReady = false;
+    //private List  
+
     //private 
 
     void Awake()
@@ -37,6 +40,9 @@ public class SceneLoader : MonoBehaviour
         // Re-Reference DDOLs
         //GameManager.Instance.Referencing();
         //EffectManager.Instance.Referencing();
+
+        loadingScreen = FindFirstObjectByType<LoadingScreen>();
+
     }
 
     public bool ComparePreviousCurrentScene()
@@ -74,7 +80,32 @@ public class SceneLoader : MonoBehaviour
             CurrentSceneType = SceneType.INGAME;
         }
     }
+    //
+    public void OnInitiateScene()
+    {
+        //SceneHistory.SetPreviousScene(SceneManager.GetActiveScene().name);
 
+        //SceneManager.LoadScene(SceneName.MainMenu);
+        loadingScreen.SelectLoadingType(LOADING_TRANSITION_TYPE.LOGO);
+        PreLoadSelectedScene(SceneName.MainMenu);
+        
+    }
+
+    public void OnInitiateMainMenuScene()
+    {
+        // fadeout
+        loadingScreen.SelectLoadingType(LOADING_TRANSITION_TYPE.CROSS_FADE_IN);
+        
+        // prepare other scene
+
+        //PreLoadSelectedScene(SceneName.Normal);
+        //SceneManager.LoadSceneAsync(SceneName.MainMenu);
+
+
+    }
+
+
+    //
     public void OnRestartScene()
     {
         // !!!!!!
@@ -87,27 +118,22 @@ public class SceneLoader : MonoBehaviour
 
     }
 
-    public void OnRestartScene(float delayTime)
-    {
-        Time.timeScale = 1f;
-
-        SceneHistory.SetPreviousScene(SceneManager.GetActiveScene().name);
-        PreLoadSelectedScene(SceneManager.GetActiveScene().name);
-
-    }
-
     public void OnLoadMainMenuScene()
     {
         Time.timeScale = 1f;
         SceneHistory.SetPreviousScene(SceneManager.GetActiveScene().name);
         SceneManager.LoadScene(SceneName.MainMenu);
+        //SceneManager.LoadSceneAsync(SceneName.MainMenu);
     }
 
      public void OnLoadNormalScene()
     {
+        Debug.Log("OnLoadNormalScene");
         Time.timeScale = 1f;
         SceneHistory.SetPreviousScene(SceneManager.GetActiveScene().name);
         SceneManager.LoadScene(SceneName.Normal);
+
+
     }
     
     public void LoadSelectedScene(SceneName sceneName)
@@ -134,42 +160,45 @@ public class SceneLoader : MonoBehaviour
         }
     }
 
-    public void PreLoadSelectedScene(string selectedScene)
+    // only with loadingscreen
+    private void PreLoadSelectedScene(string sceneName)
     {
-        sceneToLoad = selectedScene;
 
         SceneHistory.SetPreviousScene(SceneManager.GetActiveScene().name);
 
-        StartCoroutine(PreLoadAsyncScene(sceneToLoad));
+        StartCoroutine(PreLoadAsyncScene(sceneName));
     }
     
-    IEnumerator PreLoadAsyncScene(string sceneToLoad)
+    IEnumerator PreLoadAsyncScene(string sceneName)
     {
 
-        AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(sceneToLoad);
-
+        AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(sceneName);
         asyncOperation.allowSceneActivation = false;
 
         while(!asyncOperation.isDone)
         {
             // for debug
             float progress = Mathf.Clamp01(asyncOperation.progress / 0.9f);
-            Debug.Log("Scene Loading Progress: " + progress);
+            //Debug.Log("Scene Loading Progress: " + progress);
 
-            if(asyncOperation.progress >= 0.9f)
+            if(loadingScreen.IsLoadingAnimationDone)
             {
-                Debug.Log("Scene " + sceneToLoad + " is Ready");
-                isLoadSceneReady = true;
+                // load to next screen
+                if(asyncOperation.progress >= 0.9f)
+                {
+                    asyncOperation.allowSceneActivation = true;
 
-                //asyncOperation.allowSceneActivation = true;
-
-
-
+                }
+                else
+                {
+                    // display loading screen
+                }
             }
 
             yield return null;
-        }
-
-        
+        }        
     }
+    
+
+
 }

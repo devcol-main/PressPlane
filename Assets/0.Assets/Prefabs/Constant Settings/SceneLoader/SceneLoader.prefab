@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &628767755323128577
+--- !u!1 &5237042304900319811
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,50 +8,50 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6744880306183620965}
-  - component: {fileID: 5242764029163514161}
+  - component: {fileID: 1424482131227657236}
+  - component: {fileID: 6453150149347507326}
   m_Layer: 0
-  m_Name: Scene Loader
+  m_Name: SceneLoader
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6744880306183620965
+--- !u!4 &1424482131227657236
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 628767755323128577}
+  m_GameObject: {fileID: 5237042304900319811}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 4009643826087466452}
+  - {fileID: 4476031999975503291}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5242764029163514161
+--- !u!114 &6453150149347507326
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 628767755323128577}
+  m_GameObject: {fileID: 5237042304900319811}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e88acbb9540246e789eba35e1649070, type: 3}
+  m_Script: {fileID: 11500000, guid: 5728f6c778e604a48b15bc442daf2962, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SceneLoader
---- !u!1001 &2386459372864203329
+  m_EditorClassIdentifier: 
+--- !u!1001 &2928881911405398574
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 6744880306183620965}
+    m_TransformParent: {fileID: 1424482131227657236}
     m_Modifications:
     - target: {fileID: 1638032593459937173, guid: a47c5ef6fff3a43b0b990090ad7da06a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -71,15 +71,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1638032593459937173, guid: a47c5ef6fff3a43b0b990090ad7da06a, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1638032593459937173, guid: a47c5ef6fff3a43b0b990090ad7da06a, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1638032593459937173, guid: a47c5ef6fff3a43b0b990090ad7da06a, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1638032593459937173, guid: a47c5ef6fff3a43b0b990090ad7da06a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -97,17 +97,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: LoadingScreen
       objectReference: {fileID: 0}
-    - target: {fileID: 5620091130988343930, guid: a47c5ef6fff3a43b0b990090ad7da06a, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a47c5ef6fff3a43b0b990090ad7da06a, type: 3}
---- !u!4 &4009643826087466452 stripped
+--- !u!4 &4476031999975503291 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1638032593459937173, guid: a47c5ef6fff3a43b0b990090ad7da06a, type: 3}
-  m_PrefabInstance: {fileID: 2386459372864203329}
+  m_PrefabInstance: {fileID: 2928881911405398574}
   m_PrefabAsset: {fileID: 0}

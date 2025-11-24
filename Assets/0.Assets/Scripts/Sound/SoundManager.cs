@@ -44,7 +44,7 @@ public class SoundManager : MonoBehaviour
 
     void OnEnable()
     {
-        UnityEngine.Debug.Log("SM OnEnable");
+        //UnityEngine.Debug.Log("SM OnEnable");
         Referencing();
 
         // soundAsset = FindAnyObjectByType<SoundAsset>();
