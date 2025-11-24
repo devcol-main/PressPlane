@@ -11,7 +11,7 @@ using UnityEngine.SceneManagement;
 
 public enum LOADING_TRANSITION_TYPE
 {
-    NONE, LOGO, CROSS_FADE,
+    NONE, LOGO, CROSS_FADE_OUT, CROSS_FADE_IN 
 }
 
 [Serializable]
@@ -80,123 +80,6 @@ public class LoadingScreen : MonoBehaviour
         IsLoadingAnimationDone = false;
     }
 
-    // move it to coroutine
-    private void Update()
-    {
-
-        // if(true == IsLoadingStart)
-        // {
-        //     switch(LoadingTransitionType)
-        //     {
-        //         case LOADING_TRANSITION_TYPE.LOGO:
-        //             {
-        //                 Debug.Log("FixedUpdated at loading sc");
-        //                 if (logo.animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f)
-        //                 {
-        //                     IsLoadingAnimationDone = true;
-
-        //                 }
-        //             }
-        //             break;
-
-        //         case LOADING_TRANSITION_TYPE.CROSS_FADE:
-        //             {
-
-        //                 if (crossFade.animator.GetCurrentAnimatorStateInfo(0).IsName("CrossFade_Out"))
-        //                 {
-
-        //                     if (crossFade.animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f)
-        //                     {
-        //                         IsLoadingAnimationDone = true;
-        //                     }
-        //                 }
-                        
-
-        //                 /*
-        //                 if (crossFade.animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f)
-        //                 {
-        //                     IsLoadingAnimationDone = true;
-        //                 }
-        //                 */
-        //             }
-        //             break;
-
-
-        //         case LOADING_TRANSITION_TYPE.NONE:
-        //             {
-        //                 IsLoadingAnimationDone = true;
-
-        //             }
-        //             break;
-        //     }
-        //     // logo
-        //     // 추후 제네릭 으로 변LoadingLogo()
-
-        // }
-    }
-
-    IEnumerator CheckLoadingAnimation()
-    {
-        //if(true == IsLoadingStart)
-        while(IsLoadingStart)
-        {
-            switch(LoadingTransitionType)
-            {
-                case LOADING_TRANSITION_TYPE.LOGO:
-                    {
-                        Debug.Log("FixedUpdated at loading sc");
-                        if (logo.animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f)
-                        {
-                            IsLoadingAnimationDone = true;
-
-                        }
-                    }
-                    break;
-
-                case LOADING_TRANSITION_TYPE.CROSS_FADE:
-                    {
-
-                        if (crossFade.animator.GetCurrentAnimatorStateInfo(0).IsName("CrossFade_Out"))
-                        {
-
-                            if (crossFade.animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f)
-                            {
-                                IsLoadingAnimationDone = true;
-                            }
-                        }
-                        
-
-                        /*
-                        if (crossFade.animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f)
-                        {
-                            IsLoadingAnimationDone = true;
-                        }
-                        */
-                    }
-                    break;
-
-
-                case LOADING_TRANSITION_TYPE.NONE:
-                    {
-                        IsLoadingAnimationDone = true;
-
-                    }
-                    break;
-            }
-            // logo
-            // 추후 제네릭 으로 변LoadingLogo()
-
-            Debug.Log("CheckLoadingAnimation inside while");
-
-            yield return null;
-            Debug.Log("CheckLoadingAnimation inside while - after");
-        }
-        
-        Debug.Log("CheckLoadingAnimation outsite while");
-        yield return null;
-        Debug.Log("CheckLoadingAnimation outsite while - after");
-    }
-
 
     private void DisableAllLoading()
     {
@@ -226,12 +109,20 @@ public class LoadingScreen : MonoBehaviour
                 }
                 break;
 
-            case LOADING_TRANSITION_TYPE.CROSS_FADE:
+            case LOADING_TRANSITION_TYPE.CROSS_FADE_OUT:
                 {
                     //LoadingCrossFadeEnd();
                     //LoadingCrossFade();
 
                     CrossFadeOut();
+                }
+                break;
+            case LOADING_TRANSITION_TYPE.CROSS_FADE_IN:
+                {
+                    //LoadingCrossFadeEnd();
+                    //LoadingCrossFade();
+
+                    CrossFadeIn();
                 }
                 break;
 
@@ -246,15 +137,90 @@ public class LoadingScreen : MonoBehaviour
     }
 
 
+    IEnumerator CheckLoadingAnimation()
+    {
+        //if(true == IsLoadingStart)
+        while(IsLoadingStart)
+        {
+            switch(LoadingTransitionType)
+            {
+                case LOADING_TRANSITION_TYPE.LOGO:
+                    {
+                        //Debug.Log("FixedUpdated at loading sc");
+                        if (logo.animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f)
+                        {
+                            IsLoadingAnimationDone = true;
+
+                        }
+                    }
+                    break;
+
+                case LOADING_TRANSITION_TYPE.CROSS_FADE_OUT:
+                    {
+
+                        if (crossFade.animator.GetCurrentAnimatorStateInfo(0).IsName("CrossFade_Out"))
+                        {
+
+                            if (crossFade.animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f)
+                            {
+                                IsLoadingAnimationDone = true;
+                            }
+                        }                        
+
+                        /*
+                        if (crossFade.animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f)
+                        {
+                            IsLoadingAnimationDone = true;
+                        }
+                        */
+                    }
+                    break;
+                case LOADING_TRANSITION_TYPE.CROSS_FADE_IN:
+                    {
+                        if (crossFade.animator.GetCurrentAnimatorStateInfo(0).IsName("CrossFade_In"))
+                        {
+                            if (crossFade.animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f)
+                            {
+                                IsLoadingAnimationDone = true;
+                            }
+                        }   
+                    }
+                    break;
+
+
+                case LOADING_TRANSITION_TYPE.NONE:
+                    {
+                        IsLoadingAnimationDone = true;
+
+                    }
+                    break;
+            }
+            // logo
+            // 추후 제네릭 으로 변LoadingLogo()
+
+            //Debug.Log("CheckLoadingAnimation inside while");
+
+            yield return null;
+            //Debug.Log("CheckLoadingAnimation inside while - after");
+        }
+        
+        //Debug.Log("CheckLoadingAnimation outsite while");
+        yield return null;
+        //Debug.Log("CheckLoadingAnimation outsite while - after");
+    }
+
+
+
     // Order: StartCrossFade() activate cross fade animation / then End CrossFadeEnd() 
     private void CrossFadeIn()
     {
         crossFade._crossFade.SetActive(true);
-
+        crossFade.animator.SetTrigger("FadeIn");    
     }
 
     private void CrossFadeOut()
     {
+        crossFade._crossFade.SetActive(true);
         crossFade.animator.SetTrigger("Start");       
 
     }

@@ -26,9 +26,8 @@ public class SceneLoader : MonoBehaviour
     // 
     private LoadingScreen loadingScreen;
 
+    //private List  
 
-
-    
     //private 
 
     void Awake()
@@ -90,6 +89,18 @@ public class SceneLoader : MonoBehaviour
         loadingScreen.SelectLoadingType(LOADING_TRANSITION_TYPE.LOGO);
         PreLoadSelectedScene(SceneName.MainMenu);
         
+    }
+
+    public void OnInitiateMainMenuScene()
+    {
+        // fadeout
+        loadingScreen.SelectLoadingType(LOADING_TRANSITION_TYPE.CROSS_FADE_IN);
+        
+        // prepare other scene
+
+        //PreLoadSelectedScene(SceneName.Normal);
+        //SceneManager.LoadSceneAsync(SceneName.MainMenu);
+
 
     }
 
@@ -112,13 +123,17 @@ public class SceneLoader : MonoBehaviour
         Time.timeScale = 1f;
         SceneHistory.SetPreviousScene(SceneManager.GetActiveScene().name);
         SceneManager.LoadScene(SceneName.MainMenu);
+        //SceneManager.LoadSceneAsync(SceneName.MainMenu);
     }
 
      public void OnLoadNormalScene()
     {
+        Debug.Log("OnLoadNormalScene");
         Time.timeScale = 1f;
         SceneHistory.SetPreviousScene(SceneManager.GetActiveScene().name);
         SceneManager.LoadScene(SceneName.Normal);
+
+
     }
     
     public void LoadSelectedScene(SceneName sceneName)
@@ -158,14 +173,13 @@ public class SceneLoader : MonoBehaviour
     {
 
         AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(sceneName);
-
         asyncOperation.allowSceneActivation = false;
 
         while(!asyncOperation.isDone)
         {
             // for debug
             float progress = Mathf.Clamp01(asyncOperation.progress / 0.9f);
-            Debug.Log("Scene Loading Progress: " + progress);
+            //Debug.Log("Scene Loading Progress: " + progress);
 
             if(loadingScreen.IsLoadingAnimationDone)
             {
@@ -182,11 +196,9 @@ public class SceneLoader : MonoBehaviour
             }
 
             yield return null;
-        }
-
-        
+        }        
     }
-    //
-
     
+
+
 }
