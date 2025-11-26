@@ -108,10 +108,16 @@ public class SoundManager : MonoBehaviour
     {
         return sfx.PlaySFXOneShot(sfxGroup,sfxName);
     }
+    public float PlaySFXOneShot(SoundAsset.SFXGroup sfxGroup, SoundAsset.SFXIngame sfxName)
+    {
+       return sfx.PlaySFXOneShot(sfxGroup,sfxName);
+    }
     public float PlaySFXOneShot(SoundAsset.SFXGroup sfxGroup, SoundAsset.SFXPlayerName sfxName)
     {
        return sfx.PlaySFXOneShot(sfxGroup,sfxName);
     }
+    
+
     //=====
 
     // ALL / BGM (ALL or Music or Ambient) / SFX (ALL of except UI or except specific one)
@@ -169,6 +175,12 @@ public class SoundManager : MonoBehaviour
 
                 }
                 break;
+            case SoundAsset.SFXGroup.INGAME:
+                {
+                    audioMixer.SetFloat(GlobalString.AudioMixer.UI, Mathf.Log10(volume) * 20f);
+
+                }
+                break;
 
             case SoundAsset.SFXGroup.PLAYER:
                 {
@@ -189,7 +201,7 @@ public class SoundManager : MonoBehaviour
 
                 }
                 break;
-
+            /*
             case SoundAsset.SFXGroup.PLAYER | SoundAsset.SFXGroup.OBSTACLE | SoundAsset.SFXGroup.ENEMY:
                 {
                     audioMixer.SetFloat(GlobalString.AudioMixer.OBSTACLE, Mathf.Log10(volume) * 20f);
@@ -198,6 +210,7 @@ public class SoundManager : MonoBehaviour
 
                 }
                 break;
+                */
         }
 
     }

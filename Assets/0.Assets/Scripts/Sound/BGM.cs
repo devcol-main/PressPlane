@@ -67,10 +67,10 @@ public class BGM : MonoBehaviour
     public void PlayBGM(SoundAsset.BGM bgmName,
     SoundAsset.BGM_AMBIENT bgmAmbientName = SoundAsset.BGM_AMBIENT.NONE)
     {
-        //print("PlayBGM: " + bgmName.ToString());
+        
 
-        AudioSource audioSource = (SoundAsset.BGM.NONE == bgmName) ? audioSourceAmbient : audioSourceMusic;
-
+        //AudioSource audioSource = (SoundAsset.BGM.NONE == bgmName) ? audioSourceAmbient : audioSourceMusic;
+        AudioSource audioSource = audioSourceMusic;
 
         foreach (var bgmSound in soundAsset.bgmSoundAudioClipArray)
         {

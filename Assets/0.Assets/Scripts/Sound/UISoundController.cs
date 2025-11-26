@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
 
-public class UISoundController : MonoBehaviour
+public class UISoundController : MonoBehaviour, ISaveable
 {
     [SerializeField] private AudioMixer audioMixer;
 
@@ -49,9 +49,9 @@ public class UISoundController : MonoBehaviour
     private float volume_SFX;
     private float volume_Last_SFX;
 
-
-    private void Start()
+    void OnEnable()
     {
+                //
         //Debug.Log("UISoundController");
         masterVolumeSlider.onValueChanged.AddListener(MasterVolumeChanged);
         masterVolumeToggle.onValueChanged.AddListener(ToggleSwitchMasterVolume);
@@ -59,12 +59,28 @@ public class UISoundController : MonoBehaviour
         bgmVolumeSlider.onValueChanged.AddListener(BGMVolumeChanged);
         bgmVolumeToggle.onValueChanged.AddListener(ToggleSwitchBGMVolume);
 
-        // sfxSlider.onValueChanged.AddListener(SFXVolumeChanged);
+
+        // can't change onValueChanged directly
+        //sfxVolumeSlider.onValueChanged.AddListener(SetSFXVolume);
+
         sfxVolumeSlider.onValueChanged.AddListener(SFXVolumeChanged);
         sfxVolumeToggle.onValueChanged.AddListener(ToggleSwitchSFXVolume);
+    }
+
+
+    private void Start()
+    {
+        // load    
+
+
+
+
 
         // Set / Load value
         //masterVolumeSlider.value = 0.65f;
+
+        //SetMasterVolume(volume_Master);
+        //ToggleSwitchMasterVolume(masterVolumeToggle.isOn, false);
 
 
     }
@@ -100,6 +116,7 @@ public class UISoundController : MonoBehaviour
     {
 
         masterVolumeToggle.isOn = isOn;
+        //GameData.Instance.settingData.isMasterVolumeOn = isOn;
 
         float length;
 
@@ -110,6 +127,7 @@ public class UISoundController : MonoBehaviour
         }
         else
         {
+            Debug.Log("here");
             length = SoundManager.Instance.PlaySFXOneShot(SoundAsset.SFXGroup.UI, SoundAsset.SFXUIName.Off);
             volume_Master = GlobalData.Audio.AudioMixerMinVolume;
         }
@@ -124,6 +142,48 @@ public class UISoundController : MonoBehaviour
 
     }
 
+    public void ToggleSwitchMasterVolume(bool isOn, bool isSoundOn)
+    {
+
+        masterVolumeToggle.isOn = isOn;
+        //GameData.Instance.settingData.isMasterVolumeOn = isOn;
+
+        float length;
+
+        if (isOn)
+        {
+            
+            volume_Master = volume_Last_Master;
+
+            if(isSoundOn)
+            {
+                length = SoundManager.Instance.PlaySFXOneShot(SoundAsset.SFXGroup.UI, SoundAsset.SFXUIName.On);    
+            }
+            
+        }
+        else
+        {            
+            volume_Master = GlobalData.Audio.AudioMixerMinVolume;
+
+            if(isSoundOn)
+            {
+
+                
+                length = SoundManager.Instance.PlaySFXOneShot(SoundAsset.SFXGroup.UI, SoundAsset.SFXUIName.Off);
+            }
+        }
+
+        masterVolumeSliderHandleImage.GetComponent<Image>().enabled = isOn;
+        masterVolumeSliderFill.SetActive(isOn);
+
+        SwapImage(isOn, masterVolumeToggleOnImage, masterVolumeToggleOffImage);
+
+        //StartCoroutine(DelayVolumeChange(GlobalString.AudioMixer.Master, volume_Master, length));
+        //audioMixer.SetFloat(GlobalString.AudioMixer.Master, Mathf.Log10(volume_Master) * 20);
+
+    }
+    
+    
     public void MasterVolumeChanged(float volume)
     {
         Debug.Log("MasterVolumeChanged");
@@ -138,17 +198,19 @@ public class UISoundController : MonoBehaviour
         {
             volume_Master = GlobalData.Audio.AudioMixerMinVolume;
 
-            ToggleSwitchMasterVolume(false);
+            ToggleSwitchMasterVolume(false,false);
 
         }
         else
         {
             volume_Master = volume;
 
-            ToggleSwitchMasterVolume(true);
+            ToggleSwitchMasterVolume(true, false);
         }
 
         volume_Last_Master = volume;
+
+        //GameData.Instance.settingData.masterVolume = volume;
 
         audioMixer.SetFloat(GlobalString.AudioMixer.Master, Mathf.Log10(volume_Master) * 20);
 
@@ -166,6 +228,8 @@ public class UISoundController : MonoBehaviour
 
         if (isOn)
         {
+
+            //Debug.Log("ToggleSwitchBGMVolume");
             length = SoundManager.Instance.PlaySFXOneShot(SoundAsset.SFXGroup.UI, SoundAsset.SFXUIName.On);
 
             volume_BGM = volume_Last_BGM;
@@ -191,6 +255,44 @@ public class UISoundController : MonoBehaviour
 
     }
 
+    public void ToggleSwitchBGMVolume(bool isOn, bool isSoundOn)
+    {
+        bgmVolumeToggle.isOn = isOn;
+        float length;
+
+        if (isOn)
+        {            
+            volume_BGM = volume_Last_BGM;
+
+            if(isSoundOn)
+            {
+                length = SoundManager.Instance.PlaySFXOneShot(SoundAsset.SFXGroup.UI, SoundAsset.SFXUIName.On);               
+            }
+            
+
+        }
+        else
+        {           
+            volume_BGM = GlobalData.Audio.AudioMixerMinVolume;
+
+            if(isSoundOn)
+            {
+                length = SoundManager.Instance.PlaySFXOneShot(SoundAsset.SFXGroup.UI, SoundAsset.SFXUIName.Off);
+            }
+        }
+
+        bgmVolumeSliderHandleImage.GetComponent<Image>().enabled = isOn;
+        bgmVolumeSliderFill.SetActive(isOn);
+
+        SwapImage(isOn, bgmVolumeToggleOnImage, bgmVolumeToggleOffImage);
+
+        //StartCoroutine(DelayVolumeChange(GlobalString.AudioMixer.BGM, volume_BGM, length));
+
+        // audioMixer.SetFloat(GlobalString.AudioMixer.BGM, Mathf.Log10(volume_BGM) * 20);
+
+
+
+    }
     public void BGMVolumeChanged(float volume)
     {
 
@@ -203,7 +305,7 @@ public class UISoundController : MonoBehaviour
         {
             volume_BGM = GlobalData.Audio.AudioMixerMinVolume;
 
-            ToggleSwitchBGMVolume(false);
+            ToggleSwitchBGMVolume(false,false);
 
         }
         else
@@ -211,7 +313,7 @@ public class UISoundController : MonoBehaviour
             volume_BGM = volume;
 
 
-            ToggleSwitchBGMVolume(true);
+            ToggleSwitchBGMVolume(true,false);
         }
 
         volume_Last_BGM = volume;
@@ -234,9 +336,7 @@ public class UISoundController : MonoBehaviour
         if (isOn)
         {
             volume_SFX = volume_Last_SFX;
-
             audioMixer.SetFloat(GlobalString.AudioMixer.SFX, Mathf.Log10(volume_SFX) * 20);
-
             length = SoundManager.Instance.PlaySFXOneShot(SoundAsset.SFXGroup.UI, SoundAsset.SFXUIName.On);
 
         }
@@ -244,10 +344,52 @@ public class UISoundController : MonoBehaviour
         {
             volume_SFX = GlobalData.Audio.AudioMixerMinVolume;
 
-            length = SoundManager.Instance.PlaySFXOneShot(SoundAsset.SFXGroup.UI, SoundAsset.SFXUIName.Off);
 
+            length = SoundManager.Instance.PlaySFXOneShot(SoundAsset.SFXGroup.UI, SoundAsset.SFXUIName.Off);
             StartCoroutine(DelayVolumeChange(GlobalString.AudioMixer.SFX, volume_SFX, length));
 
+
+        }
+
+        sfxVolumeSliderHandleImage.GetComponent<Image>().enabled = isOn;
+        sfxVolumeSliderFill.SetActive(isOn);
+
+        SwapImage(isOn, sfxVolumeToggleOnImage, sfxVolumeToggleOffImage);
+
+        //StartCoroutine(DelayVolumeChange(GlobalString.AudioMixer.SFX, volume_SFX, length));
+        //audioMixer.SetFloat(GlobalString.AudioMixer.SFX, Mathf.Log10(volume_SFX) * 20);
+
+    }
+
+    // to avoid continuous sound while changing volume with slider
+    public void ToggleSwitchSFXVolume(bool isOn, bool isSoundOn)
+    {
+        sfxVolumeToggle.isOn = isOn;
+        float length;
+
+        if (isOn)
+        {
+            volume_SFX = volume_Last_SFX;
+            audioMixer.SetFloat(GlobalString.AudioMixer.SFX, Mathf.Log10(volume_SFX) * 20);
+
+            if(isSoundOn)
+            {
+                length = SoundManager.Instance.PlaySFXOneShot(SoundAsset.SFXGroup.UI, SoundAsset.SFXUIName.On);
+
+            }
+
+        }
+        else
+        {
+            volume_SFX = GlobalData.Audio.AudioMixerMinVolume;
+
+            if(isSoundOn)
+            {
+                length = SoundManager.Instance.PlaySFXOneShot(SoundAsset.SFXGroup.UI, SoundAsset.SFXUIName.Off);
+                StartCoroutine(DelayVolumeChange(GlobalString.AudioMixer.SFX, volume_SFX, length));
+    
+            }
+            
 
         }
 
@@ -269,21 +411,20 @@ public class UISoundController : MonoBehaviour
         SetSFXVolume(volume);
     }
 
-    private void SetSFXVolume(float volume)
+    public void SetSFXVolume(float volume)
     {
         if (0 == volume)
         {
             volume_SFX = GlobalData.Audio.AudioMixerMinVolume;
 
-            ToggleSwitchSFXVolume(false);
+            ToggleSwitchSFXVolume(false,isSoundOn: false);
 
         }
         else
         {
             volume_SFX = volume;
 
-
-            ToggleSwitchSFXVolume(true);
+            ToggleSwitchSFXVolume(true, isSoundOn: false);
         }
 
         volume_Last_SFX = volume;
@@ -291,6 +432,33 @@ public class UISoundController : MonoBehaviour
         audioMixer.SetFloat(GlobalString.AudioMixer.SFX, Mathf.Log10(volume_SFX) * 20);
 
     }
-
     #endregion
+
+
+    public void PopulateSaveData(SaveDataCollection saveData)
+    {        
+
+        Debug.Log("PopulateSaveData from" + this.gameObject.name);
+        saveData.settingSoundData.isMasterVolumeOn = masterVolumeToggle.isOn;
+        saveData.settingSoundData.masterVolume = volume_Master;
+
+        saveData.settingSoundData.masterVolumeSliderValue = masterVolumeSlider.value;
+
+    }
+
+    public void LoadFromSaveData(SaveDataCollection saveData)
+    {
+        Debug.Log("LoadFromSaveData from" + this.gameObject.name);
+        //volume_Master = saveData.settingSoundData.masterVolume;        
+        //masterVolumeToggle.isOn = saveData.settingSoundData.isMasterVolumeOn;
+        
+        //ToggleSwitchMasterVolume(saveData.settingSoundData.isMasterVolumeOn, false);
+
+        masterVolumeSlider.value = saveData.settingSoundData.masterVolumeSliderValue;
+
+        //SetMasterVolume(saveData.settingSoundData.masterVolume);
+        ToggleSwitchMasterVolume(saveData.settingSoundData.isMasterVolumeOn, false);
+        
+    }
+
 }

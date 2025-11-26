@@ -86,6 +86,9 @@ public class GameManager : MonoBehaviour
     public void RestartScene()
     {
         sceneLoader.OnRestartScene();
+
+        // resume bgm
+
     }
 
     public void MainMenuScene()
@@ -102,6 +105,9 @@ public class GameManager : MonoBehaviour
     {
         
         uiController.GameOver();
+        // 
+        SoundManager.Instance.PlayBGM(SoundAsset.BGM.NONE);
+
     }
 
     public void IncreaseScore()
@@ -109,6 +115,12 @@ public class GameManager : MonoBehaviour
         uiController.IncreaseScore();
 
 
+    }
+    //
+
+    private void OnApplicationQuit()
+    {
+        SaveLoadManager.Instance.Save();
     }
     
 

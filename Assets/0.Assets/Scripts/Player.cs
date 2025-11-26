@@ -127,6 +127,7 @@ public class Player : MonoBehaviour
         // Cam Shake
         EffectManager.Instance.PlayerDamagedEffect();
 
+        SoundManager.Instance.PlaySFXOneShot(SoundAsset.SFXGroup.PLAYER, SoundAsset.SFXPlayerName.Damaged);
 
         if (hp <= 0)
         {
@@ -134,6 +135,12 @@ public class Player : MonoBehaviour
 
             // Notify GameManager about player death
             //GameManager.Instance.OnPlayerDeath();
+            SoundManager.Instance.PlaySFXOneShot(SoundAsset.SFXGroup.PLAYER, SoundAsset.SFXPlayerName.Death);
+
+        }
+        else
+        {
+            //SoundManager.Instance.PlaySFXOneShot(SoundAsset.SFXGroup.PLAYER, SoundAsset.SFXPlayerName.Damaged);
         }
     }
 

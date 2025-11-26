@@ -11,6 +11,9 @@ public class SaveLoadManager : MonoBehaviour
     // 
 
     //
+    private UISoundController uiSoundController;
+
+    //
     private string fileName = "SaveData.text";
     public static SaveLoadManager Instance;
     void Awake()
@@ -47,6 +50,7 @@ public class SaveLoadManager : MonoBehaviour
     public void Referencing()
     {
         localSaveLoad = FindFirstObjectByType<LocalSaveLoad>();
+        uiSoundController = FindFirstObjectByType<UISoundController>();
 
     }
 
@@ -127,13 +131,16 @@ public class SaveLoadManager : MonoBehaviour
     public void PopulateSaveData(SaveDataCollection saveDataCollection)
     {
 
-        Debug.Log("PopulateSaveData from SaveSystem");
+        Debug.Log("PopulateSaveData from" + this.gameObject.name);
 
         //// Game Setting
         // Timer
         //timer.PopulateSaveData(saveDataCollection);
 
         GameData.Instance.PopulateSaveData(saveDataCollection);
+
+        uiSoundController.PopulateSaveData(saveDataCollection);
+
 
     }
 
@@ -144,13 +151,15 @@ public class SaveLoadManager : MonoBehaviour
         //debugText.text = "Load Done";
         */
 
-        Debug.Log("LoadFromSaveData");
+        Debug.Log("LoadFromSaveData from" + this.gameObject.name);
 
         //// GameSetting
         // Timer
         //timer.LoadFromSaveData(saveDataCollection);
 
         GameData.Instance.LoadFromSaveData(saveDataCollection);
+
+        uiSoundController.LoadFromSaveData(saveDataCollection);
 
     }
 

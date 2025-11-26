@@ -177,6 +177,7 @@ AudioMixerController:
     - 5f73bb57833c049bfacb892afcd0b002
     - 7468cbee9a09642bba9daf1e47ce9323
     - 91686b26488324e5b8e8cf2afb595c4e
+    - e9ec58567a0df44dba819cc41079944d
     name: View
   m_CurrentViewIndex: 0
   m_TargetSnapshot: {fileID: 24500006}
@@ -319,6 +320,7 @@ AudioMixerGroupController:
   m_GroupID: cca60bff5656d456880108388f25d051
   m_Children:
   - {fileID: 3539653202530817714}
+  - {fileID: 8605383311006457516}
   - {fileID: -7881210894161693582}
   - {fileID: -753551097782614796}
   - {fileID: 8315491505340895306}
@@ -364,3 +366,36 @@ AudioMixerGroupController:
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
+--- !u!243 &8605383311006457516
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: INGAME
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: e9ec58567a0df44dba819cc41079944d
+  m_Children: []
+  m_Volume: 6d329f63ee6fc47008490c1556d7e79d
+  m_Pitch: 6a50e5f67f51d42ff9e16d4127ceaa9b
+  m_Send: 00000000000000000000000000000000
+  m_Effects:
+  - {fileID: 9185625311895974861}
+  m_UserColorIndex: 5
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
+--- !u!244 &9185625311895974861
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: 58c364f6225db4ae1b05c6b32b3d2d38
+  m_EffectName: Attenuation
+  m_MixLevel: bab7a80ecd3214e65a250174d5464682
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0

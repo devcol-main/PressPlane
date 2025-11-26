@@ -8,6 +8,7 @@ public abstract class SceneBase : MonoBehaviour
     protected virtual void Start()
     {
         sceneLoader = FindAnyObjectByType<SceneLoader>();
+        
     }
 
     public abstract void SetBGM();     

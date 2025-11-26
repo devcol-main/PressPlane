@@ -24,6 +24,7 @@ public class SaveDataCollection
         public bool isSFXVolumeOn;
 
         public float masterVolume;
+        public float masterVolumeSliderValue;
         public float bgmVolume;
         public float sfxVolume;
 

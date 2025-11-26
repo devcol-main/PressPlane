@@ -180,6 +180,8 @@ public class NormalScene : SceneBase, IGameScene
 
         player.GameStart();
 
+        SoundManager.Instance.PlaySFXOneShot(SoundAsset.SFXGroup.UI, SoundAsset.SFXUIName.StartGame);
+
     }
 
 

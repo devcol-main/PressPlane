@@ -4,7 +4,7 @@ using UnityEngine;
 public class Obstacle : MonoBehaviour
 {
 
-    private float minHeight = -3.5f;
+    private float minHeight = -3.3f;
     private float maxHeight = 3.5f;
 
     private BoxCollider2D boxCollider2D;

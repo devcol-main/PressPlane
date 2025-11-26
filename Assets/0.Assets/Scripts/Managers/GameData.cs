@@ -8,9 +8,21 @@ public class GameData : MonoBehaviour, ISaveable
         public int CurrentScore;
     }
 
-    public static GameData Instance;
+/*
+    public struct SettingData
+    {
+        // volumes
+        public bool isMasterVolumeOn;
+        public float masterVolume;
+
+    }
+
+*/
 
     public IngameData ingameData;
+    //public SettingData settingData;
+
+    public static GameData Instance;
 
     void Awake()
     {
@@ -35,11 +47,17 @@ public class GameData : MonoBehaviour, ISaveable
     {
         Debug.Log("Game data-PopulateSaveData");
         saveDataCollection.normalSceneData.HighScore = ingameData.HighScore;
+
+        //saveDataCollection.settingSoundData.isMasterVolumeOn = settingData.isMasterVolumeOn;
+        //saveDataCollection.settingSoundData.masterVolume = settingData.masterVolume;
     }
 
     public void LoadFromSaveData(SaveDataCollection saveDataCollection)
     {
         Debug.Log("Game data-LoadFromSaveData");
         ingameData.HighScore = saveDataCollection.normalSceneData.HighScore;
+
+        //settingData.isMasterVolumeOn = saveDataCollection.settingSoundData.isMasterVolumeOn;
+        //settingData.masterVolume = saveDataCollection.settingSoundData.masterVolume;
     }
 }

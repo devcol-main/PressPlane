@@ -96,13 +96,17 @@ public class IngameSceneUI : MonoBehaviour
         SoundManager.Instance.PlaySFXOneShot(SoundAsset.SFXGroup.UI, SoundAsset.SFXUIName.Off);
         
         GameManager.Instance.ResumeGame();
+
+        SaveLoadManager.Instance.Save();
+
+        
     }
 
     public void OnRestartButton()
     {
         SoundManager.Instance.PlaySFXOneShot(SoundAsset.SFXGroup.UI, SoundAsset.SFXUIName.Restart);
 
-
+        SaveLoadManager.Instance.Save();
         GameManager.Instance.RestartScene();
 
     }
@@ -111,6 +115,8 @@ public class IngameSceneUI : MonoBehaviour
     {
         SoundManager.Instance.PlaySFXOneShot(SoundAsset.SFXGroup.UI,SoundAsset.SFXUIName.MainMenu);
 
+        SaveLoadManager.Instance.Save();
+        
         GameManager.Instance.MainMenuScene();
         
     }

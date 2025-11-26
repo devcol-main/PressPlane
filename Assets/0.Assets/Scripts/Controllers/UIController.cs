@@ -55,6 +55,7 @@ public class UIController : MonoBehaviour
 
     public void OffInGameSettingPanel()
     {
+        
         ingameSceneUI.OffInGameSettingPanel();
     }
 
@@ -64,21 +65,22 @@ public class UIController : MonoBehaviour
     public void IncreaseScore()
     {
         ingameSceneUI.IncreaseScore();
+        
 
     }
     
-    // for ui Time.unscaledDeltaTime    
-    #if UNITY_EDITOR
-    void Update()
-    {        
+//     // for ui Time.unscaledDeltaTime    
+//     #if UNITY_EDITOR
+//     void Update()
+//     {        
 
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            IncreaseScore();
+//         if (Input.GetKeyDown(KeyCode.C))
+//         {
+//             IncreaseScore();
 
-        }
-    }
-#endif
+//         }
+//     }
+// #endif
     
 #endregion
 

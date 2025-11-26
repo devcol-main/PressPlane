@@ -33,6 +33,7 @@ public class SoundAsset : MonoBehaviour
         ALL,
         SFX,
         UI,
+        INGAME,
         PLAYER,
         ENEMY,
         OBSTACLE,
@@ -45,6 +46,13 @@ public class SoundAsset : MonoBehaviour
         SelectHighPitch, SelectLowPitch,
         Deselect,
         Restart, MainMenu,
+        StartGame,
+        
+    }
+
+    public enum SFXIngame
+    {
+        Score, ScoreLong, HighScore, GameOver,
     }
 
     public enum SFXPlayerName
@@ -83,6 +91,15 @@ public class SoundAsset : MonoBehaviour
     }
 
     [System.Serializable]
+    public class SFXIngameAudioClip
+    {        
+        private SFXGroup sfxGroup = SFXGroup.INGAME;
+        public SFXIngame soundName;
+        public AudioClip audioClip;
+
+    }
+
+    [System.Serializable]
     public class SFXPlayerAudioClip
     {        
         private SFXGroup sfxGroup = SFXGroup.PLAYER;
@@ -94,7 +111,10 @@ public class SoundAsset : MonoBehaviour
 
 
     public BgmSoundAudioClip[] bgmSoundAudioClipArray;
+    
+    //
     public SFXUIAudioClip[] sfxUIAudioClipArray;
+    public SFXIngameAudioClip[] sfxIngameAudioClipArray;
     public SFXPlayerAudioClip[] sfxPlayerAudioClipArray;
 
     
