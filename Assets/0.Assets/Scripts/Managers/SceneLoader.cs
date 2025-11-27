@@ -109,9 +109,7 @@ public class SceneLoader : MonoBehaviour
     public void OnRestartScene()
     {
         // !!!!!!
-        Time.timeScale = 1f;
-
-        SceneHistory.SetPreviousScene(SceneManager.GetActiveScene().name);
+        PrepareBeforeLoading();
 
         //SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
@@ -120,8 +118,8 @@ public class SceneLoader : MonoBehaviour
 
     public void OnLoadMainMenuScene()
     {
-        Time.timeScale = 1f;
-        SceneHistory.SetPreviousScene(SceneManager.GetActiveScene().name);
+        PrepareBeforeLoading();
+
         SceneManager.LoadScene(SceneName.MainMenu);
         //SceneManager.LoadSceneAsync(SceneName.MainMenu);
     }
@@ -129,8 +127,8 @@ public class SceneLoader : MonoBehaviour
      public void OnLoadNormalScene()
     {
         Debug.Log("OnLoadNormalScene");
-        Time.timeScale = 1f;
-        SceneHistory.SetPreviousScene(SceneManager.GetActiveScene().name);
+        PrepareBeforeLoading();
+
         SceneManager.LoadScene(SceneName.Normal);
 
 
@@ -138,9 +136,7 @@ public class SceneLoader : MonoBehaviour
     
     public void LoadSelectedScene(SceneName sceneName)
     {
-        Time.timeScale = 1f;
-
-        SceneHistory.SetPreviousScene(SceneManager.GetActiveScene().name);
+        PrepareBeforeLoading();
 
         switch(sceneName.ToString())
         {
@@ -160,10 +156,20 @@ public class SceneLoader : MonoBehaviour
         }
     }
 
+    private void PrepareBeforeLoading()
+    {
+        Time.timeScale = 1f;
+        SaveLoadManager.Instance.Save();
+
+        SceneHistory.SetPreviousScene(SceneManager.GetActiveScene().name);
+        
+    }
+
     // only with loadingscreen
     private void PreLoadSelectedScene(string sceneName)
     {
 
+        //PrepareBeforeLoading();
         SceneHistory.SetPreviousScene(SceneManager.GetActiveScene().name);
 
         StartCoroutine(PreLoadAsyncScene(sceneName));
