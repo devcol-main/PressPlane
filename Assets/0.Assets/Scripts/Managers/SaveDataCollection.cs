@@ -19,14 +19,23 @@ public class SaveDataCollection
     [System.Serializable]
     public struct SettingSoundData
     {
-        public bool isMasterVolumeOn;
-        public bool isBGMVolumeOn;
-        public bool isSFXVolumeOn;
+        // Master 
+        public bool isMasterVolumeOn;               
 
         public float masterVolume;
         public float masterVolumeSliderValue;
+
+        // BGM
+
+        public bool isBGMVolumeOn;
         public float bgmVolume;
+        public float bgmVolumeSliderValue;
+
+        // SFX
+
+        public bool isSFXVolumeOn;
         public float sfxVolume;
+        public float sfxVolumeSliderValue;
 
     }
 
