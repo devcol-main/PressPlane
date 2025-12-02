@@ -54,11 +54,11 @@ public class NormalScene : SceneBase, IGameScene
         // Scene Transition
         // if last scene was not this scene to inititae transition
 
-        Debug.Log("sceneLoader.ComparePreviousCurrentScene(): " + sceneLoader.ComparePreviousCurrentScene());
+        //Debug.Log("sceneLoader.ComparePreviousCurrentScene(): " + sceneLoader.ComparePreviousCurrentScene());
 
         if (!sceneLoader.ComparePreviousCurrentScene())
         {
-            Debug.Log("Firstime Scene, perfome Scene transition");
+            //Debug.Log("Firstime Scene, perfome Scene transition");
             // Perform
             StartCoroutine(PerformFirstimeSceneTransition());
 
@@ -108,7 +108,7 @@ public class NormalScene : SceneBase, IGameScene
 
         yield return new WaitForSeconds(duration);
 
-        Debug.Log("PerformFirstimeSceneTransition complete") ;
+        //Debug.Log("PerformFirstimeSceneTransition complete") ;
 
         startButton.SetActive(true);
         

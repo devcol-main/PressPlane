@@ -2,7 +2,7 @@ using UnityEngine;
 using TMPro;
 
 
-public class Score : MonoBehaviour
+public class Score : MonoBehaviour, ISaveable
 {
     //
     public TextMeshProUGUI CurrentScoreText { get { return currentScoreText; } }
@@ -28,11 +28,11 @@ public class Score : MonoBehaviour
     void Start()
     {
         // load
-        HighScore = GameData.Instance.ingameData.HighScore;
+        //HighScore = GameData.Instance.ingameData.HighScore;
 
-        Debug.Log("High Score: " + HighScore);
+        Debug.Log("High Score: " + highScore);
 
-        highScore = HighScore;
+        //highScore = HighScore;
 
     }
 
@@ -45,6 +45,7 @@ public class Score : MonoBehaviour
 
         if (CheckHighScore())
         {
+            //GameData.Instance.ingameData.HighScore = highScore;
             // save
             SaveLoadManager.Instance.Save();
 
@@ -54,40 +55,37 @@ public class Score : MonoBehaviour
                 isAchieveHighScore = true;
                 // sound            
                 SoundManager.Instance.PlaySFXOneShot(SoundAsset.SFXGroup.INGAME, SoundAsset.SFXIngame.HighScore);
+
                 // highscore effect
+                EffectManager.Instance.PlayConfettiPS();
 
             }
             else
             {
-                if (0 == (currentScore % 10))
-                {
-                    SoundManager.Instance.PlaySFXOneShot(SoundAsset.SFXGroup.INGAME, SoundAsset.SFXIngame.ScoreLong);
-                }
-                else
-                {
-                    SoundManager.Instance.PlaySFXOneShot(SoundAsset.SFXGroup.INGAME, SoundAsset.SFXIngame.Score);
-                }
+                PlayScoreSound();
             }
-
-
 
         }
         else
         {
-            //
-            if (0 == (currentScore % 10))
-            {
-                SoundManager.Instance.PlaySFXOneShot(SoundAsset.SFXGroup.INGAME, SoundAsset.SFXIngame.ScoreLong);
-            }
-            else
-            {
-                SoundManager.Instance.PlaySFXOneShot(SoundAsset.SFXGroup.INGAME, SoundAsset.SFXIngame.Score);
-            }
+            PlayScoreSound();
 
         }
 
         Debug.Log("currentScoreText: " + currentScore + " | " + " highScore: " + highScore);
 
+    }
+
+    private void PlayScoreSound()
+    {
+        if (0 == (currentScore % 10))
+        {
+            SoundManager.Instance.PlaySFXOneShot(SoundAsset.SFXGroup.INGAME, SoundAsset.SFXIngame.ScoreLong);
+        }
+        else
+        {
+            SoundManager.Instance.PlaySFXOneShot(SoundAsset.SFXGroup.INGAME, SoundAsset.SFXIngame.Score);
+        }
     }
 
     public bool CheckHighScore()
@@ -102,14 +100,28 @@ public class Score : MonoBehaviour
         else
         {
             result = true;
-            highScore = currentScore;
+            highScore = currentScore;            
 
-            GameData.Instance.ingameData.HighScore = highScore;
             Debug.Log("At High Score");
         }
 
         return result;
     }
+
+    public void PopulateSaveData(SaveDataCollection saveDataCollection)
+    {
+        Debug.Log("PopulateSaveData from" + this.gameObject.name);
+        saveDataCollection.normalSceneData.highScore = highScore;
+        
+    }
+
+    public void LoadFromSaveData(SaveDataCollection saveDataCollection)
+    {
+        Debug.Log("LoadFromSaveData from" + this.gameObject.name);
+        highScore = saveDataCollection.normalSceneData.highScore;
+        
+    }
+    
 
 
 

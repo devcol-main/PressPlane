@@ -7,6 +7,11 @@ public class EffectManager : MonoBehaviour
 
     private CameraController cameraController;
 
+    [SerializeField]
+    //private ParticleSystem[] confettiPSGroup;
+    private GameObject confettiPSGroup;
+
+
     //
 
     // player
@@ -39,31 +44,37 @@ public class EffectManager : MonoBehaviour
 
     public void Referencing()
     {
+        //Debug.Log("EffectManager Referencing");
+
         if(null == cameraController)
         {
             //Debug.Log("EffectManager Referencing");
-
             cameraController = FindAnyObjectByType<CameraController>();
+        }
+
+        if (null == confettiPSGroup)
+        {
+            // GameObject.Find("ParentName/ChildName")) 
+            confettiPSGroup = GameObject.Find("VFXs/Particle Systems Group/ConfettiPS");
+
+            if(confettiPSGroup == null)
+            {
+                Debug.LogError("confettiPSGroup is null: " + "VFXs/Particle Systems Group/ConfettiPS");
+            }
         }
 
     }
 
     // Player
-    public void PlayerDamagedEffect()
+    public void PlayerDamagedEffect(float camShakeIntensity = 2.0f)
     {
-        //Debug.Log("from effectManager PlayerDamagedEffect()");
-        if(null == cameraController)
-        {
-            //Debug.Log("cameraController null");
-
-        }
-
-        cameraController.ShakeCamera();
+        cameraController.ShakeCamera(camShakeIntensity);
+        
     }
 
     public void SpawnDustPS(GameObject gameObject, ParticleSystem particleSystem)
     {
-        Debug.Log("from effectManager spawndust()");
+        //Debug.Log("from effectManager spawndust()");
 
         StartCoroutine(DelaySpawnPlayerDestPS(gameObject, particleSystem));
     }
@@ -90,5 +101,18 @@ public class EffectManager : MonoBehaviour
 
             isPlayerDustPSDelayDone = true;
         }
+    }
+
+    public void PlayConfettiPS()
+    {
+        Debug.Log("PlayConfettiPS : " + confettiPSGroup.name);
+
+
+        //confettiPS.Play();
+        confettiPSGroup.SetActive(true);
+        // foreach(var v in confettiPSGroup)
+        // {
+        //     v.Play();            
+        // }
     }
 }

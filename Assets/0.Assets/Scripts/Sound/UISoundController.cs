@@ -398,7 +398,7 @@ public class UISoundController : MonoBehaviour, ISaveable
         {
             case GlobalString.AudioMixer.Master:
                 {
-                    Debug.Log("SetVolume: " + audioMixerName);
+                    //Debug.Log("SetVolume: " + audioMixerName);
                     volume_Last_Master = volume;
 
                     if (GlobalData.Audio.AudioMixerMinVolume > volume)
@@ -418,7 +418,7 @@ public class UISoundController : MonoBehaviour, ISaveable
                 break;
             case GlobalString.AudioMixer.BGM:
                 {
-                    Debug.Log("SetVolume: " + audioMixerName);
+                    //Debug.Log("SetVolume: " + audioMixerName);
 
                     volume_Last_BGM = volume;
 
@@ -440,7 +440,7 @@ public class UISoundController : MonoBehaviour, ISaveable
                 break;
             case GlobalString.AudioMixer.SFX:
                 {
-                    Debug.Log("SetVolume: " + audioMixerName);
+                    //Debug.Log("SetVolume: " + audioMixerName);
 
                     volume_Last_SFX = volume;
 
@@ -464,7 +464,7 @@ public class UISoundController : MonoBehaviour, ISaveable
                 break;
         }
 
-        Debug.Log("audioMixerName: " + audioMixerName + " | Volume: " + volume);
+        //Debug.Log("audioMixerName: " + audioMixerName + " | Volume: " + volume);
         audioMixer.SetFloat(audioMixerName, Mathf.Log10(volume) * 20);
     }
     //

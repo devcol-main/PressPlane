@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class GameData : MonoBehaviour, ISaveable
+public class GameData : MonoBehaviour
 {
     public struct IngameData
     {
@@ -19,7 +19,7 @@ public class GameData : MonoBehaviour, ISaveable
 
 */
 
-    public IngameData ingameData;
+    //public IngameData ingameData;
     //public SettingData settingData;
 
     public static GameData Instance;
@@ -43,21 +43,4 @@ public class GameData : MonoBehaviour, ISaveable
         }
     }
 
-    public void PopulateSaveData(SaveDataCollection saveDataCollection)
-    {
-        Debug.Log("Game data-PopulateSaveData");
-        saveDataCollection.normalSceneData.HighScore = ingameData.HighScore;
-
-        //saveDataCollection.settingSoundData.isMasterVolumeOn = settingData.isMasterVolumeOn;
-        //saveDataCollection.settingSoundData.masterVolume = settingData.masterVolume;
-    }
-
-    public void LoadFromSaveData(SaveDataCollection saveDataCollection)
-    {
-        Debug.Log("Game data-LoadFromSaveData");
-        ingameData.HighScore = saveDataCollection.normalSceneData.HighScore;
-
-        //settingData.isMasterVolumeOn = saveDataCollection.settingSoundData.isMasterVolumeOn;
-        //settingData.masterVolume = saveDataCollection.settingSoundData.masterVolume;
-    }
 }

@@ -1,11 +1,14 @@
-using System.Collections;
+
 using UnityEngine;
 
 public class Obstacle : MonoBehaviour
 {
 
+    [SerializeField] [ReadOnly]
     private float minHeight = -3.3f;
-    private float maxHeight = 3.5f;
+
+    [SerializeField] [ReadOnly]
+    private float maxHeight = 3f;
 
     private BoxCollider2D boxCollider2D;
 

@@ -12,6 +12,7 @@ public class SaveLoadManager : MonoBehaviour
 
     //
     private UISoundController uiSoundController;
+    private Score score;
 
     //
     private string fileName = "SaveData.text";
@@ -50,8 +51,9 @@ public class SaveLoadManager : MonoBehaviour
     public void Referencing()
     {
         localSaveLoad = FindFirstObjectByType<LocalSaveLoad>();
-        uiSoundController = FindFirstObjectByType<UISoundController>();
 
+        uiSoundController = FindFirstObjectByType<UISoundController>();
+        score = FindFirstObjectByType<Score>();
     }
 
     public void Save()
@@ -118,14 +120,7 @@ public class SaveLoadManager : MonoBehaviour
         localSaveLoad.DeleteSavedData(fileName);
     }
 
-    // firstime & after reset
-    public void InitialLoad(SaveDataCollection saveDataCollection)
-    {
-        Debug.Log("InitialLoad");
-        
-    }
 
-    // =========
 
 
     public void PopulateSaveData(SaveDataCollection saveDataCollection)
@@ -137,9 +132,8 @@ public class SaveLoadManager : MonoBehaviour
         // Timer
         //timer.PopulateSaveData(saveDataCollection);
 
-        GameData.Instance.PopulateSaveData(saveDataCollection);
-
         uiSoundController.PopulateSaveData(saveDataCollection);
+        score.PopulateSaveData(saveDataCollection);
 
 
     }
@@ -157,10 +151,16 @@ public class SaveLoadManager : MonoBehaviour
         // Timer
         //timer.LoadFromSaveData(saveDataCollection);
 
-        GameData.Instance.LoadFromSaveData(saveDataCollection);
-
         uiSoundController.LoadFromSaveData(saveDataCollection);
+        score.LoadFromSaveData(saveDataCollection);
+    }
 
+    // firstime & after reset
+    public void InitialLoad(SaveDataCollection saveDataCollection)
+    {
+        Debug.Log("InitialLoad");
+        
+        
     }
 
 

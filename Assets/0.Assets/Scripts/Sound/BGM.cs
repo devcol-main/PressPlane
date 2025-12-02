@@ -107,8 +107,8 @@ public class BGM : MonoBehaviour
     {
         float fadeDuration = 0.5f;
 
-        Debug.Log("SwapBGMWithFade: " + audioClip.ToString());
-        Debug.Log("Fade out");
+        //Debug.Log("SwapBGMWithFade: " + audioClip.ToString());
+        //Debug.Log("Fade out");
 
         StartCoroutine(FadeOutIn(audioSource, audioClip, fadeDuration));
 
@@ -121,7 +121,7 @@ public class BGM : MonoBehaviour
 
     private IEnumerator FadeOutIn(AudioSource audioSource,AudioClip audioClip, float fadeDuration = 2f) //, float duration, float tartgetVolume)
     {
-        Debug.Log("Fade");
+        //Debug.Log("Fade");
 
         float time = 0f;
         float startVolume = audioSource.volume;

@@ -104,17 +104,18 @@ public class SoundManager : MonoBehaviour
     }
     //
 
-    public float PlaySFXOneShot(SoundAsset.SFXGroup sfxGroup, SoundAsset.SFXUIName sfxName)
+
+    public float PlaySFXOneShot(SoundAsset.SFXGroup sfxGroup, SoundAsset.SFXUIName sfxName, float volume = 0.8f)
     {
-        return sfx.PlaySFXOneShot(sfxGroup,sfxName);
+        return sfx.PlaySFXOneShot(sfxGroup,sfxName,volume);
     }
-    public float PlaySFXOneShot(SoundAsset.SFXGroup sfxGroup, SoundAsset.SFXIngame sfxName)
+    public float PlaySFXOneShot(SoundAsset.SFXGroup sfxGroup, SoundAsset.SFXIngame sfxName, float volume = 0.8f)
     {
-       return sfx.PlaySFXOneShot(sfxGroup,sfxName);
+       return sfx.PlaySFXOneShot(sfxGroup,sfxName,volume);
     }
-    public float PlaySFXOneShot(SoundAsset.SFXGroup sfxGroup, SoundAsset.SFXPlayerName sfxName)
+    public float PlaySFXOneShot(SoundAsset.SFXGroup sfxGroup, SoundAsset.SFXPlayerName sfxName, float volume = 0.8f)
     {
-       return sfx.PlaySFXOneShot(sfxGroup,sfxName);
+       return sfx.PlaySFXOneShot(sfxGroup,sfxName,volume);
     }
     
 
@@ -126,7 +127,7 @@ public class SoundManager : MonoBehaviour
     // converts a linear volume value (from a slider, typically 0.0001 to 1) into a logarithmic scale in decibels (dB) 
     public void PauseAudio(bool isAll, SoundAsset.BGMGroup bgmGroup = SoundAsset.BGMGroup.ALL, SoundAsset.SFXGroup sfxGroup = SoundAsset.SFXGroup.ALL)
     {
-        print("PauseAudio " + "bgmGroup: "+ bgmGroup +  "sfxGroup: " + sfxGroup);
+        //print("PauseAudio " + "bgmGroup: "+ bgmGroup +  "sfxGroup: " + sfxGroup);
 
         bgm.PauseAudio(isAll, bgmGroup);
 
@@ -135,7 +136,7 @@ public class SoundManager : MonoBehaviour
 
     public void ResumeAudio(bool isAll, SoundAsset.BGMGroup bgmGroup = SoundAsset.BGMGroup.ALL, SoundAsset.SFXGroup sfxGroup = SoundAsset.SFXGroup.ALL)
     {
-        print("ResumeAudio: ");
+        //print("ResumeAudio: ");
 
         bgm.ResumeAudio(isAll, bgmGroup);
         SetAudioMixerVolume(sfxGroup, GlobalData.Audio.AudioMixerMaxVolume);

@@ -20,7 +20,7 @@ public class CameraController : MonoBehaviour
     }
 
 
-    public void ShakeCamera(float intensity = 1.0f)
+    public void ShakeCamera(float intensity = 2.0f)
     {
         if (null != impulseSource)
         {
@@ -56,6 +56,11 @@ public class CameraController : MonoBehaviour
             Debug.Log("C Pressed, shake camera");
             ShakeCamera();
 
+        }
+
+        if(Input.GetKeyDown(KeyCode.D))
+        {
+            EffectManager.Instance.PlayConfettiPS();
         }
     }
 #endif

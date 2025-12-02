@@ -11,9 +11,13 @@ public class SaveDataCollection
     public struct GameSystemTimeData
     {
         public int initialPlayedTime;
-        public int recentPlayedTime;
+        public int totalPlayedTime;
+        public int lastPlayedTime;
 
         //public int userLastInDateTime;
+        //public int userLastOutDateTime;
+
+        public int normalScenePlayedTime;
     }
 
     [System.Serializable]
@@ -48,7 +52,7 @@ public class SaveDataCollection
     [System.Serializable]
     public struct NormalSceneData
     {
-        public int HighScore;
+        public int highScore;
     }
 
     public NormalSceneData normalSceneData = new NormalSceneData();

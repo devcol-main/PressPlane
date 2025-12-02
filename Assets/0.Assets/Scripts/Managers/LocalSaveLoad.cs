@@ -11,7 +11,6 @@ public class LocalSaveLoad : MonoBehaviour
 {
     //[SerializeField]
     private string saveFolderName = "/Save/";
-
     private string saveFolderPath;
     private string savePath;
 
@@ -74,6 +73,7 @@ public class LocalSaveLoad : MonoBehaviour
 
             saveDataCollection.LoadFromJson(json);
             
+            // if it's first time loading
             SaveLoadManager.Instance.InitialLoad(saveDataCollection);
         }
 

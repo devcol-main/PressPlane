@@ -20,7 +20,7 @@ public class EnvironmentController : MonoBehaviour
         LoopScroll[] loopScrolls = environmentParent.GetComponentsInChildren<LoopScroll>();
         if (null != loopScrolls)
         {
-            Debug.Log("SetScrollSpeed act ");
+            //Debug.Log("SetScrollSpeed act ");
             foreach (LoopScroll loop in loopScrolls)
             {
                 loop.ScrollSpeed = speed;
