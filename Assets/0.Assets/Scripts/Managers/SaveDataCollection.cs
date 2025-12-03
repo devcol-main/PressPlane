@@ -8,16 +8,21 @@ public class SaveDataCollection
 {
 
     [System.Serializable]
-    public struct GameSystemTimeData
+    public struct TimeData
     {
         public int initialPlayedTime;
         public int totalPlayedTime;
         public int lastPlayedTime;
+        public int timePassedSinceLastPlayed;
 
         //public int userLastInDateTime;
         //public int userLastOutDateTime;
+        public int longestPlayedTime;
 
-        public int normalScenePlayedTime;
+        // normal Scene
+        public int normalSceneTotalPlayedTime;
+        public int normalSceneLastPlayedTime;
+
     }
 
     [System.Serializable]
@@ -43,7 +48,7 @@ public class SaveDataCollection
 
     }
 
-    public GameSystemTimeData gameSystemTimeData = new GameSystemTimeData();
+    public TimeData timeData = new TimeData();
     public SettingSoundData settingSoundData = new SettingSoundData();
     //
 

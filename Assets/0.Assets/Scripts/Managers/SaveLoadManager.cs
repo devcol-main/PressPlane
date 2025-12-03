@@ -13,6 +13,7 @@ public class SaveLoadManager : MonoBehaviour
     //
     private UISoundController uiSoundController;
     private Score score;
+    private Timer timer;
 
     //
     private string fileName = "SaveData.text";
@@ -54,6 +55,7 @@ public class SaveLoadManager : MonoBehaviour
 
         uiSoundController = FindFirstObjectByType<UISoundController>();
         score = FindFirstObjectByType<Score>();
+        timer = FindFirstObjectByType<Timer>();
     }
 
     public void Save()
@@ -126,39 +128,30 @@ public class SaveLoadManager : MonoBehaviour
     public void PopulateSaveData(SaveDataCollection saveDataCollection)
     {
 
-        //Debug.Log("PopulateSaveData from" + this.gameObject.name);
-
-        //// Game Setting
-        // Timer
-        //timer.PopulateSaveData(saveDataCollection);
+        //Debug.Log("PopulateSaveDatas from" + this.gameObject.name);
 
         uiSoundController.PopulateSaveData(saveDataCollection);
         score.PopulateSaveData(saveDataCollection);
+        timer.PopulateSaveData(saveDataCollection);
 
 
     }
 
     public void LoadFromSaveData(SaveDataCollection saveDataCollection)
     {
-        /*
-        highScore = saveDataCollection.highScore;
-        //debugText.text = "Load Done";
-        */
-
         //Debug.Log("LoadFromSaveData from" + this.gameObject.name);
-
-        //// GameSetting
-        // Timer
-        //timer.LoadFromSaveData(saveDataCollection);
 
         uiSoundController.LoadFromSaveData(saveDataCollection);
         score.LoadFromSaveData(saveDataCollection);
+        timer.LoadFromSaveData(saveDataCollection);
     }
 
     // firstime & after reset
     public void InitialLoad(SaveDataCollection saveDataCollection)
     {
         Debug.Log("InitialLoad");
+
+        timer.InitalTimer();
         
         
     }

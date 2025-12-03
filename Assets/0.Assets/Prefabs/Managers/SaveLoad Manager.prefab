@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8987348891618247764}
   - component: {fileID: 6210761574869785987}
   - component: {fileID: 4151710321120788297}
+  - component: {fileID: 6766058196329305437}
   m_Layer: 0
   m_Name: SaveLoad Manager
   m_TagString: Untagged
@@ -57,3 +58,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43d0c7aae39564f10a49014efc02b781, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LocalSaveLoad
+--- !u!114 &6766058196329305437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3497455690287133192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a483b50c44054b72a694da74a754fc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Timer
+  currentTime: 0
+  initialPlayedTime: 0
+  lastPlayedTime: 0
