@@ -2,21 +2,27 @@ using UnityEngine;
 using TMPro;
 
 
+// for normal scene
 public class Score : MonoBehaviour, ISaveable
 {
-    //
+    // Get Set
     public TextMeshProUGUI CurrentScoreText { get { return currentScoreText; } }
     public int HighScore { get { return highScore; } set { highScore = value; } }
     public int CurrentScore { get { return currentScore; } set { currentScore = value; } }
+    
+    public int NumGamePlayed { get { return numGamePlayed;} set { numGamePlayed = value;}  }
     //
     [SerializeField] private TextMeshProUGUI currentScoreText;
 
     //
 
     [Header("Displaying Only For DEBUG")]
-    [SerializeField] private int currentScore;
-    [SerializeField] private int highScore;
+    [SerializeField] [ReadOnly] private int currentScore;
+    [SerializeField] [ReadOnly]private int highScore;
+    [SerializeField] [ReadOnly] private int numGamePlayed;
+    [SerializeField] [ReadOnly] private int numTotalEarnedScore;
 
+    //
     private bool isAchieveHighScore = false;
 
 
@@ -27,25 +33,20 @@ public class Score : MonoBehaviour, ISaveable
 
     void Start()
     {
-        // load
-        //HighScore = GameData.Instance.ingameData.HighScore;
-
-        Debug.Log("High Score: " + highScore);
-
-        //highScore = HighScore;
 
     }
 
     public void IncreaseCurrentScore()
-    {
-        Debug.Log("IncreaseCurrentScore at Score");
+    {       
 
-        currentScore += 1;
+        ++currentScore;// += 1;
         currentScoreText.text = currentScore.ToString();
+
+        ++numTotalEarnedScore;
 
         if (CheckHighScore())
         {
-            //GameData.Instance.ingameData.HighScore = highScore;
+            
             // save
             SaveLoadManager.Instance.Save();
 
@@ -102,7 +103,7 @@ public class Score : MonoBehaviour, ISaveable
             result = true;
             highScore = currentScore;            
 
-            Debug.Log("At High Score");
+            
         }
 
         return result;
@@ -110,15 +111,21 @@ public class Score : MonoBehaviour, ISaveable
 
     public void PopulateSaveData(SaveDataCollection saveDataCollection)
     {
-        Debug.Log("PopulateSaveData from" + this.gameObject.name);
+        //Debug.Log("PopulateSaveData from" + this.gameObject.name);
+ 
         saveDataCollection.normalSceneData.highScore = highScore;
+        saveDataCollection.normalSceneData.numGamePlayed += numGamePlayed;
+        saveDataCollection.normalSceneData.numTotalEarnedScore += numTotalEarnedScore;
         
     }
 
     public void LoadFromSaveData(SaveDataCollection saveDataCollection)
     {
-        Debug.Log("LoadFromSaveData from" + this.gameObject.name);
+        //Debug.Log("LoadFromSaveData from" + this.gameObject.name);
         highScore = saveDataCollection.normalSceneData.highScore;
+        numGamePlayed = saveDataCollection.normalSceneData.numGamePlayed;
+        numTotalEarnedScore = saveDataCollection.normalSceneData.numTotalEarnedScore;
+
         
     }
     

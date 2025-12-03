@@ -52,6 +52,8 @@ public class SaveDataCollection
     [System.Serializable]
     public struct NormalSceneData
     {
+        public int numGamePlayed;
+        public int numTotalEarnedScore;
         public int highScore;
     }
 

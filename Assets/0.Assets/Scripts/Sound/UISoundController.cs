@@ -472,7 +472,7 @@ public class UISoundController : MonoBehaviour, ISaveable
     public void PopulateSaveData(SaveDataCollection saveData)
     {
 
-        Debug.Log("PopulateSaveData from" + this.gameObject.name);
+        //Debug.Log("PopulateSaveData from" + this.gameObject.name);
         // Master Mixer
         saveData.settingSoundData.isMasterVolumeOn = masterVolumeToggle.isOn;
         saveData.settingSoundData.masterVolume = volume_Master;
@@ -492,7 +492,7 @@ public class UISoundController : MonoBehaviour, ISaveable
 
     public void LoadFromSaveData(SaveDataCollection saveData)
     {
-        Debug.Log("LoadFromSaveData from" + this.gameObject.name);
+        //Debug.Log("LoadFromSaveData from" + this.gameObject.name);
         // Loading Orders Matter !!!
         
         // Master Mixer

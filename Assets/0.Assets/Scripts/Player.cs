@@ -5,6 +5,7 @@ using DG.Tweening;
 using System.Threading;
 
 
+// normal scene
 [RequireComponent(typeof(Movement))]
 public class Player : MonoBehaviour
 {
@@ -137,7 +138,7 @@ public class Player : MonoBehaviour
 
         if (hp <= 0)
         {
-            Debug.Log("Death() at" + gameObject.name);
+            //Debug.Log("Death() at" + gameObject.name);
             Death();
 
             // Notify GameManager about player death
@@ -147,7 +148,7 @@ public class Player : MonoBehaviour
         }
         else
         {           
-            Debug.Log("Damge() at" + gameObject.name);
+            //Debug.Log("Damge() at" + gameObject.name);
             SoundManager.Instance.PlaySFXOneShot(SoundAsset.SFXGroup.PLAYER, SoundAsset.SFXPlayerName.Damaged);
             
 
@@ -215,7 +216,7 @@ public class Player : MonoBehaviour
 
     public void Death()
     {
-        Debug.Log("Player Died");
+        //Debug.Log("Player Died");
 
         isAlive = false;
         polygonCollider2D.enabled = false;

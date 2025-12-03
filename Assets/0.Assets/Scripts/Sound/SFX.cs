@@ -171,7 +171,7 @@ public class SFX : MonoBehaviour
         audioSource.pitch = 1f;
         audioSource.panStereo = 0;
         audioSource.spatialBlend = 0f;
-        Debug.Log("sfxGroup.ToString(): " + sfxGroup.ToString());
+        //Debug.Log("sfxGroup.ToString(): " + sfxGroup.ToString());
         audioSource.outputAudioMixerGroup = audioMixer.FindMatchingGroups(sfxGroup.ToString())[0];
         //audioSource.outputAudioMixerGroup = audioMixer.FindMatchingGroups(GlobalString.AudioMixer.UI)[0];
 
@@ -256,7 +256,7 @@ public class SFX : MonoBehaviour
             if (sfxName == sfx.soundName)
             {
                 audioSource.clip = sfx.audioClip;
-                Debug.Log("PlaySFXOneShot Played: " + sfx.audioClip);
+                //Debug.Log("PlaySFXOneShot Played: " + sfx.audioClip);
                 soundGameObject.name = objectName + "_" + sfx.soundName.ToString();
 
                 audioSource.PlayOneShot(sfx.audioClip);

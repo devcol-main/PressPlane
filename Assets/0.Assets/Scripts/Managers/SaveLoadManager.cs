@@ -126,7 +126,7 @@ public class SaveLoadManager : MonoBehaviour
     public void PopulateSaveData(SaveDataCollection saveDataCollection)
     {
 
-        Debug.Log("PopulateSaveData from" + this.gameObject.name);
+        //Debug.Log("PopulateSaveData from" + this.gameObject.name);
 
         //// Game Setting
         // Timer
@@ -145,7 +145,7 @@ public class SaveLoadManager : MonoBehaviour
         //debugText.text = "Load Done";
         */
 
-        Debug.Log("LoadFromSaveData from" + this.gameObject.name);
+        //Debug.Log("LoadFromSaveData from" + this.gameObject.name);
 
         //// GameSetting
         // Timer

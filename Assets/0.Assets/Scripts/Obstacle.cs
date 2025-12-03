@@ -37,7 +37,7 @@ public class Obstacle : MonoBehaviour
     {
         if(collision.gameObject.CompareTag(TagName.Player))
         {
-            Debug.Log("Player Passed Obstacle");
+            //Debug.Log("Player Passed Obstacle");
 
             GameManager.Instance.IncreaseScore();
 

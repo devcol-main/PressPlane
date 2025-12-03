@@ -16,6 +16,7 @@ public class NormalScene : SceneBase, IGameScene
     [SerializeField] private GameObject titleImage;
     [SerializeField] private GameObject startButton;
 
+    private Score score;
 
     [Header("=For Debug= Settings")]
 
@@ -51,6 +52,9 @@ public class NormalScene : SceneBase, IGameScene
         uiController.GameSceneInitiate();
 
         player.Initiate();
+        score = FindFirstObjectByType<Score>();
+
+
         // Scene Transition
         // if last scene was not this scene to inititae transition
 
@@ -179,8 +183,11 @@ public class NormalScene : SceneBase, IGameScene
         uiController.GameStart();
 
         player.GameStart();
+        ++score.NumGamePlayed;
 
         SoundManager.Instance.PlaySFXOneShot(SoundAsset.SFXGroup.UI, SoundAsset.SFXUIName.StartGame);
+
+
 
     }
 
