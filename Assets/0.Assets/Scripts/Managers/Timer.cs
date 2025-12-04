@@ -6,6 +6,8 @@ using UnityEngine.Networking;
 // at SaveLoadManager
 public class Timer : MonoBehaviour, ISaveable
 {
+
+
 	// ref URL
 	private const string url = "www.google.com";
 
@@ -22,90 +24,133 @@ public class Timer : MonoBehaviour, ISaveable
 	private int normalSceneTotalPlayedTime;
 	private int normalSceneLastPlayedTime;
 
+	private int tempInitialPlayedTime;
+
 	void Start()
 	{
-		StartCoroutine(AwakeTimer());
+		
+		//StartCoroutine(AwakeTimerCoroutine());
+		
 	}
 
-	# region Only Once
-	public void InitalTimer()
-	{
-		StartCoroutine(InitialTimer());
+	public void SetInitialTime()
+	{	
+		//StartCoroutine(InitialTimerCoroutine());
 	}
 
-	IEnumerator InitialTimer()
+
+
+	// Debug InitialTimerCoroutine
+	// // it exit at yield return request.SendWebRequest();
+	IEnumerator InitialTimerCoroutine()
 	{
+		UnityWebRequest request = new UnityWebRequest();
+		Debug.Log("InitialTimerCoroutine");
+		using (request = UnityWebRequest.Get(url))
+		{			
+			yield return request.SendWebRequest();			
+
+			Debug.Log("yield return request.SendWebRequest();	");
+			if (request.result == UnityWebRequest.Result.Success)
+			{
+				string date = request.GetResponseHeader("date");
+
+				DateTime dateTime = DateTime.Parse(date).ToUniversalTime();
+				TimeSpan timeStamp = dateTime - new DateTime(1970, 1, 1, 0, 0, 0);
+
+				initialPlayedTime = (int)timeStamp.TotalSeconds;
+				//currentTime = (int)timeStamp.TotalSeconds;
+				Debug.Log("InitialTimer dateTime (UniversalTime) : " + dateTime);
+
+			}
+			else
+			{
+				Debug.Log(request.error);
+
+			}
+
+		}
+
+	}
+
+	// private void Initiallize()
+	// {
+	// 	//initialPlayedTime = currentTime;
+	// 	Debug.Log("Initiallize from timer: " + initialPlayedTime);
+
+	// 	//
+	// 	timePassedSinceLastPlayed = 0;
+	// 	totalPlayedTime = 0;
+	// 	longestPlayedTime = 0;
+
+	// 	// normal Scene
+	// 	normalSceneTotalPlayedTime = 0;
+	// 	normalSceneLastPlayedTime = 0;
+	// }
+
+
+	IEnumerator AwakeTimerCoroutine()
+	{
+		Debug.Log("AwakeTimerCoroutine");
 		UnityWebRequest request = new UnityWebRequest();
 		using (request = UnityWebRequest.Get(url))
 		{
 			yield return request.SendWebRequest();
 			BaseTimerMethod(request);
+
+			Debug.Log("AwakeTimerCoroutine : " + currentTime);
 		}
 
-		Initiallize();
-		
+		StartCoroutine(StartTimerCoroutine());
 	}
-
-	internal void Initiallize()
-	{
-		initialPlayedTime = currentTime;
-
-		//
-		timePassedSinceLastPlayed = 0;
-		totalPlayedTime = 0;
-		longestPlayedTime = 0;
-
-		// normal Scene
-		normalSceneTotalPlayedTime = 0;
-		normalSceneLastPlayedTime = 0;
-	}
-
-	#endregion
-
-	IEnumerator AwakeTimer()
+	IEnumerator StartTimerCoroutine()
 	{
 		UnityWebRequest request = new UnityWebRequest();
-		using (request = UnityWebRequest.Get(url))
-        {
-            yield return request.SendWebRequest();
+		while (true)
+		{
+			using (request = UnityWebRequest.Get(url))
+			{
+				yield return request.SendWebRequest();
+				yield return new WaitForSeconds(1f);
+				BaseTimerMethod(request);
 
-            BaseTimerMethod(request);
-        }
-    }
+			}
+		}
+	}
 
-    internal void BaseTimerMethod(UnityWebRequest request)
-    {
-        if (request.result == UnityWebRequest.Result.ConnectionError)
-        {
-            Debug.Log(request.error);
-        }
-        else
-        {
-            string date = request.GetResponseHeader("date");
+	private void BaseTimerMethod(UnityWebRequest request)
+	{
+		//Debug.Log("BaseTimerMethod");
+		if (request.result == UnityWebRequest.Result.Success)
+		{
+			string date = request.GetResponseHeader("date");
 
-            DateTime dateTime = DateTime.Parse(date).ToUniversalTime();
-            TimeSpan timeStamp = dateTime - new DateTime(1970, 1, 1, 0, 0, 0);
+			DateTime dateTime = DateTime.Parse(date).ToUniversalTime();
+			TimeSpan timeStamp = dateTime - new DateTime(1970, 1, 1, 0, 0, 0);
 
-            currentTime = (int)timeStamp.TotalSeconds;    
+			currentTime = (int)timeStamp.TotalSeconds;
 
-			Debug.Log("dateTime (UniversalTime) : " + dateTime);			    
+			//Debug.Log("dateTime (UniversalTime) : " + dateTime);
+		}
+		else
+		{
+			Debug.Log(request.error);
+		}
+	}
 
-        }
-    }
 
-
-    public void PopulateSaveData(SaveDataCollection saveDataCollection)
+	public void PopulateSaveData(SaveDataCollection saveDataCollection)
 	{
 		//Debug.Log("PopulateSaveData : " + gameObject.name);
-		saveDataCollection.timeData.initialPlayedTime = initialPlayedTime;
-		saveDataCollection.timeData.lastPlayedTime = currentTime;
+		//saveDataCollection.timeData.initialPlayedTime = initialPlayedTime;
+		//saveDataCollection.timeData.lastPlayedTime = currentTime;
 	}
 
 	public void LoadFromSaveData(SaveDataCollection saveDataCollection)
 	{
 		//Debug.Log("LoadFromSaveData : " + gameObject.name);
 
-		initialPlayedTime = saveDataCollection.timeData.initialPlayedTime;
-		lastPlayedTime = saveDataCollection.timeData.lastPlayedTime;
+		//initialPlayedTime = saveDataCollection.timeData.initialPlayedTime;
+		//lastPlayedTime = saveDataCollection.timeData.lastPlayedTime;
 	}
 }

@@ -42,7 +42,7 @@ public class SoundManager : MonoBehaviour
 
     }
 
-    void OnEnable()
+    void Start()
     {
         //UnityEngine.Debug.Log("SM OnEnable");
         Referencing();
@@ -54,38 +54,31 @@ public class SoundManager : MonoBehaviour
 
     public void Referencing()
     {
-        if(null == soundAsset)
-        {
-            //UnityEngine.Debug.Log("SM Referencing soundAsset");
-            soundAsset = FindAnyObjectByType<SoundAsset>();
-        }
+        UnityEngine.Debug.Log("Referencing from " + gameObject.name);
+        soundAsset = FindAnyObjectByType<SoundAsset>();
 
-        if(null == bgm)
-        {
-            //UnityEngine.Debug.Log("SM Referencing bgm");
-            bgm = FindAnyObjectByType<BGM>();
+        bgm = FindAnyObjectByType<BGM>();
+        bgm.Referencing();
 
-        }
+        sfx = FindAnyObjectByType<SFX>();
+        sfx.Referencing();
 
-        if(null == sfx)
-        {
-            //UnityEngine.Debug.Log("SM Referencing sfx");
 
-            sfx = FindAnyObjectByType<SFX>();
-        }
 
     }
 
-    void Start()
-    {
 
-    }
 
     public void PlayBGM(SoundAsset.BGM bgmName,
     SoundAsset.BGM_AMBIENT bgmAmbientName = SoundAsset.BGM_AMBIENT.NONE)
     {
         bgm.PlayBGM(bgmName, bgmAmbientName);
 
+    }
+
+    public void PauseBGM()
+    {
+        bgm.PauseBGM();
     }
 
     //

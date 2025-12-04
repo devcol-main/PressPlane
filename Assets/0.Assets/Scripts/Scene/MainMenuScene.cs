@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class MainMenuScene : SceneBase, IMenuScene
 {
+    //Reference
+    private Timer timer;
+
     [Header("Controllers")]
     [SerializeField] private EnvironmentController environmentController;
     [SerializeField] private UIController uiController;
@@ -9,38 +12,40 @@ public class MainMenuScene : SceneBase, IMenuScene
     [Tooltip("Scroll Menu Scene Speed: 1f")]
     [SerializeField]
     private float scrollSpeed = 1f;    
-    protected override void Start()
+    void Start()
     {
-        base.Start();
+        sceneLoader = FindFirstObjectByType<SceneLoader>();
 
-        InitiateScene();
+        InitiateSetting();
 
         //
         sceneLoader.OnInitiateMainMenuScene();
         
     }
 
-    protected override void InitiateScene()
+    private void InitiateSetting()
     {
-        // SetBGM & Time.timeScale = 1f;
-        base.InitiateScene();
+        Time.timeScale = 1f;
 
-        Initiate();
+        // Referencing Managers
+        GameManager.Instance.Referencing();
+        SoundManager.Instance.Referencing();
+        // GraphicManager.Instance.Referencing();
+        EffectManager.Instance.Referencing();
+        SaveLoadManager.Instance.Referencing();
 
-    }
+    
+        SaveLoadManager.Instance.Load();
 
-    private void Initiate()
-    {
         environmentController.SetScrollSpeed(scrollSpeed);
-
         uiController.MenuSceneInitiate();
+
+        Debug.Log("from " + this.gameObject.name + ", PlayBGM");
+        
+        SoundManager.Instance.PlayBGM(SoundAsset.BGM.MENU);
     }
 
-    public override void SetBGM()
-    {       
-        SoundManager.Instance.PlayBGM(SoundAsset.BGM.MENU);
-        
-    }
+
 
     public void OnLoadNormalScene()
     {

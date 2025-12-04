@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 2180486297384983871}
   - component: {fileID: 4469835116434299264}
   - component: {fileID: 2652127104684722895}
+  - component: {fileID: 417111057251118720}
   - component: {fileID: 3118621770242253579}
   m_Layer: 5
   m_Name: Player
@@ -260,8 +261,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
   dustPS: {fileID: 7785643859368033926, guid: 39f21b2c3798647ee8e741119b007bc3, type: 3}
-  invulnerableDuration: 2
-  hp: 2
+  invulnerableDuration: 1
+  hp: 1
 --- !u!114 &2652127104684722895
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -275,6 +276,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Movement
   upwardForce: 25
+--- !u!114 &417111057251118720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6701812616373205263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1627a95dfaf9d4d50a311064a2ba4155, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputHandler
+  InputAction: {fileID: -944628639613478452, guid: ecbe18c42b190419f800320824e2bb7b, type: 3}
+  actionMapName: Player
+  Fly: Fly
+  flyAction:
+    m_Name: Fly
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: ea7dc0de-50b2-4021-a7c2-2979f81b1c60
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
 --- !u!82 &3118621770242253579
 AudioSource:
   m_ObjectHideFlags: 0

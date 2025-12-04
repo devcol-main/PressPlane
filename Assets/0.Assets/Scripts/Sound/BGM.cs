@@ -19,24 +19,22 @@ public class BGM : MonoBehaviour
     [SerializeField] private GameObject bgm_ambient;
     [SerializeField] private AudioSource audioSourceAmbient;
 
-        
     private SoundAsset soundAsset;
 
-    void OnEnable()
-    {
-        soundAsset = FindAnyObjectByType<SoundAsset>();
-
-        //
-        Initialize();
-    }
 
     void Start()
     {
-
+        Referencing();
+        Initialize();
+    }
+    public void Referencing()
+    {
+        soundAsset = FindAnyObjectByType<SoundAsset>();
     }
 
     private void Initialize()
     {
+
         // MUSIC
         SetupBGMAudioSource(SoundManager.Instance.audioMixer, audioSourceMusic,
         GlobalString.AudioMixer.AMG_BGM_MUSIC, true, GlobalData.Audio.BgmMaxVolume);
@@ -64,11 +62,18 @@ public class BGM : MonoBehaviour
         audioSource.volume = volume;
     }
 
+
     public void PlayBGM(SoundAsset.BGM bgmName,
     SoundAsset.BGM_AMBIENT bgmAmbientName = SoundAsset.BGM_AMBIENT.NONE)
     {
-        
+        Debug.Log("PlayBGM");
 
+        if(soundAsset == null)
+        {
+            Debug.Log("from bgm soundAsset == null");
+            soundAsset = FindAnyObjectByType<SoundAsset>();
+        }
+    
         //AudioSource audioSource = (SoundAsset.BGM.NONE == bgmName) ? audioSourceAmbient : audioSourceMusic;
         AudioSource audioSource = audioSourceMusic;
 
@@ -94,12 +99,18 @@ public class BGM : MonoBehaviour
                 {
                     audioSource.clip = bgmSound.audioClip;
                     audioSource.Play();
+                    
                 }
 
                 return;
             }
         }
 
+    }
+
+    public void PauseBGM()
+    {        
+        audioSourceMusic.Pause();
     }
 
 

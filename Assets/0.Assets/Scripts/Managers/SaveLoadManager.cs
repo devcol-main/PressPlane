@@ -45,8 +45,6 @@ public class SaveLoadManager : MonoBehaviour
 
     void Start()
     {
-
-
     }
 
     public void Referencing()
@@ -135,6 +133,8 @@ public class SaveLoadManager : MonoBehaviour
         timer.PopulateSaveData(saveDataCollection);
 
 
+
+
     }
 
     public void LoadFromSaveData(SaveDataCollection saveDataCollection)
@@ -151,8 +151,8 @@ public class SaveLoadManager : MonoBehaviour
     {
         Debug.Log("InitialLoad");
 
-        timer.InitalTimer();
-        
+        //timer.SetInitialTime();
+  
         
     }
 

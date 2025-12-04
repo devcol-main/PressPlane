@@ -106,7 +106,8 @@ public class GameManager : MonoBehaviour
         
         uiController.GameOver();
         // 
-        SoundManager.Instance.PlayBGM(SoundAsset.BGM.NONE);
+        //SoundManager.Instance.PlayBGM(SoundAsset.BGM.NONE);
+        //SoundManager.Instance.PauseBGM();
 
     }
 

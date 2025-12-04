@@ -46,7 +46,7 @@ public class CameraController : MonoBehaviour
     }
 
 
-
+/*
     //for testing
 #if UNITY_EDITOR
     void Update()
@@ -64,7 +64,7 @@ public class CameraController : MonoBehaviour
         }
     }
 #endif
-
+*/
 
 
 

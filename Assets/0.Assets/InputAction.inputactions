@@ -1,0 +1,46 @@
+{
+    "version": 1,
+    "name": "InputAction",
+    "maps": [
+        {
+            "name": "Player",
+            "id": "441f5996-d69f-4ebc-bc74-0ad8c0f5bc68",
+            "actions": [
+                {
+                    "name": "Fly",
+                    "type": "Button",
+                    "id": "657ae7a5-fa7f-4936-8bff-b871e1663102",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "b8535b62-fa74-4557-9f8b-d10698c4f736",
+                    "path": "<Mouse>/press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Fly",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8e6de650-df69-4bfa-858b-64c838b49831",
+                    "path": "<Touchscreen>/Press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Fly",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

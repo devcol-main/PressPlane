@@ -11,6 +11,7 @@ public class Score : MonoBehaviour, ISaveable
     public int CurrentScore { get { return currentScore; } set { currentScore = value; } }
     
     public int NumGamePlayed { get { return numGamePlayed;} set { numGamePlayed = value;}  }
+
     //
     [SerializeField] private TextMeshProUGUI currentScoreText;
 
@@ -26,15 +27,6 @@ public class Score : MonoBehaviour, ISaveable
     private bool isAchieveHighScore = false;
 
 
-    void Awake()
-    {
-
-    }
-
-    void Start()
-    {
-
-    }
 
     public void IncreaseCurrentScore()
     {       
@@ -44,23 +36,23 @@ public class Score : MonoBehaviour, ISaveable
 
         ++numTotalEarnedScore;
 
+
         if (CheckHighScore())
-        {
-            
+        {            
             // save
             SaveLoadManager.Instance.Save();
 
             // only once per play
-            if (!isAchieveHighScore)
+            if (!isAchieveHighScore )
             {
                 isAchieveHighScore = true;
                 // sound            
                 SoundManager.Instance.PlaySFXOneShot(SoundAsset.SFXGroup.INGAME, SoundAsset.SFXIngame.HighScore);
-
                 // highscore effect
                 EffectManager.Instance.PlayConfettiPS();
 
             }
+
             else
             {
                 PlayScoreSound();

@@ -17,6 +17,7 @@ public class NormalScene : SceneBase, IGameScene
     [SerializeField] private GameObject startButton;
 
     private Score score;
+    
 
     [Header("=For Debug= Settings")]
 
@@ -29,30 +30,33 @@ public class NormalScene : SceneBase, IGameScene
 
     }
 
-    protected override void Start()
+    void Start()
     {
-        base.Start();
-
-        InitiateScene();
-    }
-
-    protected override void InitiateScene()
-    {
-        // SetBGM & Time.timeScale = 1f;
-        base.InitiateScene();
-
-        Initiate();
-
-    }
-
-    private void Initiate()
-    {
-        environmentController.SetScrollSpeed(0);
-
-        uiController.GameSceneInitiate();
-
-        player.Initiate();
+        sceneLoader = FindFirstObjectByType<SceneLoader>();
         score = FindFirstObjectByType<Score>();
+
+        InitiateSetting();
+    }
+
+    private void InitiateSetting()
+    {
+        
+        Time.timeScale = 1f;
+
+        // Referencing Managers
+        GameManager.Instance.Referencing();
+        SoundManager.Instance.Referencing();
+        // GraphicManager.Instance.Referencing();
+        EffectManager.Instance.Referencing();
+        SaveLoadManager.Instance.Referencing();
+
+    
+        SaveLoadManager.Instance.Load();
+
+        environmentController.SetScrollSpeed(0);
+        uiController.GameSceneInitiate();
+        player.Initiate();
+        
 
 
         // Scene Transition
@@ -65,9 +69,11 @@ public class NormalScene : SceneBase, IGameScene
             //Debug.Log("Firstime Scene, perfome Scene transition");
             // Perform
             StartCoroutine(PerformFirstimeSceneTransition());
-
-
         }
+
+        SoundManager.Instance.PlayBGM(SoundAsset.BGM.NORMAL);
+
+        
     }
 
     IEnumerator PerformFirstimeSceneTransition()
@@ -169,12 +175,6 @@ public class NormalScene : SceneBase, IGameScene
         throw new System.NotImplementedException();
     }
 
-    public override void SetBGM()
-    {
-        SoundManager.Instance.PlayBGM(SoundAsset.BGM.NORMAL);
-
-    }
-
     // from start button
     public void OnStartGame()
     {
@@ -183,6 +183,7 @@ public class NormalScene : SceneBase, IGameScene
         uiController.GameStart();
 
         player.GameStart();
+        
         ++score.NumGamePlayed;
 
         SoundManager.Instance.PlaySFXOneShot(SoundAsset.SFXGroup.UI, SoundAsset.SFXUIName.StartGame);

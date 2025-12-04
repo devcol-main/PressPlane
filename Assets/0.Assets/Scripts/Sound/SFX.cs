@@ -22,12 +22,15 @@ public class SFX : MonoBehaviour
     void Awake()
     {
     }
-
-    void OnEnable()
+    void Start()
+    {
+        Referencing();
+    }
+    public void Referencing()
     {
         soundAsset = FindAnyObjectByType<SoundAsset>();
-
     }
+
 
     public void SetupContinuousAudioSource(GameObject gameObject, SoundAsset.SFXGroup sfxGroup)
     {
@@ -103,6 +106,12 @@ public class SFX : MonoBehaviour
     // Player
     public void SetupContinuousSFXFly()
     {
+        if(soundAsset == null)
+        {
+            Debug.Log("from bgm soundAsset == null");
+            soundAsset = FindAnyObjectByType<SoundAsset>();
+        }
+
         continuousAudioSource.loop = true;
         continuousAudioSource.volume = 0f;
         continuousAudioSource.pitch = 0f;
@@ -158,7 +167,7 @@ public class SFX : MonoBehaviour
     {
 
         soundGameObject = new GameObject();
-        soundGameObject.transform.SetParent(this.transform);
+        //soundGameObject.transform.SetParent(this.transform);
 
         audioSource = soundGameObject.AddComponent<AudioSource>();
 
@@ -194,7 +203,7 @@ public class SFX : MonoBehaviour
             {
                 audioSource.clip = sfx.audioClip;
 
-                //Debug.Log("PlaySFXOneShot Played: " + sfx.audioClip);
+                Debug.Log("PlaySFXOneShot Played: " + sfx.audioClip);
                 soundGameObject.name = objectName + "_" + sfx.soundName.ToString();
                 //audioSource.outputAudioMixerGroup = audioMixer.FindMatchingGroups(GlobalString.AudioMixer.UI)[0];
 
@@ -225,7 +234,7 @@ public class SFX : MonoBehaviour
             if (sfxName == sfx.soundName)
             {
                 audioSource.clip = sfx.audioClip;
-                //Debug.Log("PlaySFXOneShot Played: " + sfx.audioClip);
+                Debug.Log("PlaySFXOneShot Played: " + sfx.audioClip);
                 soundGameObject.name = objectName + "_" + sfx.soundName.ToString();
 
                 audioSource.PlayOneShot(sfx.audioClip);
@@ -256,7 +265,7 @@ public class SFX : MonoBehaviour
             if (sfxName == sfx.soundName)
             {
                 audioSource.clip = sfx.audioClip;
-                //Debug.Log("PlaySFXOneShot Played: " + sfx.audioClip);
+                Debug.Log("PlaySFXOneShot Played: " + sfx.audioClip);
                 soundGameObject.name = objectName + "_" + sfx.soundName.ToString();
 
                 audioSource.PlayOneShot(sfx.audioClip);

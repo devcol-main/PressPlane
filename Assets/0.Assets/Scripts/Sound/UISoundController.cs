@@ -352,6 +352,8 @@ public class UISoundController : MonoBehaviour, ISaveable
     }
     private void TogglingSound(string audioMixerName, bool isOn, bool isTogglingSoundOn, ref float newVolume, ref float length)
     {
+        Debug.Log("TogglingSound: " + isTogglingSoundOn);
+
         if (isOn)
         {
             switch (audioMixerName)
@@ -492,8 +494,9 @@ public class UISoundController : MonoBehaviour, ISaveable
 
     public void LoadFromSaveData(SaveDataCollection saveData)
     {
-        //Debug.Log("LoadFromSaveData from" + this.gameObject.name);
+        Debug.Log("LoadFromSaveData from" + this.gameObject.name);
         // Loading Orders Matter !!!
+
         
         // Master Mixer
         SetVolume(GlobalString.AudioMixer.Master, saveData.settingSoundData.masterVolume, isTogglingSoundOn: false);

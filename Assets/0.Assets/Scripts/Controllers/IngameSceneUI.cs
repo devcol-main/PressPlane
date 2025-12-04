@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using DG.Tweening;
+using System.Collections;
 
 public class IngameSceneUI : MonoBehaviour
 {
@@ -12,7 +13,8 @@ public class IngameSceneUI : MonoBehaviour
     [SerializeField] private GameObject endGamePanel;
     [SerializeField] private GameObject ingameSettingPanel;
 
-    //[Header("Setting UIs")]    
+    [Header("Images")]  
+    [SerializeField] private GameObject endGameTitleImage;
 
 
     [Header("InGame UIs")]
@@ -21,6 +23,7 @@ public class IngameSceneUI : MonoBehaviour
 
     [Header("Buttons")]
     [SerializeField] private Button ingameSettingButton;
+    [SerializeField] private GameObject endGameButtonGroup;
     
 
 
@@ -61,7 +64,54 @@ public class IngameSceneUI : MonoBehaviour
     public void GameOver()
     {
         SwitchAllPanel(false);
+        // GameOver DP
+        ingameSettingButton.gameObject.SetActive(false);
+        duringPlayingGamePanel.SetActive(true);
         endGamePanel.SetActive(true);
+        endGameButtonGroup.SetActive(false);
+
+        StartCoroutine(PerformGameOverAnimation());
+
+    }
+
+    IEnumerator PerformGameOverAnimation()
+    {
+        
+        int rand = Random.Range(0,4);
+        Vector3 startingPos = new Vector3(0,0,0);
+        switch(rand)
+        {
+            case 0:
+                startingPos = new Vector3(-1000f,0f);
+            break;
+            
+            case 1:
+                startingPos = new Vector3(1000f,0f);
+            break;
+            
+            case 2:
+                startingPos = new Vector3(0f,1200f);
+            break;
+                  
+            case 3:
+                startingPos = new Vector3(0f,-1200f);
+            break;
+        }
+        //titleImage.transform.position =
+        
+        endGameTitleImage.GetComponent<RectTransform>().anchoredPosition = startingPos;
+
+        // move title image;
+        float duration = 2f;
+        Vector3 pos = new Vector3(0f, 0f,0f);
+
+        endGameTitleImage.GetComponent<RectTransform>().DOAnchorPos(pos, duration)
+             .SetEase(Ease.InOutSine);
+
+        yield return new WaitForSeconds(duration + 1f);
+
+        endGameButtonGroup.SetActive(true);
+
     }
 
     public void OnInGameSettingPanel()

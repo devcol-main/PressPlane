@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
     private PolygonCollider2D polygonCollider2D;
     private Rigidbody2D rb2d;
     private SpriteRenderer spriteRenderer;
+    private InputHandler inputHandler;
 
     // References
 
@@ -38,8 +39,8 @@ public class Player : MonoBehaviour
 
     // Readyonly
     private readonly Vector3 startingTransform = new Vector3(-1.5f, 1.5f, 0f);
-    private readonly Vector3 firstTimeTransform = new Vector3 (-4f,-3f,0);
-    
+    private readonly Vector3 firstTimeTransform = new Vector3(-4f, -3f, 0);
+
 
     // private
     private bool isAlive;
@@ -55,6 +56,8 @@ public class Player : MonoBehaviour
         rb2d = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
 
+        inputHandler = GetComponent<InputHandler>();   
+
         isAlive = true;
         isInvulnerable = false;
 
@@ -67,10 +70,35 @@ public class Player : MonoBehaviour
         SoundManager.Instance.SetupContinuousSFXFly();
     }
 
+    // with old input
+    // private void FixedUpdate()
+    // {
+
+    //     if (Input.GetButton("Fire1") && isAlive)
+    //     {
+    //         ApplyUpwardForce();
+
+    //         EffectManager.Instance.SpawnDustPS(this.gameObject, dustPS);
+
+    //         // sound fly increase
+    //         //sfx.ContinuousSFXFly(soundPower);
+    //         SoundManager.Instance.ContinuousSFXFly(true, GlobalData.Player.SoundPower);
+    //     }
+    //     else if (isAlive)
+    //     {
+    //         // sound fly Decrease            
+    //         //sfx.ContinuousSFXFly(-1 * soundPower);
+    //         SoundManager.Instance.ContinuousSFXFly(false, GlobalData.Player.SoundPower);
+    //     }
+
+    //     ApplyAngle();
+
+    // }
 
     private void FixedUpdate()
     {
-        if (Input.GetButton("Fire1") && isAlive)
+
+        if (inputHandler.flyAction.IsPressed() && isAlive)
         {
             ApplyUpwardForce();
 
@@ -91,6 +119,7 @@ public class Player : MonoBehaviour
 
     }
 
+
     public void Initiate()
     {
         rb2d.constraints = RigidbodyConstraints2D.FreezeAll;
@@ -106,7 +135,7 @@ public class Player : MonoBehaviour
         float duration = 2f;
         this.transform.DOMove(startingTransform, duration)
                  .SetEase(Ease.InOutSine);
-                 
+
     }
 
     private void SetupFirstTimeSceneTransition()
@@ -128,33 +157,37 @@ public class Player : MonoBehaviour
     {
         if (!isAlive) return;
 
-        if(isInvulnerable) return;
+        if (isInvulnerable) return;
 
         hp -= damageAmount;
 
         // Cam Shake
         // default camShakeIntensity is 2
-        EffectManager.Instance.PlayerDamagedEffect(camShakeIntensity: 3.0f);        
+        EffectManager.Instance.PlayerDamagedEffect(camShakeIntensity: 3.0f);
+        
+        //
+        SoundManager.Instance.PlaySFXOneShot(SoundAsset.SFXGroup.PLAYER, SoundAsset.SFXPlayerName.Damaged);
+
 
         if (hp <= 0)
         {
             //Debug.Log("Death() at" + gameObject.name);
+
             Death();
 
             // Notify GameManager about player death
             //GameManager.Instance.OnPlayerDeath();
-            SoundManager.Instance.PlaySFXOneShot(SoundAsset.SFXGroup.PLAYER, SoundAsset.SFXPlayerName.Death);
+            
 
         }
         else
-        {           
+        {
             //Debug.Log("Damge() at" + gameObject.name);
-            SoundManager.Instance.PlaySFXOneShot(SoundAsset.SFXGroup.PLAYER, SoundAsset.SFXPlayerName.Damaged);
             
 
             StartCoroutine(InvulnerableTimer(invulnerableDuration));
             StartCoroutine(BlinkCoroutine(times: 5, duration: invulnerableDuration));
-            
+
         }
     }
     IEnumerator InvulnerableTimer(float invulnerableDuration)
@@ -163,7 +196,7 @@ public class Player : MonoBehaviour
 
         float timer = 0f;
 
-        while(timer < invulnerableDuration)
+        while (timer < invulnerableDuration)
         {
             //Debug.Log("timer: " + timer);
             timer += Time.deltaTime;
@@ -178,16 +211,16 @@ public class Player : MonoBehaviour
 
     }
 
-     IEnumerator BlinkCoroutine(int times, float duration)
+    IEnumerator BlinkCoroutine(int times, float duration)
     {
         Color originalColor = spriteRenderer.color;
-        Color blinkColor = new Color(1f,1f,1f, a: 0.4f);
+        Color blinkColor = new Color(1f, 1f, 1f, a: 0.4f);
         //Color blinkColor = new Color(245f,85f,93f, a: 255f);
         //Color blinkColor = new Color(0.9607843f,0.3333333f,0.3647059f, a: 1f);
 
         float blinkDuration = duration / times;
         float halfBlink = blinkDuration / 2f;
-        
+
         for (int i = 0; i < times; i++)
         {
             // Lerp to blink color
@@ -198,7 +231,7 @@ public class Player : MonoBehaviour
                 elapsed += Time.deltaTime;
                 yield return null;
             }
-            
+
             // Lerp back to original color
             elapsed = 0f;
             while (elapsed < halfBlink)
@@ -208,7 +241,7 @@ public class Player : MonoBehaviour
                 yield return null;
             }
         }
-        
+
         spriteRenderer.color = originalColor; // Ensure we end on original color
     }
 
@@ -217,6 +250,8 @@ public class Player : MonoBehaviour
     public void Death()
     {
         //Debug.Log("Player Died");
+
+        SoundManager.Instance.PlaySFXOneShot(SoundAsset.SFXGroup.PLAYER, SoundAsset.SFXPlayerName.Death);
 
         isAlive = false;
         polygonCollider2D.enabled = false;
