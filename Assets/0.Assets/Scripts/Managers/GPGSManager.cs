@@ -177,9 +177,78 @@ public class GPGSManager : MonoBehaviour
 
     public void UnlockAchievement(string gpgsid)
     {
-        PGP.UnlockAchievement(gpgsid, (bool success) => { });
+        //PGP.UnlockAchievement(gpgsid, (bool success) => { });
+        CheckAchievement(gpgsid);
+
     }
 
+    public void CheckScoreAchievement(int currentScore)
+    {
+        if(10 == currentScore)
+        {
+            GPGSManager.Instance.CheckAchievement(GPGSIds.achievement_reach_10);    
+        }
+        else if(20 == currentScore)
+        {
+            GPGSManager.Instance.CheckAchievement(GPGSIds.achievement_reach_20);    
+        }
+        else if(30 == currentScore)
+        {
+            GPGSManager.Instance.CheckAchievement(GPGSIds.achievement_reach_30);    
+        }
+        else if(40 == currentScore)
+        {
+            GPGSManager.Instance.CheckAchievement(GPGSIds.achievement_reach_40);    
+        }
+        else if(50 == currentScore)
+        {
+            GPGSManager.Instance.CheckAchievement(GPGSIds.achievement_reach_50);    
+        }
+        else if(100 == currentScore)
+        {
+            GPGSManager.Instance.CheckAchievement(GPGSIds.achievement_reach_100);    
+        }
+    }
+    public void CheckDeathAchievement(int numDeath)
+    {
+        if(10 == numDeath)
+        {
+            GPGSManager.Instance.CheckAchievement(GPGSIds.achievement_gameover_10);    
+        }
+        else if(20 == numDeath)
+        {
+            GPGSManager.Instance.CheckAchievement(GPGSIds.achievement_gameover_20);    
+        }
+        else if(50 == numDeath)
+        {
+            GPGSManager.Instance.CheckAchievement(GPGSIds.achievement_gameover_50);    
+        }
+        else if(100 == numDeath)
+        {
+            GPGSManager.Instance.CheckAchievement(GPGSIds.achievement_gameover_100);    
+        }
+    }
+
+    internal void CheckAchievement(string gpgsid)
+    {
+        PGP.LoadAchievements(achievements =>
+        {
+            foreach (var achieve in achievements)
+            {
+                if(gpgsid == achieve.id)
+                {
+                    if(achieve.completed)
+                    {
+                        return;
+                    }
+                    else
+                    {
+                        PGP.UnlockAchievement(gpgsid, (bool success) => { });
+                    }
+                }
+            }
+        });
+    }
 
 
     public void IncrementAchievement(string gpgsid, int increaseAmount)

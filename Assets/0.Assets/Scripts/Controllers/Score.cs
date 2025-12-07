@@ -1,7 +1,6 @@
 using UnityEngine;
 using TMPro;
 
-
 // for normal scene
 public class Score : MonoBehaviour, ISaveable
 {
@@ -12,6 +11,8 @@ public class Score : MonoBehaviour, ISaveable
     
     public int NumGamePlayed { get { return numGamePlayed;} set { numGamePlayed = value;}  }
 
+
+    public bool IsAchieveHighScore { get { return isAchieveHighScore;}}
     //
     [SerializeField] private TextMeshProUGUI currentScoreText;
 
@@ -35,12 +36,15 @@ public class Score : MonoBehaviour, ISaveable
         currentScoreText.text = currentScore.ToString();
 
         ++numTotalEarnedScore;
-
+        
+#if UNITY_ANDROID
+        GPGSManager.Instance.CheckScoreAchievement(currentScore);
+#endif
 
         if (CheckHighScore())
         {            
-            // save
-            SaveLoadManager.Instance.Save();
+            // save at GM
+            //SaveLoadManager.Instance.Save();
 
             // only once per play
             if (!isAchieveHighScore )
@@ -68,6 +72,7 @@ public class Score : MonoBehaviour, ISaveable
         Debug.Log("currentScoreText: " + currentScore + " | " + " highScore: " + highScore);
 
     }
+    
 
     private void PlayScoreSound()
     {

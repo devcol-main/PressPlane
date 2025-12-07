@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
     // private Player player;
     private UIController uiController;
     private SceneLoader sceneLoader;
+    private Score score;
+    private Player player;
 
     private void Awake()
     {
@@ -67,6 +69,9 @@ public class GameManager : MonoBehaviour
 
         }
 
+        score = FindAnyObjectByType<Score>();
+        player = FindAnyObjectByType<Player>();
+
 
     }
 
@@ -101,6 +106,15 @@ public class GameManager : MonoBehaviour
         sceneLoader.OnLoadNormalScene();
     }
     
+
+
+    public void IncreaseScore()
+    {
+        uiController.IncreaseScore();
+
+    }
+    //
+
     public void GameOver()
     {
         
@@ -109,15 +123,24 @@ public class GameManager : MonoBehaviour
         //SoundManager.Instance.PlayBGM(SoundAsset.BGM.NONE);
         //SoundManager.Instance.PauseBGM();
 
+        SaveLoadManager.Instance.Save();
+
+
+
+#if UNITY_ANDROID
+        //GPGPS
+        // aheiveement check
+        GPGSManager.Instance.CheckDeathAchievement(player.NumDeath);
+
+        // put one leaderboard
+        if(score.IsAchieveHighScore && 10 <= score.HighScore)
+        {
+            GPGSManager.Instance.AddHighScoreToLeaderboard(score.HighScore);
+        }
+#endif
+
+
     }
-
-    public void IncreaseScore()
-    {
-        uiController.IncreaseScore();
-
-
-    }
-    //
 
     private void OnApplicationQuit()
     {

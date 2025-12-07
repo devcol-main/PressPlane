@@ -7,7 +7,7 @@ using System.Threading;
 
 // normal scene
 [RequireComponent(typeof(Movement))]
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour ,ISaveable
 {
     // Components
     private Movement movement;
@@ -25,6 +25,7 @@ public class Player : MonoBehaviour
     public bool IsAlive { get { return isAlive; } set { isAlive = value; } }
     public bool IsInvulnerable { get { return isInvulnerable; } set { isInvulnerable = value; } }
 
+    public int NumDeath { get { return numDeath;}}
     // Serialized Fields
     [Header("References")]
     [SerializeField] private ParticleSystem dustPS;
@@ -47,6 +48,8 @@ public class Player : MonoBehaviour
     private bool isInvulnerable;
     private float angle;
 
+
+    [SerializeField] [ReadOnly] private int numDeath = 0;
 
     private void Awake()
     {
@@ -257,6 +260,8 @@ public class Player : MonoBehaviour
         polygonCollider2D.enabled = false;
 
         animator.SetTrigger("Die");
+        
+        ++numDeath;
 
         GameManager.Instance.GameOver();
 
@@ -306,11 +311,13 @@ public class Player : MonoBehaviour
 
     }
 
+    public void PopulateSaveData(SaveDataCollection saveDataCollection)
+    {
+        saveDataCollection.normalSceneData.numDeath += numDeath;
+    }
 
-
-
-
-
-
-
+    public void LoadFromSaveData(SaveDataCollection saveDataCollection)
+    {
+        numDeath = saveDataCollection.normalSceneData.numDeath;
+    }
 }

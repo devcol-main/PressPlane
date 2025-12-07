@@ -1,6 +1,5 @@
 public static class GlobalString
 {
-
     public struct AudioMixer
     {
         public const string Master = "Master";

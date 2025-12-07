@@ -171,6 +171,16 @@ public class IngameSceneUI : MonoBehaviour
         
     }
 
+    public void OnAchievementButton()
+    {
+        
+    }
+
+    public void OnLeaderboardButton()
+    {
+        
+    }
+
 
     //
 
