@@ -5,19 +5,22 @@ using UnityEngine;
 //[RequireComponent(typeof(GoogleCloudSaveSystem))]
 public class SaveLoadManager : MonoBehaviour
 {
+    public static SaveLoadManager Instance;
 
     private LocalSaveLoad localSaveLoad;
     //private GoogleCloudSaveSystem googleCloudSaveSystem;
-    // 
-
+    
     //
     private UISoundController uiSoundController;
     private Score score;
     private Timer timer;
 
     //
-    private string fileName = "SaveData.text";
-    public static SaveLoadManager Instance;
+    //private string fileName = "SaveData.text";
+    private string fileName = "SaveData.json";
+
+    public bool IsOnline { get; set;}
+    
     void Awake()
     {
         if (Instance != null && Instance != this)
@@ -61,63 +64,87 @@ public class SaveLoadManager : MonoBehaviour
         SaveDataCollection saveDataCollection = new SaveDataCollection();
         PopulateSaveData(saveDataCollection);
 
+#if UNITY_EDITOR
         Debug.Log("Save Local");
         localSaveLoad.Save(fileName, saveDataCollection);
 
-        // if (GameManager.Instance.OnOnline)
-        // {
-        //     // if Andoird & Online
-        //     Debug.Log("Save online");
-        //     googleCloudSaveSystem.Save(fileName, saveDataCollection);
+#endif
 
-        // }
-        // else
-        // {
-
-        //     // if local!
-        //     Debug.Log("Save Local");
-        //     localSaveSystem.Save(fileName, saveDataCollection);
-
-        // }
+#if UNITY_ANDROID
+        if(IsOnline)
+        {
+            
+            GPGSManager.Instance.Save(fileName,saveDataCollection);
+        }
+        else
+        {
+            Debug.LogWarning("Saving Local!");
+            localSaveLoad.Save(fileName, saveDataCollection);
+        }
+#endif
     }
 
 
     public void Load()
     {
-
-        Debug.Log("Load START");
-
         SaveDataCollection saveDataCollection = new SaveDataCollection();
+
+        Debug.Log("Load START from " + gameObject.name);
+
+#if UNITY_EDITOR
 
         Debug.Log("Load Local");
         localSaveLoad.Load(fileName, saveDataCollection);
+#endif
 
-        
-
-        // if(GameManager.Instance.OnOnline)
-        // {
-        //     // if Andorid & Online
-        //     Debug.Log("Load Online");
-        //     googleCloudSaveSystem.Load(fileName, saveDataCollection);
-
-        // }
-        // else
-        // {
-        //     // if Local!
-        //     Debug.Log("Load Local");
-        //     localSaveSystem.Load(fileName, saveDataCollection);
-
-
-
-        // }
+#if UNITY_ANDROID
+        if(IsOnline)
+        {
+            
+            GPGSManager.Instance.Load(fileName,saveDataCollection);
+        }
+        else
+        {
+            Debug.LogWarning("Loading Local!");
+            localSaveLoad.Load(fileName, saveDataCollection);
+        }
+#endif
 
     }
 
     public void Delete()
     {
+        
+
+#if UNITY_EDITOR
+        Debug.Log("Deleting " + fileName + " from local");
+        localSaveLoad.DeleteSavedData(fileName);
+#endif
+
+#if UNITY_ANDROID
+    if(IsOnline)
+        {
+            Debug.Log("Deleting " + fileName + " from Online");
+            GPGSManager.Instance.DeleteSavedGame(fileName);
+        }
+        else
+        {
+            Debug.LogWarning("Deleting " + fileName + " from local");
+            localSaveLoad.DeleteSavedData(fileName);
+        }
+#endif
+
+
+        
+    }
+
+    public void Delete(string deletingFileName)
+    {
         Debug.Log("Delete from " + this.gameObject.name);
 
-        localSaveLoad.DeleteSavedData(fileName);
+        localSaveLoad.DeleteSavedData(deletingFileName);
+
+        GPGSManager.Instance.DeleteSavedGame(deletingFileName);
     }
 
 
@@ -155,6 +182,12 @@ public class SaveLoadManager : MonoBehaviour
   
         
     }
+
+    #if UNITY_EDITOR
+#endif
+
+#if UNITY_ANDROID
+#endif
 
 
 
