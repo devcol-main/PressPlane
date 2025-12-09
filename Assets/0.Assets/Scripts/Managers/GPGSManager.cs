@@ -19,7 +19,7 @@ using GooglePlayGames.BasicApi.Events;
 public class GPGSManager : MonoBehaviour
 {
 
-#if UNITY_ANDROID || UNITY_EDITOR
+#if UNITY_ANDROID //|| UNITY_EDITOR
     public static GPGSManager Instance { get; private set; }
 
     /*
@@ -33,6 +33,8 @@ public class GPGSManager : MonoBehaviour
     //IEventsClient Events => PlayGamesPlatform.Instance.Events;
 
     private string googlePlayGamesToken;
+    
+    public bool IsAuthenticated {get; private set;}
     private async void Awake()
     {
         if (Instance != null && Instance != this)
@@ -76,7 +78,7 @@ public class GPGSManager : MonoBehaviour
                 });
 
                 //
-                SaveLoadManager.Instance.IsOnline = true;
+                IsAuthenticated = true;
 
 
             }
@@ -85,7 +87,7 @@ public class GPGSManager : MonoBehaviour
                 Debug.Log($"GooglePlayGames login failed, : {status}");
 
                 //
-                SaveLoadManager.Instance.IsOnline = false;
+                IsAuthenticated = false;
             }
         });
     }

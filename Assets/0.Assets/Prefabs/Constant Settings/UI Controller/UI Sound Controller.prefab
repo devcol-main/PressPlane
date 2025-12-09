@@ -45,21 +45,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UISoundController
   audioMixer: {fileID: 24100000, guid: 166d646ec92214b568011927a5f7552f, type: 2}
-  masterVolumeToggle: {fileID: 0}
-  masterVolumeSlider: {fileID: 0}
-  masterVolumeToggleOnImage: {fileID: 0}
-  masterVolumeToggleOffImage: {fileID: 0}
-  masterVolumeSliderHandleImage: {fileID: 0}
-  masterVolumeSliderFill: {fileID: 0}
-  bgmVolumeToggle: {fileID: 0}
-  bgmVolumeSlider: {fileID: 0}
-  bgmVolumeToggleOnImage: {fileID: 0}
-  bgmVolumeToggleOffImage: {fileID: 0}
-  bgmVolumeSliderHandleImage: {fileID: 0}
-  bgmVolumeSliderFill: {fileID: 0}
-  sfxVolumeToggle: {fileID: 0}
-  sfxVolumeSlider: {fileID: 0}
-  sfxVolumeToggleOnImage: {fileID: 0}
-  sfxVolumeToggleOffImage: {fileID: 0}
-  sfxVolumeSliderHandleImage: {fileID: 0}
-  sfxVolumeSliderFill: {fileID: 0}
+  masterVolumeToggle: {fileID: 4948012155106255549, guid: 292aa5d63915742efbc8f7026d2d8173, type: 3}
+  masterVolumeSlider: {fileID: 9166481470287555456, guid: fb1be6d61f7a14e3b9358ced7e38a605, type: 3}
+  masterVolumeToggleOnImage: {fileID: 1188821870302467216, guid: 9285253d30a7d458286c5673385415b0, type: 3}
+  masterVolumeToggleOffImage: {fileID: 7404868327573132335, guid: d7ce1a9b5b6504c66ba39b54a095940e, type: 3}
+  masterVolumeSliderHandleImage: {fileID: 797792792640135315, guid: b9286f7c2d53a4c499c4f13795b84023, type: 3}
+  masterVolumeSliderFill: {fileID: 4495319692768920147, guid: ddf37ac8b3af74913bb6724c41101994, type: 3}
+  bgmVolumeToggle: {fileID: 480588241276390168, guid: fae8ae59f68bb4cd9bd665eccbaefa00, type: 3}
+  bgmVolumeSlider: {fileID: 8716290746850268794, guid: 9b16a9457fdb64aa99b88d429d7f1356, type: 3}
+  bgmVolumeToggleOnImage: {fileID: 7859826665475293163, guid: b7169a2d4c65e4431a8c77781699a1b7, type: 3}
+  bgmVolumeToggleOffImage: {fileID: 1124352576997224947, guid: f667a1bb3b2b443ffad9396cf8e8f140, type: 3}
+  bgmVolumeSliderHandleImage: {fileID: 5028897534741662815, guid: de8ce67f807e54f4d9bf89e582d11577, type: 3}
+  bgmVolumeSliderFill: {fileID: 6185775311285041055, guid: 02e3b4f660210467a94d3c938b44fa7b, type: 3}
+  sfxVolumeToggle: {fileID: 8825270550610522561, guid: 39fe2953cea6f49ef804da3e2bb89aed, type: 3}
+  sfxVolumeSlider: {fileID: 2012621725955399391, guid: 754fcfdd3ce8b449fa1a3a8d8b520320, type: 3}
+  sfxVolumeToggleOnImage: {fileID: 2777762854671441816, guid: e2c8ed50fb09e484aa5863a222925e72, type: 3}
+  sfxVolumeToggleOffImage: {fileID: 423825973413650443, guid: 6e6abe9bf16ae41c3bc9c2836a29ef76, type: 3}
+  sfxVolumeSliderHandleImage: {fileID: 8552926936271208040, guid: ea47216dd899f43e686cbf69a44e1dcf, type: 3}
+  sfxVolumeSliderFill: {fileID: 6718820938821080326, guid: 85124e81ee028437bb78ae765d6cb10c, type: 3}

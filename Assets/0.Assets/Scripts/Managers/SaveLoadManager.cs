@@ -48,6 +48,18 @@ public class SaveLoadManager : MonoBehaviour
 
     void Start()
     {
+
+#if UNITY_ANDROID
+        if(GPGSManager.Instance.IsAuthenticated)
+        {
+            IsOnline = true;
+        }
+        else
+        {
+            IsOnline = false;
+        }
+
+#endif        
     }
 
     public void Referencing()

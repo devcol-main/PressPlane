@@ -70,13 +70,21 @@ MonoBehaviour:
     audioClip: {fileID: 8300000, guid: 3712c424561034ad0b6ae49b0fe80636, type: 3}
   - soundName: 7
     audioClip: {fileID: 8300000, guid: 3934f413c754443b89ea8b269829d7c3, type: 3}
+  - soundName: 8
+    audioClip: {fileID: 8300000, guid: cae7191ba9fa749cea41f5ac8b69e2f6, type: 3}
+  - soundName: 9
+    audioClip: {fileID: 8300000, guid: 28e51b374119a40eea2795322c865ce3, type: 3}
+  - soundName: 10
+    audioClip: {fileID: 8300000, guid: e75f136912e8e41f08474cb6c2255b92, type: 3}
+  - soundName: 11
+    audioClip: {fileID: 8300000, guid: e5477a708c8a54b34a1d171ff93bbffa, type: 3}
   sfxIngameAudioClipArray:
   - soundName: 0
     audioClip: {fileID: 8300000, guid: 043c6e720c22842bdb0ef9b00e4ecf61, type: 3}
   - soundName: 1
     audioClip: {fileID: 8300000, guid: a0d5107b20691467eae3d5b9b2150df0, type: 3}
   - soundName: 2
-    audioClip: {fileID: 8300000, guid: 0f5079e9e7d2c406686d13cacc6dc603, type: 3}
+    audioClip: {fileID: 8300000, guid: 2263eea3cd0674ff39b3ced6e2f9a639, type: 3}
   sfxPlayerAudioClipArray:
   - soundName: 0
     audioClip: {fileID: 8300000, guid: f9effe25f8b8d4db382bbd1463ddc6c3, type: 3}

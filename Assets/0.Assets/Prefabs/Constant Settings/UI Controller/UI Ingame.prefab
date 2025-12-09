@@ -45,13 +45,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 359634b9af5d74cc9ad3951c478ececf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IngameSceneUI
-  initiatePanel: {fileID: 0}
-  duringPlayingGamePanel: {fileID: 0}
-  endGamePanel: {fileID: 0}
-  ingameSettingPanel: {fileID: 0}
-  currentScore: {fileID: 0}
-  startButton: {fileID: 0}
-  ingameSettingButton: {fileID: 0}
+  initiatePanel: {fileID: 4610413653744342272, guid: bd17f3146e3c64598b2105cd9216b452, type: 3}
+  duringPlayingGamePanel: {fileID: 1847920171398981289, guid: 7898c447c6d354b8c914233568f764c6, type: 3}
+  endGamePanel: {fileID: 4307747440242342118, guid: d0bddc721a03b4efd8ea6eeebcdb44df, type: 3}
+  ingameSettingPanel: {fileID: 996650669213597243, guid: 4789cbf8bc59b4f9aa5f971fec34dc70, type: 3}
+  endGameTitleImage: {fileID: 8868937250525960701, guid: e2f56c090d5694182b3d0dfd32005cc7, type: 3}
+  currentScore: {fileID: 481516923939389467, guid: e242dccd562c44bfb910d45f7ac6761d, type: 3}
+  startButton: {fileID: 5385879929980106680, guid: 42c538264152f488bbe1d93159b962fa, type: 3}
+  ingameSettingButton: {fileID: 701792739202636841, guid: 023535f2b016c49568a1d6feb90f9f37, type: 3}
+  endGameButtonGroup: {fileID: 1753259954625471191, guid: 24f88536c3eb14271841f2c2d5e4759b, type: 3}
 --- !u!114 &6641142153692621489
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -64,6 +66,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06cb93e923b624e3c823b270734f9028, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Score
-  currentScoreText: {fileID: 0}
+  currentScoreText: {fileID: 1579690054219442422, guid: e242dccd562c44bfb910d45f7ac6761d, type: 3}
   currentScore: 0
   highScore: 0
+  numGamePlayed: 0
+  numTotalEarnedScore: 0
