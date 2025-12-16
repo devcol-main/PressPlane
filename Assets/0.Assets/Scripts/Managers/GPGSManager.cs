@@ -377,6 +377,13 @@ call Social.ReportProgress with a value of 0.0f.
                             {
                                 string data = System.Text.Encoding.UTF8.GetString(loadedData);
                                 onCloudLoaded?.Invoke(true, data);
+
+                                //saveDataCollection.LoadFromJson(data);
+                                //SaveLoadManager.Instance.LoadFromSaveData(saveDataCollection);
+
+                                Debug.Log($"Load Data {fileName} from cloud successfully");
+
+
                             });
 
                         }

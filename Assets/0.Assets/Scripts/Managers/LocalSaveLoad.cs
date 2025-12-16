@@ -4,8 +4,7 @@ using UnityEngine;
 using System.IO;
 using System;
 
-//using static SaveDataCollection;
-//
+
 
 public class LocalSaveLoad : MonoBehaviour
 {
