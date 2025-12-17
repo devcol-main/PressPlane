@@ -60,6 +60,7 @@ public class SaveDataCollection
         public int numGamePlayed;
         public int numTotalEarnedScore;
         public int highScore;
+        public int numDeath;
     }
 
     public NormalSceneData normalSceneData = new NormalSceneData();

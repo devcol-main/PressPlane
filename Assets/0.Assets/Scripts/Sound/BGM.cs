@@ -73,6 +73,11 @@ public class BGM : MonoBehaviour
             Debug.Log("from bgm soundAsset == null");
             soundAsset = FindAnyObjectByType<SoundAsset>();
         }
+
+        if(SoundManager.Instance == null)
+        {
+            Debug.LogWarning("!!!! SoundManager.Instance == null !!!!");
+        }
     
         //AudioSource audioSource = (SoundAsset.BGM.NONE == bgmName) ? audioSourceAmbient : audioSourceMusic;
         AudioSource audioSource = audioSourceMusic;
@@ -111,6 +116,11 @@ public class BGM : MonoBehaviour
     public void PauseBGM()
     {        
         audioSourceMusic.Pause();
+    }
+
+    public void StopBGM()
+    {        
+        audioSourceMusic.Stop();
     }
 
 

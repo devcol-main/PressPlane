@@ -68,6 +68,20 @@ public class UIController : MonoBehaviour
         
 
     }
+    public void OnSpinWheel()
+    {
+        ingameSceneUI.OnSpinWheel();
+    }
+    public void SetPlayerBonusLifeUI(int bonusLife)
+    {
+        ingameSceneUI.SetPlayerBonusLifeUI(bonusLife);
+    }
+
+    public void AskUserToSeeAds()
+    {
+        ingameSceneUI.AskUserToSeeAds();
+    }
+    
     
 //     // for ui Time.unscaledDeltaTime    
 //     #if UNITY_EDITOR

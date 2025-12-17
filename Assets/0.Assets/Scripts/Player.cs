@@ -7,8 +7,11 @@ using System.Threading;
 
 // normal scene
 [RequireComponent(typeof(Movement))]
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour ,ISaveable
 {
+    // References
+    private IngameSceneUI ingameSceneUI;
+
     // Components
     private Movement movement;
     private Animator animator;
@@ -18,13 +21,14 @@ public class Player : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private InputHandler inputHandler;
 
-    // References
+    
 
     // Public Properties
     public int HP { get { return hp; } set { hp = value; } }
     public bool IsAlive { get { return isAlive; } set { isAlive = value; } }
     public bool IsInvulnerable { get { return isInvulnerable; } set { isInvulnerable = value; } }
 
+    public int NumDeath { get { return numDeath;}}
     // Serialized Fields
     [Header("References")]
     [SerializeField] private ParticleSystem dustPS;
@@ -48,6 +52,8 @@ public class Player : MonoBehaviour
     private float angle;
 
 
+    [SerializeField] [ReadOnly] private int numDeath = 0;
+
     private void Awake()
     {
         movement = GetComponent<Movement>();
@@ -66,8 +72,23 @@ public class Player : MonoBehaviour
 
     void Start()
     {
+        Debug.Log("Check Soundmanager");
+        if(null == SoundManager.Instance)
+        {
+            Debug.LogWarning("!!!!!! null == SoundManager.Instance!!!!!! at player");
+        }
+
         SoundManager.Instance.SetupContinuousAudioSource(this.gameObject, SoundAsset.SFXGroup.PLAYER);
         SoundManager.Instance.SetupContinuousSFXFly();
+
+        ingameSceneUI = FindFirstObjectByType<IngameSceneUI>();
+    }
+
+    public void SetBonus(int bonusLife)
+    {
+        hp += bonusLife;
+        
+        // icons
     }
 
     // with old input
@@ -188,6 +209,9 @@ public class Player : MonoBehaviour
             StartCoroutine(InvulnerableTimer(invulnerableDuration));
             StartCoroutine(BlinkCoroutine(times: 5, duration: invulnerableDuration));
 
+            //
+            ingameSceneUI.OnDamagedBonusLife();
+
         }
     }
     IEnumerator InvulnerableTimer(float invulnerableDuration)
@@ -250,17 +274,24 @@ public class Player : MonoBehaviour
     public void Death()
     {
         //Debug.Log("Player Died");
+        SoundManager.Instance.StopContinuousSFXFly();
 
         SoundManager.Instance.PlaySFXOneShot(SoundAsset.SFXGroup.PLAYER, SoundAsset.SFXPlayerName.Death);
+
+        SoundManager.Instance.StopBGM();
 
         isAlive = false;
         polygonCollider2D.enabled = false;
 
         animator.SetTrigger("Die");
+        
+        ++numDeath;
 
         GameManager.Instance.GameOver();
 
         Invoke("DisablePlayer", 2.0f);
+
+        
 
     }
 
@@ -306,11 +337,13 @@ public class Player : MonoBehaviour
 
     }
 
+    public void PopulateSaveData(SaveDataCollection saveDataCollection)
+    {
+        saveDataCollection.normalSceneData.numDeath += numDeath;
+    }
 
-
-
-
-
-
-
+    public void LoadFromSaveData(SaveDataCollection saveDataCollection)
+    {
+        numDeath = saveDataCollection.normalSceneData.numDeath;
+    }
 }

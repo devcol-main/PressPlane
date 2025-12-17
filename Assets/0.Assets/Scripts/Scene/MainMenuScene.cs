@@ -29,7 +29,7 @@ public class MainMenuScene : SceneBase, IMenuScene
 
         // Referencing Managers
         GameManager.Instance.Referencing();
-        SoundManager.Instance.Referencing();
+        //SoundManager.Instance.Referencing();
         // GraphicManager.Instance.Referencing();
         EffectManager.Instance.Referencing();
         SaveLoadManager.Instance.Referencing();

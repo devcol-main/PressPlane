@@ -47,6 +47,7 @@ public class SoundAsset : MonoBehaviour
         Deselect,
         Restart, MainMenu,
         StartGame,
+        Result_Pre, Result_DoubleLife, Result_Life, Result_Nothing,
         
     }
 

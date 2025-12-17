@@ -11,6 +11,10 @@ public class GameManager : MonoBehaviour
     // private Player player;
     private UIController uiController;
     private SceneLoader sceneLoader;
+    private Score score;
+    private Player player;
+
+    private int bonusLife = 0;
 
     private void Awake()
     {
@@ -67,6 +71,9 @@ public class GameManager : MonoBehaviour
 
         }
 
+        score = FindAnyObjectByType<Score>();
+        player = FindAnyObjectByType<Player>();
+
 
     }
 
@@ -101,6 +108,15 @@ public class GameManager : MonoBehaviour
         sceneLoader.OnLoadNormalScene();
     }
     
+
+
+    public void IncreaseScore()
+    {
+        uiController.IncreaseScore();
+
+    }
+    //
+
     public void GameOver()
     {
         
@@ -109,16 +125,96 @@ public class GameManager : MonoBehaviour
         //SoundManager.Instance.PlayBGM(SoundAsset.BGM.NONE);
         //SoundManager.Instance.PauseBGM();
 
+        SaveLoadManager.Instance.Save();
+
+#if UNITY_ANDROID
+        //GPGPS
+        // aheiveement check
+        GPGSManager.Instance.CheckDeathAchievement(player.NumDeath);
+
+        // put one leaderboard
+        if(score.IsAchieveHighScore && 10 <= score.HighScore)
+        {
+            GPGSManager.Instance.AddHighScoreToLeaderboard(score.HighScore);
+        }
+
+        RandRewardEvent();
+#endif
+
     }
 
-    public void IncreaseScore()
+    private void RandRewardEvent()
     {
-        uiController.IncreaseScore();
+        
+        //int rand = Random.Range(0, 3);
+        int rand = 1;
+        Debug.Log("at RandRewardEvent: " + rand);
 
+        if(rand == 1)
+        {
+            // popup ask player to wathch ad for luck spin
+            uiController.AskUserToSeeAds();
+
+            // //
+            // Admob admob = FindFirstObjectByType<Admob>();
+            // admob.ShowRewardedAd();
+
+        }
+    }
+
+    public void OnSpineWheel()
+    {
+        
+        uiController.OnSpinWheel();
+        //spinWheel.enabled = true;
+    }
+
+    public void GiveRewardedReward(GlobalString.Prize prize)
+    {
+        switch (prize)
+        {
+            // none nothing // off spine at spin wheel
+            case GlobalString.Prize.NONE:
+                {
+                    
+                    break;
+                }
+            
+            case GlobalString.Prize.DOUBLE_LIFE:
+                {
+                    sceneLoader.OnRestartScene();
+                    //player.HP +=2;
+                    bonusLife +=2;
+                    
+                    break;
+                }
+            case GlobalString.Prize.SINGLE_LIFE:
+                {
+                    sceneLoader.OnRestartScene();
+                    //player.HP +=1;
+                    bonusLife +=1;
+                    break;
+                }
+        }
+
+        // for none 
+        // for prize
+        // restart game give life
+        
 
     }
-    //
 
+    public int GetBonusLife()
+    {
+        
+        int result = bonusLife;
+
+        // reset
+        bonusLife = 0;
+
+        return result;
+    }
+//
     private void OnApplicationQuit()
     {
         SaveLoadManager.Instance.Save();

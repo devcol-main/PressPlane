@@ -38,7 +38,7 @@ public class SoundManager : MonoBehaviour
             //DontDestroyOnLoad(transform.root.gameObject);
         }
 
-
+        //Referencing();
 
     }
 
@@ -52,7 +52,7 @@ public class SoundManager : MonoBehaviour
         // sfx = FindAnyObjectByType<SFX>();
     }
 
-    public void Referencing()
+    private void Referencing()
     {
         UnityEngine.Debug.Log("Referencing from " + gameObject.name);
         soundAsset = FindAnyObjectByType<SoundAsset>();
@@ -81,6 +81,11 @@ public class SoundManager : MonoBehaviour
         bgm.PauseBGM();
     }
 
+    public void StopBGM()
+    {
+        bgm.StopBGM();
+    }
+
     //
     public void SetupContinuousAudioSource(GameObject gameObject, SoundAsset.SFXGroup sfxGroup)
     {
@@ -94,6 +99,11 @@ public class SoundManager : MonoBehaviour
     public void ContinuousSFXFly(bool isOn, float power = GlobalData.Player.SoundPower)
     {
         sfx.ContinuousSFXFly(isOn, power);
+    }
+
+    public void StopContinuousSFXFly()
+    {
+        sfx.StopContinuousSFXFly();
     }
     //
 
