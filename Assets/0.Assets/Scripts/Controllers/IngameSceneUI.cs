@@ -6,14 +6,14 @@ using System.Collections;
 
 public class IngameSceneUI : MonoBehaviour
 {
-   [Header("Panels")]
-   
+    [Header("Panels")]
+
     [SerializeField] private GameObject initiatePanel;
     [SerializeField] private GameObject duringPlayingGamePanel;
     [SerializeField] private GameObject endGamePanel;
     [SerializeField] private GameObject ingameSettingPanel;
 
-    [Header("Images")]  
+    [Header("Images")]
     [SerializeField] private GameObject endGameTitleImage;
 
 
@@ -24,11 +24,21 @@ public class IngameSceneUI : MonoBehaviour
     [Header("Buttons")]
     [SerializeField] private Button ingameSettingButton;
     [SerializeField] private GameObject endGameButtonGroup;
-    
 
+    [Header("Ads Events")]
+    [SerializeField] private GameObject askingAdsPanel;
+    [SerializeField] private GameObject spinWheel;
+    [SerializeField] private GameObject UIPlayerBonusLifeGroup;
+    [SerializeField] private GameObject UIPlayerBonusLifeFirst;
+    [SerializeField] private GameObject UIPlayerBonusLifeSecond;
 
     private Score score;
     private TextMeshProUGUI currentScoreText;
+    private Player player;
+
+    //
+    private int totalBonusLife;
+    private int bonusLife;
 
     private void Awake()
     {
@@ -38,11 +48,16 @@ public class IngameSceneUI : MonoBehaviour
 
         SwitchAllPanel(false);
 
+        if(null != askingAdsPanel)
+            askingAdsPanel.SetActive(false);
+
     }
     private void Start()
-    {        
+    {
         score = GetComponent<Score>();
         currentScoreText = score.CurrentScoreText;
+
+        player = FindFirstObjectByType<Player>();
 
         ingameSettingButton.onClick.AddListener(OnInGameSettingPanel);
     }
@@ -76,34 +91,34 @@ public class IngameSceneUI : MonoBehaviour
 
     IEnumerator PerformGameOverAnimation()
     {
-        
-        int rand = Random.Range(0,4);
-        Vector3 startingPos = new Vector3(0,0,0);
-        switch(rand)
+
+        int rand = Random.Range(0, 4);
+        Vector3 startingPos = new Vector3(0, 0, 0);
+        switch (rand)
         {
             case 0:
-                startingPos = new Vector3(-1000f,0f);
-            break;
-            
+                startingPos = new Vector3(-1000f, 0f);
+                break;
+
             case 1:
-                startingPos = new Vector3(1000f,0f);
-            break;
-            
+                startingPos = new Vector3(1000f, 0f);
+                break;
+
             case 2:
-                startingPos = new Vector3(0f,1200f);
-            break;
-                  
+                startingPos = new Vector3(0f, 1200f);
+                break;
+
             case 3:
-                startingPos = new Vector3(0f,-1200f);
-            break;
+                startingPos = new Vector3(0f, -1200f);
+                break;
         }
         //titleImage.transform.position =
-        
+
         endGameTitleImage.GetComponent<RectTransform>().anchoredPosition = startingPos;
 
         // move title image;
         float duration = 2f;
-        Vector3 pos = new Vector3(0f, 0f,0f);
+        Vector3 pos = new Vector3(0f, 0f, 0f);
 
         endGameTitleImage.GetComponent<RectTransform>().DOAnchorPos(pos, duration)
              .SetEase(Ease.InOutSine);
@@ -124,7 +139,7 @@ public class IngameSceneUI : MonoBehaviour
 
         //SoundManager.Instance.PauseAudio(true);
         //SoundManager.Instance.PauseAudio(false,SoundAsset.BGMGroup.NONE, SoundAsset.SFXGroup.PLAYER & SoundAsset.SFXGroup.ENEMY & SoundAsset.SFXGroup.OBSTACLE);
-        SoundManager.Instance.PauseAudio(false,SoundAsset.BGMGroup.NONE, SoundAsset.SFXGroup.PLAYER | SoundAsset.SFXGroup.ENEMY | SoundAsset.SFXGroup.OBSTACLE);// = 7
+        SoundManager.Instance.PauseAudio(false, SoundAsset.BGMGroup.NONE, SoundAsset.SFXGroup.PLAYER | SoundAsset.SFXGroup.ENEMY | SoundAsset.SFXGroup.OBSTACLE);// = 7
 
         //SoundManager.Instance.PauseAudio(false,SoundAsset.BGMGroup.NONE, SoundAsset.SFXGroup.ALL);
         //
@@ -136,20 +151,20 @@ public class IngameSceneUI : MonoBehaviour
 
 
     public void OffInGameSettingPanel()
-    {   
+    {
         ingameSettingPanel.SetActive(false);
 
 
         //SoundManager.Instance.ResumeAudio(true);
-        SoundManager.Instance.ResumeAudio(false,SoundAsset.BGMGroup.ALL, SoundAsset.SFXGroup.PLAYER | SoundAsset.SFXGroup.ENEMY | SoundAsset.SFXGroup.OBSTACLE);// = 7
+        SoundManager.Instance.ResumeAudio(false, SoundAsset.BGMGroup.ALL, SoundAsset.SFXGroup.PLAYER | SoundAsset.SFXGroup.ENEMY | SoundAsset.SFXGroup.OBSTACLE);// = 7
 
         SoundManager.Instance.PlaySFXOneShot(SoundAsset.SFXGroup.UI, SoundAsset.SFXUIName.Off);
-        
+
         GameManager.Instance.ResumeGame();
 
         SaveLoadManager.Instance.Save();
 
-        
+
     }
 
     public void OnRestartButton()
@@ -163,22 +178,22 @@ public class IngameSceneUI : MonoBehaviour
 
     public void OnMainMenuSceneButton()
     {
-        SoundManager.Instance.PlaySFXOneShot(SoundAsset.SFXGroup.UI,SoundAsset.SFXUIName.MainMenu);
+        SoundManager.Instance.PlaySFXOneShot(SoundAsset.SFXGroup.UI, SoundAsset.SFXUIName.MainMenu);
 
         SaveLoadManager.Instance.Save();
-        
+
         GameManager.Instance.MainMenuScene();
-        
+
     }
 
     public void OnAchievementButton()
     {
-        
+
     }
 
     public void OnLeaderboardButton()
     {
-        
+
     }
 
 
@@ -203,11 +218,62 @@ public class IngameSceneUI : MonoBehaviour
 
     private void SwitchAllPanel(bool isOn)
     {
-        
+
         initiatePanel.SetActive(isOn);
         duringPlayingGamePanel.SetActive(isOn);
         endGamePanel.SetActive(isOn);
         ingameSettingPanel.SetActive(isOn);
 
     }
+
+    public void OnSpinWheel()
+    {
+        spinWheel.SetActive(true);
+    }
+
+    public void SetPlayerBonusLifeUI(int bonusLife)
+    {
+        totalBonusLife = bonusLife;
+
+        if (0 == bonusLife)
+        {
+            UIPlayerBonusLifeGroup.SetActive(false);
+        }
+        else
+        {
+            UIPlayerBonusLifeGroup.SetActive(true);
+
+            if (1 == bonusLife)
+            {
+                UIPlayerBonusLifeFirst.SetActive(true);
+                UIPlayerBonusLifeSecond.SetActive(false);
+            }
+            else if (2 == bonusLife)
+            {
+                UIPlayerBonusLifeFirst.SetActive(true);
+                UIPlayerBonusLifeSecond.SetActive(true);
+            }
+        }
+    }
+
+    public void OnDamagedBonusLife()
+    {
+
+        Debug.Log("OnDamagedBonusLife at " + gameObject.name);
+        if(2 == player.HP)
+        {
+            UIPlayerBonusLifeSecond.GetComponent<Animator>().SetTrigger("Die");
+        }
+        else
+        {
+            UIPlayerBonusLifeFirst.GetComponent<Animator>().SetTrigger("Die");
+        }
+
+    }
+
+    public void AskUserToSeeAds()
+    {
+        askingAdsPanel.SetActive(true);
+    }
+
 }

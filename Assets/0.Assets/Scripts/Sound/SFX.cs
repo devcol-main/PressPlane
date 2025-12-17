@@ -159,6 +159,10 @@ public class SFX : MonoBehaviour
         continuousAudioSource.volume = volume;
         continuousAudioSource.pitch = pitch;
     }
+    public void StopContinuousSFXFly()
+    {
+        continuousAudioSource.Stop();
+    }
 
 
     //
@@ -214,6 +218,7 @@ public class SFX : MonoBehaviour
             }
         }
 
+            
         return length;
 
     }

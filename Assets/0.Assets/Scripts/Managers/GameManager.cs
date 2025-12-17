@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
     private Score score;
     private Player player;
 
+    private int bonusLife = 0;
+
     private void Awake()
     {
         // to Graphic Manager
@@ -125,8 +127,6 @@ public class GameManager : MonoBehaviour
 
         SaveLoadManager.Instance.Save();
 
-
-
 #if UNITY_ANDROID
         //GPGPS
         // aheiveement check
@@ -137,11 +137,84 @@ public class GameManager : MonoBehaviour
         {
             GPGSManager.Instance.AddHighScoreToLeaderboard(score.HighScore);
         }
-#endif
 
+        RandRewardEvent();
+#endif
 
     }
 
+    private void RandRewardEvent()
+    {
+        
+        //int rand = Random.Range(0, 3);
+        int rand = 1;
+        Debug.Log("at RandRewardEvent: " + rand);
+
+        if(rand == 1)
+        {
+            // popup ask player to wathch ad for luck spin
+            uiController.AskUserToSeeAds();
+
+            // //
+            // Admob admob = FindFirstObjectByType<Admob>();
+            // admob.ShowRewardedAd();
+
+        }
+    }
+
+    public void OnSpineWheel()
+    {
+        
+        uiController.OnSpinWheel();
+        //spinWheel.enabled = true;
+    }
+
+    public void GiveRewardedReward(GlobalString.Prize prize)
+    {
+        switch (prize)
+        {
+            // none nothing // off spine at spin wheel
+            case GlobalString.Prize.NONE:
+                {
+                    
+                    break;
+                }
+            
+            case GlobalString.Prize.DOUBLE_LIFE:
+                {
+                    sceneLoader.OnRestartScene();
+                    //player.HP +=2;
+                    bonusLife +=2;
+                    
+                    break;
+                }
+            case GlobalString.Prize.SINGLE_LIFE:
+                {
+                    sceneLoader.OnRestartScene();
+                    //player.HP +=1;
+                    bonusLife +=1;
+                    break;
+                }
+        }
+
+        // for none 
+        // for prize
+        // restart game give life
+        
+
+    }
+
+    public int GetBonusLife()
+    {
+        
+        int result = bonusLife;
+
+        // reset
+        bonusLife = 0;
+
+        return result;
+    }
+//
     private void OnApplicationQuit()
     {
         SaveLoadManager.Instance.Save();

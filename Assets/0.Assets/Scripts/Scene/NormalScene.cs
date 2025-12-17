@@ -36,6 +36,26 @@ public class NormalScene : SceneBase, IGameScene
         score = FindFirstObjectByType<Score>();
 
         InitiateSetting();
+
+        //
+        SetBonus();
+        
+    }
+
+    private void SetBonus()
+    {
+        
+        int bonusLife = GameManager.Instance.GetBonusLife();
+
+        if(bonusLife > 0)
+        {
+            player.SetBonus(bonusLife);
+
+            //uiController set player extra life icon
+
+        }
+
+        uiController.SetPlayerBonusLifeUI(bonusLife);
     }
 
     private void InitiateSetting()
@@ -45,7 +65,7 @@ public class NormalScene : SceneBase, IGameScene
 
         // Referencing Managers
         GameManager.Instance.Referencing();
-        SoundManager.Instance.Referencing();
+        //SoundManager.Instance.Referencing();
         // GraphicManager.Instance.Referencing();
         EffectManager.Instance.Referencing();
         SaveLoadManager.Instance.Referencing();

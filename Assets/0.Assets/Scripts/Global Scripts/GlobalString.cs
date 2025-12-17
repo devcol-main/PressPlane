@@ -22,4 +22,6 @@ public static class GlobalString
 
     }
 
+    public enum Prize { NONE, SINGLE_LIFE, DOUBLE_LIFE }
+
 }
