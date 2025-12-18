@@ -146,8 +146,8 @@ public class GameManager : MonoBehaviour
     private void RandRewardEvent()
     {
         
-        //int rand = Random.Range(0, 3);
-        int rand = 1;
+        int rand = Random.Range(0, 3);
+        //int rand = 1;
         Debug.Log("at RandRewardEvent: " + rand);
 
         if(rand == 1)
