@@ -155,8 +155,9 @@ public class SaveLoadManager : MonoBehaviour
         Debug.Log("Delete from " + this.gameObject.name);
 
         localSaveLoad.DeleteSavedData(deletingFileName);
-
+#if UNITY_ANDROID 
         GPGSManager.Instance.DeleteSavedGame(deletingFileName);
+# endif
     }
 
 

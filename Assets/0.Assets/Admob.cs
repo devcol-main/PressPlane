@@ -62,19 +62,19 @@ public class Admob : MonoBehaviour
     private string rewardedInterstitialTestId   = "unused";
 
 #endif
+    private string appOpenId                    = "?";
+    
+    private string bannerId                     = "?";
+    private string interstitialId               = "?";
+    private string rewardedId                   = "ca-app-pub-4892249986723209/7036956642";
+    private string nativeOverlayId              = "?";
+    private string rewardedInterstitialId       = "?";
 
     // ca-app-pub-4892249986723209~2929178912
     
     
     // re: ca-app-pub-4892249986723209/7710538784
-    private string appOpenId                    = "?";
-
-    private string bannerId                     = "?";
-    private string interstitialId               = "?";
-    private string rewardedId                   = "ca-app-pub-4892249986723209/7036956642";
-    private string nativeOverlayId              = "?";
-
-    private string rewardedInterstitialId       = "?";
+    
 
     
     private List<string> testDeviceIdsList = new List<string>
